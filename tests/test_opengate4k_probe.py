@@ -10,7 +10,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools.inspect_opengate4k import bounded, initial_offset, parse_menu, parse_rate_pairs
+from tools.inspect_opengate4k import bounded, crosscheck_menus, initial_offset, parse_imenu, parse_menu, parse_rate_pairs
 
 
 def rate_fixture():
@@ -27,6 +27,14 @@ def menu_fixture():
     for index, rate in zip((53, 54, 55), (4, 5, 6)):
         rows[index] = (12531 + index - 53, 6, rate, 6, 0, 0)
     return bytearray(b''.join(struct.pack('<6I', *row) for row in rows))
+
+
+def imenu_fixture():
+    modes = [(6, 2), (6, 3), (6, 4), (6, 5), (6, 6),
+             (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6),
+             (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), (2, 0), (2, 1)]
+    return [bytearray(b''.join(struct.pack('<6I', size, rate, 0, quality, index, 53 + 2 * index + 1 - quality)
+                              for index, (size, rate) in enumerate(modes))) for quality in (1, 0)]
 
 
 class RateTableTests(unittest.TestCase):
@@ -67,6 +75,45 @@ class RateTableTests(unittest.TestCase):
 
 
 class MenuAndBoundsTests(unittest.TestCase):
+    def test_four_k_has_nraw_file_type_six_and_size_four(self):
+        # In the real stock table these two fields are both 6 for 8.3K.
+        # A fixture containing only 8.3K cannot expose them being transposed.
+        raw = menu_fixture()
+        for index, rate in zip((60, 61, 62), (4, 5, 6)):
+            struct.pack_into('<6I', raw, index * 24, 0x30FA + index - 60, 6, rate, 4, 0, 5658)
+        rows = parse_menu(raw)
+        four_k = [r for r in rows if r['size_code'] == 4]
+        self.assertEqual([r['index'] for r in four_k], [60, 61, 62])
+        self.assertEqual([r['rate_code'] for r in four_k], [4, 5, 6])
+        self.assertEqual([r['file_type'] for r in four_k], [6, 6, 6])
+
+    def test_imenu_keeps_distinct_quality_resources(self):
+        rows = parse_imenu(*imenu_fixture())
+        self.assertEqual(rows[9]['size_code'], 4)
+        self.assertEqual(rows[9]['high_resource_key'], 71)
+        self.assertEqual(rows[9]['normal_resource_key'], 72)
+
+    def test_imenu_corruption_rejected(self):
+        high, normal = imenu_fixture()
+        struct.pack_into('<I', normal, 9 * 24, 6)
+        with self.assertRaisesRegex(ValueError, 'identity'):
+            parse_imenu(high, normal)
+        with self.assertRaisesRegex(ValueError, 'length'):
+            parse_imenu(high[:-1], normal)
+        high, normal = imenu_fixture()
+        struct.pack_into('<I', normal, 9 * 24 + 12, 1)
+        with self.assertRaisesRegex(ValueError, 'quality values'):
+            parse_imenu(high, normal)
+
+    def test_cross_menu_matching_uses_identity_instead_of_index(self):
+        main = [dict(index=60, item_id='0x30fa', size_code=4, rate_code=4, word4=0)]
+        imenu = [dict(index=9, size_code=4, rate_code=4, variant=0)]
+        match = crosscheck_menus(main, imenu)[0]
+        self.assertEqual((match['main_index'], match['imenu_index']), (60, 9))
+        for bad in ([], main + main):
+            with self.assertRaisesRegex(ValueError, 'ambiguous'):
+                crosscheck_menus(bad, imenu)
+
     def test_filters_file_type_and_checks_existing_templates(self):
         rows = parse_menu(menu_fixture())
         self.assertEqual([r['rate_code'] for r in rows], [4, 5, 6])

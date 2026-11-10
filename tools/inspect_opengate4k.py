@@ -16,6 +16,7 @@ BASE = 0x40160000
 INIT_VA, INIT_OFFSET, INIT_END = 0xA02808000, 0x4B13000, 0x4DC0000
 RATE_OFFSET, RATE_COUNT = 0x42AB3C90 - BASE, 42
 MENU_OFFSET, MENU_COUNT = 43776736, 80
+IMENU_HIGH, IMENU_NORMAL, IMENU_COUNT = 0x42B0662C - BASE, 0x42B067F4 - BASE, 19
 GEOMETRY = {
     'full_raw_stream_height': 0xA02A979C2,
     'half_raw_stream_height': 0xA02A979D2,
@@ -93,15 +94,42 @@ def parse_menu(raw):
     need(len(raw) == MENU_COUNT * record.size, 'Wrong menu-table length')
     rows = []
     for index, words in enumerate(record.iter_unpack(raw)):
-        item, size, rate, file_type, word4, word5 = words
+        item, file_type, rate, size, word4, word5 = words
         if file_type == 6:
-            rows.append(dict(index=index, item_id=hex(item), size_code=size,
+            rows.append(dict(index=index, item_id=hex(item), file_type=file_type, size_code=size,
                              rate_code=rate, word4=word4, word5=word5))
     # These are the stock templates used by the existing reviewed builder.
     for index, rate in zip((53, 54, 55), (4, 5, 6)):
         words = record.unpack_from(raw, index * record.size)
         need(words[1:4] == (6, rate, 6), 'Unexpected stock 8.3K menu template')
     return rows
+
+
+def parse_imenu(high_raw, normal_raw):
+    """N-RAW's independent native i-menu templates: size, rate, flag, quality, index, resource."""
+    record = struct.Struct('<6I')
+    need(len(high_raw) == len(normal_raw) == IMENU_COUNT * record.size, 'Wrong i-menu table length')
+    rows = []
+    for index, (high, normal) in enumerate(zip(record.iter_unpack(high_raw), record.iter_unpack(normal_raw))):
+        need(high[:3] == normal[:3] and high[4] == normal[4], 'i-menu quality-pair identity differs')
+        need(high[3] == 1 and normal[3] == 0, 'Unexpected i-menu quality values')
+        need(high[4] == index, 'Unexpected i-menu selection index')
+        rows.append(dict(index=index, size_code=high[0], rate_code=high[1],
+                         variant=high[2], high_resource_key=high[5], normal_resource_key=normal[5]))
+    return rows
+
+
+def crosscheck_menus(main_rows, imenu_rows):
+    """Match identities across independently read tables, never by row position."""
+    matches = []
+    for row in imenu_rows:
+        found = [m for m in main_rows if (m['size_code'], m['rate_code'], m['word4']) ==
+                 (row['size_code'], row['rate_code'], row['variant'])]
+        need(len(found) == 1, 'Missing or ambiguous main/i-menu identity')
+        matches.append(dict(size_code=row['size_code'], rate_code=row['rate_code'],
+                            main_index=found[0]['index'], main_item=found[0]['item_id'],
+                            imenu_index=row['index']))
+    return matches
 
 
 def source_evidence():
@@ -118,7 +146,7 @@ def source_evidence():
 
 def research_report():
     return dict(
-        schema='z8-opengate4k-research-1',
+        schema='z8-opengate4k-research-2',
         stage='source_research',
         recording_4k_open_gate_implemented=False,
         firmware_generated=False,
@@ -128,7 +156,7 @@ def research_report():
                     sampling='Unknown: do not assume oversampling, binning or line skipping'),
         source_evidence=source_evidence(),
         unresolved=[
-            'Identify the stock 4.1K recording size/readout/plan identities from the exact C3.11 image.',
+            'Confirm the runtime 4.1K readout/plan identities; its stock menu size code is 4.',
             'Check the sensor driver and frontend buffer extents for full-height recording, not only live view.',
             'Determine actual encoded dimensions, alignment and crop independently of the active dimensions.',
             'Add coherent main/i-menu selection, cancellation, bank and power-cycle handling.',
@@ -147,6 +175,13 @@ def inspect_firmware(path):
     eg = package.eg
     pairs = parse_rate_pairs(bounded(eg, RATE_OFFSET, RATE_COUNT * 24))
     menu = parse_menu(bounded(eg, MENU_OFFSET, MENU_COUNT * 24))
+    imenu = parse_imenu(bounded(eg, IMENU_HIGH, IMENU_COUNT * 24),
+                       bounded(eg, IMENU_NORMAL, IMENU_COUNT * 24))
+    identities = crosscheck_menus(menu, imenu)
+    four_k_menus = [row for row in identities
+                   if row['size_code'] == 4 and row['rate_code'] in (4, 5, 6)]
+    need(len(menu) == len(identities) == 19 and len(four_k_menus) == 3,
+         'Unexpected stock N-RAW mode inventory')
     candidates = [row for row in pairs
                   if (row['coded_width'], row['coded_height']) == (4140, 2330)
                   and 23 <= row['fps'] <= 31 and row['stock_supported']]
@@ -160,6 +195,9 @@ def inspect_firmware(path):
         stock_rate_pairs=pairs,
         stock_4k_low_rate_candidates=candidates,
         stock_nraw_menu_rows=menu,
+        stock_nraw_imenu_rows=imenu,
+        stock_menu_identity_matches=identities,
+        stock_4k_low_rate_menu_candidates=four_k_menus,
         stock_initial_geometry=[dict(name=name, address=hex(address),
                                      height=struct.unpack('<H', bounded(eg, initial_offset(address), 2))[0])
                                 for name, address in GEOMETRY.items()],
