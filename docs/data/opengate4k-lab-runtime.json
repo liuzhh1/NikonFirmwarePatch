@@ -90,7 +90,8 @@
     "access": "read",
     "value": "0x0",
     "unmodified_stock_reproduces": false,
-    "cause": "Unknown: new driver14 path/hardware-contract requires investigation; differs from stock engine1543 frontier"
+    "cause": "Dump load at 0x40c07c24 follows an earlier CAPTG Data Abort; it is not the original failure",
+    "phase": "secondary diagnostic register dump"
   },
   "recording_tested": false,
   "run_passed": false,
@@ -103,5 +104,22 @@
     "count": 46,
     "passed": true,
     "optional_frontend_and_real_input_tests_enabled": true
+  },
+  "primary_exception": {
+    "source": "native UART exception report",
+    "uart_sha256": "9bba756885fa5716f8cf06281326ad1b2a3802e861563a13cb3c510748c508bb",
+    "task": "CAPTG",
+    "cpu": 1,
+    "pc": "0x41170d84",
+    "lr": "0x411643b0",
+    "esr": "0x96000005",
+    "far": "0x2a156b2806",
+    "kind": "read translation fault",
+    "x8_selector_index": 15,
+    "explicit_movie_selector_inputs": [
+      10,
+      16
+    ],
+    "diagnosis": "The original selector-table reader maps the selected descriptor to index15. This run supplies Movie selector10 and16, not15. Missing selector/ROM input is a candidate cause; the selector byte and record need a direct breakpoint observation. Driver14 physical suitability remains unverified."
   }
 }
