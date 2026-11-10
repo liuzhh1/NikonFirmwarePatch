@@ -61,13 +61,28 @@ python tools/build_opengate4k_lab.py \
 | 物理输入几何 | 4140×2756 |
 | 逻辑范围 | 4140×2760 |
 | 代理字段 | 1920×1080，保持原值 |
-| 视频 plan11 / 编码候选 | 隔离执行通过；本次最终视频快照之后未捕获运行时到达证据 |
+| 视频前端 | 最终视频快照后捕获 plan11，前端 4140×2756 |
+| 编码候选 | 隔离执行通过，尚无运行时到达或码流验证 |
 
 完整运行**未通过**。补查原生 UART 后确认，原始异常是 CAPTG 在 `PC 0x41170D84` 发生读取地址翻译异常，ESR=`0x96000005`、FAR=`0x2A156B2806`。此前记录的 `PC 0x40C07C24` 读取 `0x15080014`，属于其后的诊断寄存器转储，不能作为原始故障点。
 
-原始异常位于外部 ROM 选择表/记录读取函数，X8 显示本次索引为15；本轮只显式供应 Movie selector10 和16。缺少新分支的 selector/ROM 输入是目前的具体排查方向，还需在选择字节读出前后打断点确认。不能据此认定 driver14 错误或正确，也不能通过给诊断转储返回零宣告录像通过。原厂对照的 `0x15432004` START 写入是另一条边界。精简的无固件字节证据见 [原型运行记录](../docs/data/opengate4k-lab-runtime.json) 与 [原厂对照](../docs/data/opengate4k-stock-runtime.json)。
+后续已用三个只读断点完成相同固件、相同按键回放的 A/B 对照，仅 B 组额外提供一个合成外部 ROM 输入：
 
-本轮共 46 项测试通过，已启用 AArch64 执行和真实输入集成检查。25p、24p 的条件分支在隔离执行中覆盖，QEMU 原生设置链路本轮只观察了 LAB 30p。
+| 观测 | A：原有输入 | B：增加 selector15=1 |
+|---|---|---|
+| 原生 selector 索引 / 读值 | 15 / 0 | 15 / 1 |
+| 减一后算出的记录基址 | `0x2A155D78A0`，越界 | `0xA155D78C0`，在映射内 |
+| 首个参数读取地址 | `0x2A156B2806`，触发异常 | `0xA156B2826`，读到0 |
+| UART 原始异常 | CAPTG `0x41170D84` | 未输出原生异常 |
+| 后续停止 | 诊断转储 `0x15080014` | header START `0x15432004` |
+
+由此确认本次 CAPTG 异常是缺少 selector15 合成输入导致的下溢。新选项 `--experimental-movie-selector15` 在外部 ROM 地址 `0x47F5AF4F` 提供1，并在收据中明确记录；这是参数记录1的实验选择，不是恢复了相机校准数据。后续记录参数仍是合成值，driver14 的物理读出也未完成验证。
+
+B 组停在与原厂 N-RAW 对照相同的 START 写入；其 header（`0x15432000`）及 supplier（`0x15422000`）配置逐字段与原厂相等，两者 source1518 配置均为零。现有模型要求完整的 supplier/source 视频配置后才接受此 START。下一步应单独核对 N-RAW 的消费者先启动、供应者后配置顺序，不能通过忽略写入或伪造完成事件宣告录像通过。两组运行均记失败且正常清理子进程，未启动录像。
+
+精简证据见 [A/B 运行记录](../docs/data/opengate4k-selector-ab.json)、[此前原型运行记录](../docs/data/opengate4k-lab-runtime.json) 与 [原厂对照](../docs/data/opengate4k-stock-runtime.json)。
+
+本轮共 51 项测试通过，已启用 AArch64 执行、真实输入集成检查及原始异常提取回归。25p、24p 的条件分支在隔离执行中覆盖，QEMU 原生设置链路本轮只观察了 LAB 30p。
 
 ## 复跑设置追踪
 
@@ -91,6 +106,8 @@ python tools/trace_opengate4k.py \
 ```
 
 按键回放含切换 N-RAW 后的原生提示确认。追踪使用硬件执行断点和只读观测，不注入客体寄存器或运行时 RAM；不会绕过未建模访问错误。生成 `observations.json`、菜单图和原运行器 `result.json`，后者包含完整运行失败原因。若环境不支持 Unix socket，可显式指定自行准备的 `--transport-helper`，它只应改变主机传输。
+
+复跑本轮 A/B 时，两组都使用 `--replay docs/data/opengate4k-selector-replay.json`，指定两个新输出目录和从同一开发虚拟卡复制的独立卡文件。A 使用上述输入，B 额外加 `--experimental-movie-selector15`；必须同时启用完整 Movie profile 和 selector10。两组 MAIN、QEMU、合成 RAW 及按键列表应相同。`result.json` 会保存 `primary_exception`，先查看该字段再解释最后的 MMIO 停止地址。此选项不改变生产固件，也不提供校准参数。
 
 ## 模拟器主菜单截图
 

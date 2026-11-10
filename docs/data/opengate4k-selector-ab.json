@@ -1,0 +1,377 @@
+{
+  "schema": "z8-opengate4k-selector-ab-1",
+  "main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+  "qemu_sha256": "de55bb6b8778180e611be163a5605d45304122d537f754981fd220c2d62d2d50",
+  "emulator_commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+  "scope": "Native 4K LAB 30p setup, one-byte synthetic external-ROM A/B input; no recording started",
+  "replay_file": "opengate4k-selector-replay.json",
+  "replay_sha256": "57a0bb2c38b9f358b8178beb24fc7ee579499262056c130b5238b5311ae60dd2",
+  "firmware_and_controls_identical": true,
+  "separate_virtual_cards": true,
+  "guest_runtime_ram_patches": [],
+  "cpu_register_redirection": false,
+  "hardware_model_modified": false,
+  "hardware_calibration_recovered": false,
+  "runs": {
+    "a": {
+      "selector15_fixture": null,
+      "events": [
+        {
+          "name": "snapshot",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x40f7a090",
+          "inputs": 24,
+          "fields": {
+            "kind": 1,
+            "actual": 8,
+            "nominal": 4,
+            "size": 4,
+            "rate": 4,
+            "request": 4
+          }
+        },
+        {
+          "name": "driver-return",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41174d94",
+          "inputs": 24,
+          "driver": 14
+        },
+        {
+          "name": "geometry",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x410665f8",
+          "inputs": 24,
+          "u16": {
+            "0xc": 4128,
+            "0xe": 2752,
+            "0x10": 1920,
+            "0x12": 1080,
+            "0x48": 4140,
+            "0x4a": 2756,
+            "0x5c": 0,
+            "0x5e": 2,
+            "0x64": 4140,
+            "0x66": 2760
+          }
+        },
+        {
+          "name": "plan",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41062018",
+          "inputs": 24,
+          "words": [
+            11,
+            4,
+            4,
+            6,
+            2756,
+            0,
+            0,
+            0,
+            1089001704,
+            0,
+            114986656,
+            10,
+            1088682776,
+            0,
+            65280,
+            0
+          ]
+        },
+        {
+          "name": "frontend",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x410622c8",
+          "inputs": 24,
+          "dimensions": [
+            4140,
+            2756,
+            4140,
+            2756
+          ]
+        },
+        {
+          "name": "rom-selector",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41170d5c",
+          "inputs": 24,
+          "index": 15,
+          "rom_base": "0xa155d78c0",
+          "selector_address": "0xa156b280f",
+          "selector_byte": 0
+        },
+        {
+          "name": "rom-byte",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41170d70",
+          "inputs": 24,
+          "index": 15,
+          "selector_byte": 0,
+          "rom_base": "0xa155d78c0",
+          "predicted_record_base": "0x2a155d78a0"
+        },
+        {
+          "name": "rom-record",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41170d84",
+          "inputs": 24,
+          "index": 15,
+          "record_base": "0x2a155d78a0",
+          "record_address": "0x2a156b2806",
+          "first_parameter": null
+        }
+      ],
+      "primary_exception": {
+        "source": "native UART exception report",
+        "task": "CAPTG",
+        "cpu": 1,
+        "pc": "0x41170d84",
+        "sp": "0xa06c54d00",
+        "esr": "0x96000005",
+        "far": "0x2a156b2806",
+        "registers": {
+          "x0": "0xa029bdce8",
+          "x1": "0x5",
+          "x2": "0xdaf70",
+          "x3": "0xa06c54460",
+          "x4": "0xa0496ff08",
+          "x5": "0xa06c54498",
+          "x6": "0x0",
+          "x7": "0x0",
+          "x8": "0xf",
+          "x9": "0xa0496f6a0",
+          "x10": "0xdaf40",
+          "x11": "0xaf62",
+          "x12": "0x0",
+          "x13": "0x2a155d78a0",
+          "x14": "0xdaf6c",
+          "x15": "0xdaf66",
+          "x18": "0xdaf6e",
+          "x19": "0xa029bdce8",
+          "x20": "0xa029bdce8",
+          "x21": "0xa029bdeb8",
+          "x22": "0xa0496f010",
+          "x23": "0x1",
+          "x24": "0x4115fc24",
+          "x25": "0x0",
+          "x26": "0x0",
+          "x27": "0xa02800040",
+          "x28": "0x90",
+          "x29": "0xa03bbb63c",
+          "x30": "0x411643b0"
+        },
+        "rom_selector_index": 15
+      },
+      "last_unknown_access": {
+        "cpu": "0",
+        "pc": "0x40c07c24",
+        "access": "read",
+        "address": "0x15080014",
+        "bytes": "4",
+        "value": "0x0"
+      },
+      "error": "RuntimeError('Unmodeled hardware; inspect stderr.log')",
+      "recording_tested": false,
+      "run_passed": false,
+      "owned_qemu_stopped": true,
+      "uart_sha256": "7ff82a711244808db7f14a8dfa1116c3cec156d47902e3749f63b511c10c4bcc",
+      "result_sha256": "f248e110b3304d9ac5bb4950fb75a5e6e72888a2f1d00ea660a980ed52d44f07"
+    },
+    "b": {
+      "selector15_fixture": {
+        "address": "0x47f5af4f",
+        "value": 1,
+        "sha256": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+        "factory_calibration": false,
+        "basis": "Explicit A/B input for native selector index15; parameter record remains synthetic"
+      },
+      "events": [
+        {
+          "name": "snapshot",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x40f7a090",
+          "inputs": 24,
+          "fields": {
+            "kind": 1,
+            "actual": 8,
+            "nominal": 4,
+            "size": 4,
+            "rate": 4,
+            "request": 4
+          }
+        },
+        {
+          "name": "driver-return",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41174d94",
+          "inputs": 24,
+          "driver": 14
+        },
+        {
+          "name": "geometry",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x410665f8",
+          "inputs": 24,
+          "u16": {
+            "0xc": 4128,
+            "0xe": 2752,
+            "0x10": 1920,
+            "0x12": 1080,
+            "0x48": 4140,
+            "0x4a": 2756,
+            "0x5c": 0,
+            "0x5e": 2,
+            "0x64": 4140,
+            "0x66": 2760
+          }
+        },
+        {
+          "name": "plan",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41062018",
+          "inputs": 24,
+          "words": [
+            11,
+            4,
+            4,
+            6,
+            2756,
+            0,
+            0,
+            0,
+            1089001704,
+            0,
+            114986656,
+            10,
+            1088682776,
+            0,
+            65280,
+            0
+          ]
+        },
+        {
+          "name": "frontend",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x410622c8",
+          "inputs": 24,
+          "dimensions": [
+            4140,
+            2756,
+            4140,
+            2756
+          ]
+        },
+        {
+          "name": "rom-selector",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41170d5c",
+          "inputs": 24,
+          "index": 15,
+          "rom_base": "0xa155d78c0",
+          "selector_address": "0xa156b280f",
+          "selector_byte": 1
+        },
+        {
+          "name": "rom-byte",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41170d70",
+          "inputs": 24,
+          "index": 15,
+          "selector_byte": 1,
+          "rom_base": "0xa155d78c0",
+          "predicted_record_base": "0xa155d78c0"
+        },
+        {
+          "name": "rom-record",
+          "epoch": 27,
+          "cpu": 0,
+          "pc": "0x41170d84",
+          "inputs": 24,
+          "index": 15,
+          "record_base": "0xa155d78c0",
+          "record_address": "0xa156b2826",
+          "first_parameter": 0
+        }
+      ],
+      "primary_exception": null,
+      "last_unknown_access": {
+        "cpu": "1",
+        "pc": "0x40c26810",
+        "access": "write",
+        "address": "0x15432004",
+        "bytes": "4",
+        "value": "0x101"
+      },
+      "error": "RuntimeError('Unmodeled hardware; inspect stderr.log')",
+      "recording_tested": false,
+      "run_passed": false,
+      "owned_qemu_stopped": true,
+      "uart_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result_sha256": "ba76eb9d23b98d164d62e555de6e5f34aadc091bf69b008341d7804d96deee53"
+    }
+  },
+  "conclusions": {
+    "selector15_zero_underflow_confirmed": true,
+    "synthetic_one_clears_observed_primary_exception": true,
+    "physical_driver14_qualified": false,
+    "video_plan11_observed": true,
+    "frontend_4140x2756_observed": true,
+    "coded_candidate_observed": false,
+    "recording_qualified": false
+  },
+  "next_frontier": {
+    "pc": "0x40c26810",
+    "access": "write",
+    "address": "0x15432004",
+    "value": "0x101",
+    "stock_header_and_supplier_config_equal": true,
+    "compared_register_blocks": {
+      "0x15422000": {
+        "0xc": 16777216,
+        "0x10": 1,
+        "0x20": 910120960,
+        "0x24": 10,
+        "0x28": 912194560,
+        "0x2c": 10,
+        "0x38": 640,
+        "0x3c": 640,
+        "0x40": 34
+      },
+      "0x15432000": {
+        "0x4": 259,
+        "0x8": 770,
+        "0x10": 41,
+        "0x200": 3758096384,
+        "0x208": 3758099328,
+        "0x280": 3758372864,
+        "0x288": 3758375808,
+        "0x300": 3758096384,
+        "0x308": 3758099328,
+        "0x380": 3758372864,
+        "0x388": 3758375808
+      }
+    },
+    "source1518_config_zero_in_stock_and_lab": true,
+    "assessment": "Existing model requires complete video supplier/source configuration at header START; stock N-RAW and lab reach this request before those fields are present. Control/deferred-start semantics need investigation. No hardware access was skipped."
+  },
+  "tests": {
+    "count": 51,
+    "passed": true
+  }
+}

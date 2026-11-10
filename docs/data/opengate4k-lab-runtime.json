@@ -121,5 +121,6 @@
       16
     ],
     "diagnosis": "The original selector-table reader maps the selected descriptor to index15. This run supplies Movie selector10 and16, not15. Missing selector/ROM input is a candidate cause; the selector byte and record need a direct breakpoint observation. Driver14 physical suitability remains unverified."
-  }
+  },
+  "follow_up_evidence": "opengate4k-selector-ab.json"
 }
