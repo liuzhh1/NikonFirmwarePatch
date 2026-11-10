@@ -2,6 +2,8 @@
 
 [简体中文](#简体中文) · [English](#english) · [功能预览 / Preview](#功能预览--feature-preview) · [Changelog](CHANGELOG.md)
 
+本实验分支另含 [4K Open Gate 前端原型](z8opengate4k/README.md)：4128×2752、30/25/24p 主菜单与模拟器配置开发，尚未实现录像，不生成新增相机更新包。开发证据及剩余工作见 [开发记录](docs/opengate-4k-development.md)。
+
 ## 功能预览 / Feature preview
 
 英文模拟器菜单，点击可查看原图。Select a panel to view the original emulator screenshot.

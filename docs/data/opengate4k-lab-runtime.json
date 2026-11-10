@@ -1,0 +1,107 @@
+{
+  "schema": "z8-opengate4k-lab-runtime-1",
+  "base_main_sha256": "ded602c7cee9df06a696a9785ca302991c49f3ff2e8c8f94a5c5edc666ad3de9",
+  "main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+  "qemu_sha256": "de55bb6b8778180e611be163a5605d45304122d537f754981fd220c2d62d2d50",
+  "emulator_commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+  "frontend_code_sha256": "0880c5475db851ec89a1a7fd0c0b607c6481fe6bb8f14cb32f88748c1cc789dc",
+  "scope": "Experimental MAIN, 4K LAB 30p selection and geometry setup; not a successful movie/recording run",
+  "synthetic_hardware": true,
+  "guest_code_modified": true,
+  "host_guest_ram_patches": [],
+  "cpu_register_redirection": false,
+  "events": [
+    {
+      "name": "snapshot",
+      "epoch": 25,
+      "cpu": 0,
+      "pc": "0x40f7a090",
+      "inputs": 24,
+      "fields": {
+        "kind": 1,
+        "actual": 8,
+        "nominal": 4,
+        "size": 4,
+        "rate": 4,
+        "request": 4
+      }
+    },
+    {
+      "name": "driver",
+      "epoch": 25,
+      "cpu": 0,
+      "pc": "0x411717f4",
+      "inputs": 24,
+      "words": [
+        5,
+        8,
+        0,
+        2,
+        0,
+        4,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        113892776,
+        10,
+        192,
+        959
+      ]
+    },
+    {
+      "name": "driver-return",
+      "epoch": 25,
+      "cpu": 0,
+      "pc": "0x41174d94",
+      "inputs": 24,
+      "driver": 14
+    },
+    {
+      "name": "geometry",
+      "epoch": 25,
+      "cpu": 0,
+      "pc": "0x410665f8",
+      "inputs": 24,
+      "u16": {
+        "0xc": 4128,
+        "0xe": 2752,
+        "0x10": 1920,
+        "0x12": 1080,
+        "0x16": 2,
+        "0x48": 4140,
+        "0x4a": 2756,
+        "0x4c": 4140,
+        "0x4e": 2756,
+        "0x5c": 0,
+        "0x5e": 2,
+        "0x64": 4140,
+        "0x66": 2760
+      }
+    }
+  ],
+  "video_plan_frontend_observed_after_final_snapshot": false,
+  "coded_candidate_observed": false,
+  "frontier": {
+    "address": "0x15080014",
+    "pc": "0x40c07c24",
+    "access": "read",
+    "value": "0x0",
+    "unmodified_stock_reproduces": false,
+    "cause": "Unknown: new driver14 path/hardware-contract requires investigation; differs from stock engine1543 frontier"
+  },
+  "recording_tested": false,
+  "run_passed": false,
+  "owned_qemu_stopped": true,
+  "replay_file": "opengate4k-lab-replay.json",
+  "replay_sha256": "7385351030aaf7f8e55d46eda184612b3489f8b70fb5303f363fc28737cd69d4",
+  "menu_screenshot_sha256": "d1c7d952079ab605f21581d48ca72662b3eb60a15357f3ad9b3cd283b1102995",
+  "tests": {
+    "command": "python -B -m unittest discover -s tests",
+    "count": 46,
+    "passed": true,
+    "optional_frontend_and_real_input_tests_enabled": true
+  }
+}

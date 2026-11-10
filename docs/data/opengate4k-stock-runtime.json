@@ -1,0 +1,125 @@
+{
+  "schema": "z8-opengate4k-stock-runtime-1",
+  "stock_main_sha256": "2b43a31c9de838f84b12416de4348a7004e65be07f853ec56ec2b10f3a8e3853",
+  "qemu_sha256": "de55bb6b8778180e611be163a5605d45304122d537f754981fd220c2d62d2d50",
+  "emulator_commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+  "scope": "Stock 4.1K N-RAW 30p selection and mode setup; no recording started",
+  "synthetic_hardware": true,
+  "guest_code_modified": false,
+  "guest_ram_patches": [],
+  "events": [
+    {
+      "name": "snapshot",
+      "epoch": 31,
+      "cpu": 0,
+      "pc": "0x40f7a090",
+      "inputs": 30,
+      "fields": {
+        "kind": 1,
+        "actual": 8,
+        "nominal": 4,
+        "size": 4,
+        "rate": 4,
+        "request": 4
+      }
+    },
+    {
+      "name": "driver",
+      "epoch": 31,
+      "cpu": 0,
+      "pc": "0x411717f4",
+      "inputs": 30,
+      "words": [
+        5,
+        8,
+        0,
+        2,
+        0,
+        4,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        113892776,
+        10,
+        192,
+        959
+      ]
+    },
+    {
+      "name": "driver-return",
+      "epoch": 31,
+      "cpu": 0,
+      "pc": "0x41174d94",
+      "inputs": 30,
+      "driver": 15
+    },
+    {
+      "name": "geometry",
+      "epoch": 31,
+      "cpu": 0,
+      "pc": "0x410665f4",
+      "inputs": 30,
+      "u16": {
+        "0xc": 4128,
+        "0xe": 2322,
+        "0x10": 1920,
+        "0x12": 1080,
+        "0x48": 4140,
+        "0x4a": 2344,
+        "0x5c": 0,
+        "0x5e": 0,
+        "0x64": 4140,
+        "0x66": 2344
+      }
+    },
+    {
+      "name": "plan",
+      "epoch": 31,
+      "cpu": 0,
+      "pc": "0x41062018",
+      "inputs": 30,
+      "words": [
+        11,
+        4,
+        4,
+        6,
+        2344,
+        0,
+        0,
+        0,
+        1089001704,
+        0,
+        114986656,
+        10,
+        1088682776,
+        0,
+        65280,
+        0
+      ]
+    },
+    {
+      "name": "frontend",
+      "epoch": 31,
+      "cpu": 0,
+      "pc": "0x410622c8",
+      "inputs": 30,
+      "dimensions": [
+        4140,
+        2344,
+        4140,
+        2344
+      ]
+    }
+  ],
+  "frontier": {
+    "address": "0x15432004",
+    "pc": "0x40c26810",
+    "access": "write",
+    "value": "0x101",
+    "unmodified_stock_reproduces": true
+  },
+  "recording_tested": false
+}

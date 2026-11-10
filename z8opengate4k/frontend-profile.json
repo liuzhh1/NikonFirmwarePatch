@@ -1,0 +1,99 @@
+{
+  "base": 1083592704,
+  "bytes": 1044,
+  "sha256": "0880c5475db851ec89a1a7fd0c0b607c6481fe6bb8f14cb32f88748c1cc789dc",
+  "source_sha256": "2f4590f177460af93af67bb6c1329448c09c13d5c0f518bc59149c9c23eb8d42",
+  "entries": {
+    "og4k_wanted_hook": 1083592704,
+    "og4k_configuration_hook": 1083592816,
+    "og4k_half_plan_hook": 1083593000,
+    "og4k_geometry_hook": 1083593052,
+    "og4k_inner_hook": 1083593264,
+    "og4k_menu_summary_match_hook": 1083593504,
+    "og4k_driver_entry_hook": 1083593600
+  },
+  "legacy_entries": {
+    "configuration_hook": 1083572224,
+    "half_plan_hook": 1083579952,
+    "menu_summary_match_hook": 1083576752
+  },
+  "relocations": [
+    {
+      "pc": "0x40965084",
+      "target": "0x40965000",
+      "kind": 283,
+      "symbol": "og4k_wanted_hook"
+    },
+    {
+      "pc": "0x40965118",
+      "target": "0x40f79390",
+      "kind": 282,
+      "symbol": "original_40F79390"
+    },
+    {
+      "pc": "0x40965124",
+      "target": "0x40960000",
+      "kind": 282,
+      "symbol": "original_40960000"
+    },
+    {
+      "pc": "0x40965154",
+      "target": "0x41062078",
+      "kind": 282,
+      "symbol": "original_41062078"
+    },
+    {
+      "pc": "0x40965158",
+      "target": "0x40961e30",
+      "kind": 282,
+      "symbol": "original_40961E30"
+    },
+    {
+      "pc": "0x4096522c",
+      "target": "0x410665f8",
+      "kind": 282,
+      "symbol": "original_410665F8"
+    },
+    {
+      "pc": "0x409652b4",
+      "target": "0x41066a74",
+      "kind": 282,
+      "symbol": "original_41066A74"
+    },
+    {
+      "pc": "0x40965364",
+      "target": "0x40572ef0",
+      "kind": 282,
+      "symbol": "original_40572EF0"
+    },
+    {
+      "pc": "0x4096536c",
+      "target": "0x40572ef0",
+      "kind": 282,
+      "symbol": "original_40572EF0"
+    },
+    {
+      "pc": "0x40965370",
+      "target": "0x40572ef0",
+      "kind": 282,
+      "symbol": "original_40572EF0"
+    },
+    {
+      "pc": "0x40965374",
+      "target": "0x409611b0",
+      "kind": 282,
+      "symbol": "original_409611B0"
+    },
+    {
+      "pc": "0x40965410",
+      "target": "0x411717f8",
+      "kind": 282,
+      "symbol": "original_411717F8"
+    }
+  ],
+  "geometry_stage_implemented": true,
+  "recording_4k_open_gate_implemented": false,
+  "firmware_generated": false,
+  "production_builder_enabled": false,
+  "scope": "Isolated frontend code; TICO, metadata, i-menu/cancel and physical sensor acceptance remain unqualified"
+}
