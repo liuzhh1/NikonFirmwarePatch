@@ -1,0 +1,96 @@
+{
+  "schema": "z8-og4k-playback-profile-1",
+  "compiled": {
+    "base": 1083621376,
+    "bytes": 968,
+    "sha256": "bbd952e36e30ca5fe38ba56159ca5e4b671e2dd52b62a82942983716960fe5b8",
+    "source_sha256": "fbe0a943dfb4edd417848c2d0cdbbcefa1df34113e4a4dcb71b5c9b9f8386310",
+    "entries": {
+      "aspect_common": 1083621424,
+      "aspect_done": 1083621452,
+      "file_release": 1083621600,
+      "file_eight_k": 1083621584,
+      "file_done": 1083621612,
+      "preview_done": 1083622032,
+      "preview_thumb": 1083621824,
+      "preview_overview": 1083621764,
+      "preview_large_source": 1083621808,
+      "preview_source": 1083621904,
+      "preview_uncrop": 1083622028,
+      "preview_full": 1083622008,
+      "capture_fallback": 1083622308,
+      "capture_proxy": 1083622144,
+      "capture_coded": 1083622120,
+      "capture_target": 1083622268,
+      "og4k_aspect_class_hook": 1083621376,
+      "og4k_aspect_class_thumb_hook": 1083621408,
+      "og4k_playback_file": 1083621472,
+      "og4k_preview_hook": 1083621664,
+      "og4k_playback_capture_hook": 1083622064
+    },
+    "relocations": [
+      {
+        "pc": "0x4096c00c",
+        "target": "0x4078e154",
+        "kind": 283,
+        "symbol": "original_4078E154"
+      },
+      {
+        "pc": "0x4096c02c",
+        "target": "0x4078e1e0",
+        "kind": 283,
+        "symbol": "original_4078E1E0"
+      },
+      {
+        "pc": "0x4096c040",
+        "target": "0x4096c060",
+        "kind": 283,
+        "symbol": "og4k_playback_file"
+      },
+      {
+        "pc": "0x4096c094",
+        "target": "0x407cd844",
+        "kind": 283,
+        "symbol": "original_407CD844"
+      },
+      {
+        "pc": "0x4096c0e8",
+        "target": "0x4085aa7c",
+        "kind": 283,
+        "symbol": "original_4085AA7C"
+      },
+      {
+        "pc": "0x4096c23c",
+        "target": "0x4096c060",
+        "kind": 283,
+        "symbol": "og4k_playback_file"
+      },
+      {
+        "pc": "0x4096c2a0",
+        "target": "0x40961960",
+        "kind": 282,
+        "symbol": "original_40961960"
+      },
+      {
+        "pc": "0x4096c3a0",
+        "target": "0x40711534",
+        "kind": 282,
+        "symbol": "original_40711534"
+      },
+      {
+        "pc": "0x4096c3ac",
+        "target": "0x409608f0",
+        "kind": 282,
+        "symbol": "original_409608F0"
+      }
+    ],
+    "legacy_entries": {
+      "og_aspect_class_hook": 1083583536,
+      "og_aspect_class_thumb_hook": 1083583568,
+      "playback_capture_hook": 1083574512,
+      "preview_full_page_hook": 1083578720
+    }
+  },
+  "production_builder_enabled": false,
+  "flash_package_generated": false
+}

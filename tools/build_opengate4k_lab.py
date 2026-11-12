@@ -14,11 +14,18 @@ def main():
     p.add_argument('--output',required=True,type=Path)
     p.add_argument('--experimental-recorder',action='store_true',
                    help='Opt-in record tables and NRMT/NCTG;2756 coded rows are not TICO-qualified')
+    p.add_argument('--experimental-playback',action='store_true',
+                   help='Add file-owned playback geometry (requires --experimental-recorder; no clip decode qualification)')
     a=p.parse_args()
+    if a.experimental_playback and not a.experimental_recorder:
+        p.error('--experimental-playback requires --experimental-recorder')
     if a.output.exists():p.error('Output directory must be new')
     for path in (a.original,a.baseline):
         if not path.is_file() or path.stat().st_size!=99051117:p.error('Complete C3.11 packages required')
-    if a.experimental_recorder:
+    if a.experimental_playback:
+        from z8opengate4k.playback import make_playback_main
+        builder=make_playback_main
+    elif a.experimental_recorder:
         from z8opengate4k.recorder import make_recorder_main
         builder=make_recorder_main
     else:builder=make_main

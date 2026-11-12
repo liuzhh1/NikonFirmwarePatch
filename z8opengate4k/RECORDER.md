@@ -45,4 +45,4 @@ python tools/build_opengate4k_lab.py \
 
 验证继续以`WonderLantern/z8-qemu@d50b07dbaeebae45b2cff936e5bfcd85251ac1fd`为基线。维护清理前曾观察原8K固件的设置阶段在selector15=0时出现CAPTG异常；该阶段actual8/driver14是取景，不是8K主录制驱动。完整原始日志未保留，后续8K与候选MAIN的完整运行对照仍需复跑，不能将此前启动的运行当作已通过。
 
-仍未完成：TICO/真实传感器读出验收、文件回调在停止/切换模式后的身份生命周期、i菜单/取消、代理码流与回放。因此这一层的实现不代表4K录制功能已经完成。精简构建与验证记录见[验证记录](../docs/data/opengate4k-recorder-validation.json)。
+后续新增可单独启用的[文件身份回放实验层](PLAYBACK.md)，处理布局和裁切判定；本录制层的机器码、表和MAIN哈希保持不变。仍未完成：TICO/真实传感器读出验收、文件回调在停止/切换模式后的身份生命周期、i菜单/取消、代理码流与真实影片解码。因此这一层的实现不代表4K录制功能已经完成。精简构建与验证记录见[验证记录](../docs/data/opengate4k-recorder-validation.json)。

@@ -19,7 +19,7 @@ parser.add_argument('--qemu-repo',type=Path,required=True)
 parser.add_argument('--transport-helper',type=Path)
 parser.add_argument('--experimental-movie-selector15',action='store_true',help='Declared synthetic external-ROM selector15=1; not recovered camera data')
 parser.add_argument('--experimental-deferred-video-header',action='store_true',help='Requires the separate experimental QEMU model; header control latch only, no completion')
-parser.add_argument('--image-role',choices=('opengate4k_frontend','opengate4k_recorder','existing8k_reference'),default='opengate4k_frontend',
+parser.add_argument('--image-role',choices=('opengate4k_frontend','opengate4k_recorder','opengate4k_playback','existing8k_reference'),default='opengate4k_frontend',
                     help='Diagnostic label for explicitly supplied modified MAIN; hash verification remains mandatory')
 options,remaining=parser.parse_known_args()
 lab=options.qemu_repo.resolve()
@@ -157,6 +157,7 @@ if os.environ.get('OG4K_LAB_MAIN'):
    self.data.update(firmware_sha256=expected,firmware_image_is_modified=True,
     classification={'opengate4k_frontend':'emulator_only_opengate4k_frontend_prototype',
       'opengate4k_recorder':'emulator_only_opengate4k_recorder_candidate',
+      'opengate4k_playback':'emulator_only_opengate4k_playback_candidate',
       'existing8k_reference':'existing_reviewed_8k_reference_setup'}[options.image_role],recording_tested=False)
  def verify_lab(path):
   if path.resolve()!=stock:raise ValueError('Stock reference path changed')

@@ -2,7 +2,7 @@
 
 [简体中文](#简体中文) · [English](#english) · [功能预览 / Preview](#功能预览--feature-preview) · [Changelog](CHANGELOG.md)
 
-本实验分支另含 [4K Open Gate 原型](z8opengate4k/README.md)：4128×2752、30/25/24p 前端，以及默认关闭的录制描述、NRMT/NCTG和四档预算实验层。验证以WonderLantern Z8 QEMU为基线；尚未通过TICO与实机录制验收，不生成新增相机更新包。开发证据及剩余工作见 [开发记录](docs/opengate-4k-development.md)。
+本实验分支另含 [4K Open Gate 原型](z8opengate4k/README.md)：4128×2752、30/25/24p 前端，以及默认关闭的录制描述、NRMT/NCTG、四档预算和文件身份回放实验层。验证以WonderLantern Z8 QEMU为基线；尚未通过TICO、真实影片回放与实机录制验收，不生成新增相机更新包。开发证据及剩余工作见 [开发记录](docs/opengate-4k-development.md)。
 
 ## 功能预览 / Feature preview
 
