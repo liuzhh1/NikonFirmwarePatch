@@ -1,0 +1,90 @@
+{
+  "schema": "z8-og4k-recorder-profile-1",
+  "compiled": {
+    "base": 1083596800,
+    "bytes": 1368,
+    "sha256": "dfe57a39a4fa169684046e5eed516888c3d790111d03a4db344987bf7a810321",
+    "source_sha256": "eb9eb094ff53790655f3bf9a7164f467546472f560c10e7b671c56c3b932d322",
+    "entries": {
+      "og4k_record_table_hook": 1083596800,
+      "og4k_nrmt_hook": 1083597024,
+      "og4k_crop_hook": 1083597248,
+      "og4k_nctg_height_hook": 1083597472,
+      "og4k_proxy_main_height_hook": 1083597648,
+      "og4k_nctg_crop_hook": 1083597824
+    },
+    "relocations": [
+      {
+        "pc": "0x409660c0",
+        "target": "0x40d1e654",
+        "kind": 282,
+        "symbol": "original_40D1E654"
+      },
+      {
+        "pc": "0x409660d0",
+        "target": "0x40962880",
+        "kind": 282,
+        "symbol": "original_40962880"
+      },
+      {
+        "pc": "0x409661ac",
+        "target": "0x410a5910",
+        "kind": 282,
+        "symbol": "original_410A5910"
+      },
+      {
+        "pc": "0x409661bc",
+        "target": "0x40960320",
+        "kind": 282,
+        "symbol": "original_40960320"
+      },
+      {
+        "pc": "0x4096628c",
+        "target": "0x410a6d10",
+        "kind": 282,
+        "symbol": "original_410A6D10"
+      },
+      {
+        "pc": "0x4096629c",
+        "target": "0x40960360",
+        "kind": 282,
+        "symbol": "original_40960360"
+      },
+      {
+        "pc": "0x40966348",
+        "target": "0x406d2c90",
+        "kind": 282,
+        "symbol": "original_406D2C90"
+      },
+      {
+        "pc": "0x409663f0",
+        "target": "0x406d313c",
+        "kind": 282,
+        "symbol": "original_406D313C"
+      },
+      {
+        "pc": "0x409664dc",
+        "target": "0x409603e0",
+        "kind": 282,
+        "symbol": "original_409603E0"
+      }
+    ],
+    "legacy_entries": {
+      "tier_table_hook": 1083582592,
+      "nrmt_hook": 1083573024,
+      "crop_hook": 1083573088,
+      "nctg_crop_hook": 1083573216
+    }
+  },
+  "geometry": {
+    "coded_width": 4140,
+    "coded_height_candidate": 2756,
+    "active_width": 4128,
+    "active_height": 2752,
+    "physical_height": 2756,
+    "logical_height": 2760,
+    "encoding_qualified": false
+  },
+  "production_builder_enabled": false,
+  "flash_package_generated": false
+}

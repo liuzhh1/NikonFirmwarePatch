@@ -143,3 +143,15 @@ START 时的 supplier 实际为1920×1080、pitch5888，不是未配置。原厂
 当前零帧有明确的模型阻塞：`og4k_header_poll`要求`engine1543_video_ready`，后者只检查source0，而此处source0为空，等待始终没有释放。实际N-RAW走source2/ISP1；shared profile也未启用既有secondary ISP/sensor模型，后者要求的0x218=1与最终原生布局0不同。这些数据路径条件尚未适配。`raw_pipeline_video_frames`在实际RAW/ISP图像缓冲写出后增加，并不是TICO/H264编码帧数。因此零帧描述模拟器的传输状态，不能据此判断实体机4K Open Gate的可行性。
 
 该运行受1200秒墙钟上限结束。实际消费63个输入；后追加的Stop/Photo/半按共5项未执行，不能宣称录像关闭或恢复验证通过。只读虚拟卡目录无NEV/MOV/MP4。精简证据、完整实际输入及哈希见 [原生Record记录](data/opengate4k-native-record-runtime.json)。下一步补齐source2/ISP1就绪、帧边界和数据所有权，再做像素及文件验证。
+
+## 沿原8K方案移植录制描述与元数据
+
+后续以WonderLantern固定模型为QEMU基线，以原8K完整固件为参考推进录制配套；模拟器视频模型补全不作为继续编写固件的硬前提。新增默认关闭的`--experimental-recorder`，生产入口和原8K配方不变，仍只输出模拟器MAIN。
+
+按原RAW/Q3共有查询入口同步录制描述及剩余时间预算。保留42记录布局和精确帧率，仅修改common6条、Fine3条、Basic3条4K低帧率记录。与原8K一样，预算可能在前端安装前查询，因此使用原厂传入表/索引识别目标，不依赖晚于分配阶段的高度标记。
+
+反汇编确认4K与8K的NCTG高度有不同入口：新增4K分支0x406D2C8C/0x406D3138，保留8K的0x406D2C9C/0x406D3150。NRMT及有效裁切读实际Video/FX/N-RAW半分辨率快照；普通模式、代理回调和8K执行真实AArch64回退检查。
+
+本轮68项项目测试重新通过，录制层机器码1368字节，SHA-256为`dfe57a39a4fa169684046e5eed516888c3d790111d03a4db344987bf7a810321`；新MAIN为`9bfa80f4270dc789924a3f717134f35b3adaefb66a881a71808dd361aa71b5b1`。二者均与工作区维护清理前一致。
+
+编码2756行仍是候选。本轮完成描述、标签、预算的一致性，未生成并解码合法TICO文件。文件回调的停止/切换模式身份、i菜单/取消及回放继续保留为未完成项。维护清理前8K设置阶段也曾遇到缺失selector15的边界；该原始日志未保留，后续完整对照未作为通过记录。详见[录制层说明](../z8opengate4k/RECORDER.md)和[验证记录](data/opengate4k-recorder-validation.json)。
