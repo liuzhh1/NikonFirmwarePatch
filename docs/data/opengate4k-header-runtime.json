@@ -111,7 +111,6 @@
         5888,
         5888
       ],
-      "isp1_start_field": 0,
       "engine150c": {
         "active": 0,
         "processed_jobs": 0,
@@ -130,7 +129,8 @@
       },
       "prior_photo_synthetic_raw_frames": 238,
       "recording_started": false,
-      "video_qualified": false
+      "video_qualified": false,
+      "isp1_config_0x218": 0
     },
     "lab": {
       "main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
@@ -214,7 +214,6 @@
         5888,
         5888
       ],
-      "isp1_start_field": 0,
       "engine150c": {
         "active": 65375,
         "processed_jobs": 0,
@@ -233,7 +232,8 @@
       },
       "prior_photo_synthetic_raw_frames": 239,
       "recording_started": false,
-      "video_qualified": false
+      "video_qualified": false,
+      "isp1_config_0x218": 0
     }
   },
   "earlier_strict_supplier_control": {
@@ -282,5 +282,6 @@
     "issue": "The header wait return in this historical model preceded raw_pipeline_tick timer rearm and could remove its retry source.",
     "consequence": "Zero video counters remain observations, but do not establish whether the subsequent native source could produce frames.",
     "corrected_in": "Follow-up source moves the wait after the original timer rearm and adds an actual-C scheduling regression."
-  }
+  },
+  "isp1_field_interpretation": "0x218 is a configuration field, not the START register. Actual ISP START is write1 to instance offset0x8; do not infer active state solely from0x218."
 }

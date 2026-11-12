@@ -69,7 +69,7 @@ python tools/build_opengate4k_lab.py \
 
 两次新增格式读值的有界执行都正常清理了 QEMU，但这只证明设置与控制链路继续向前。原厂观察到切入 Movie 后81.7虚拟秒，LAB 的格式核对观察到23.7虚拟秒；后者仍在等待数据。此前同一 LAB MAIN 与模型的较长运行观察了72.5虚拟秒，已看到原生 STOP，未记录额外的格式读值。三次运行的视频帧及数据就绪释放均为0，不能将观察时长不同造成的控制状态差异当作固件差异。
 
-原生 MAIN 后续配置 source2 和 ISP1；最终 source2 控制、ISP1 启动字段及主输入 active 均为0。原模型的完整 video-ready 检查使用 source0，本实验保留该数据检查。照片模式此前产生的238个合成 RAW 帧不属于视频帧，视频 HUD 或残留画面也不能证明取景正在更新。
+原生 MAIN 后续配置 source2 和 ISP1；最终 source2 控制、ISP1 配置项0x218及主输入 active 均为0。原模型的完整 video-ready 检查使用 source0，本实验保留该数据检查。照片模式此前产生的238个合成 RAW 帧不属于视频帧，视频 HUD 或残留画面也不能证明取景正在更新。
 
 START 当时的日志捕获到 supplier 已配置1920×1080、pitch5888，且没有照片/编解码所有者或待确认事件。因此先前从结束快照推测的“供应者尚未配置”不成立。新模型只接受已观测的完整四行内部端口控制，锁存后等待原有完整数据条件；不会产生像素、DMA、IRQ 或虚构的完成事件。实现、拒绝位和复跑说明见 [独立 QEMU 实验](../experiments/qemu/README.md)，精简输入及对照结果见 [header 证据](../docs/data/opengate4k-header-runtime.json)。
 
@@ -78,6 +78,8 @@ START 当时的日志捕获到 supplier 已配置1920×1080、pitch5888，且没
 本轮51项项目测试和5项独立模型测试通过。13种拒绝/延后检查状态属于一个 C 合约测试内的条件覆盖，不重复计为13项测试。25p、24p 的固件条件分支已有隔离执行覆盖；完整 QEMU 设置链路当前仅核对30p。下一步是确认 N-RAW 的原生数据源启动与 source2/ISP1 协作，再验证 TICO 及文件链路。
 
 ## 复跑设置追踪
+
+后续原始EX已核对原厂N-RAW4.1K30p与Record：EX报告字节9和MAIN的SW1掩码0x2000均捕获按下，source2控制最终为1，日志有三次ISP1 START。视频帧与source/ISP确认仍为0，虚拟卡无影片。直接阻塞点是header等待只检查空的source0，未对齐原生source2/ISP1布局；此外现有secondary模型默认未开启。0x218只是配置项，不能将其为0解释为ISP1未启动。该轮到1200秒墙钟时限正常退出，后追加的Stop/Photo恢复未执行。精简证据和实际63个输入见 [原生Record记录](../docs/data/opengate4k-native-record-runtime.json)。
 
 使用 `WonderLantern/z8-qemu` 的 `d50b07dbaeebae45b2cff936e5bfcd85251ac1fd` 模型、其 QEMU 11.1.1 构建、合成 RAW 输入及专用虚拟卡。下列环境变量只指定显式实验 MAIN；完整原厂和基线身份仍由构建器核验，原有模拟器原厂校验入口保持不变。
 

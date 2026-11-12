@@ -1,0 +1,317 @@
+[
+  {
+    "at": 16,
+    "property": "mcu-pins",
+    "value": "G1=0"
+  },
+  {
+    "at": 16.4,
+    "property": "mcu-pins",
+    "value": "G1=1"
+  },
+  {
+    "at": 24,
+    "property": "mcu-contacts",
+    "value": "23.6=0"
+  },
+  {
+    "at": 24.4,
+    "property": "mcu-contacts",
+    "value": "23.6=1"
+  },
+  {
+    "at": 28,
+    "property": "mcu-contacts",
+    "value": "23.12=0"
+  },
+  {
+    "at": 28.35,
+    "property": "mcu-contacts",
+    "value": "23.12=1"
+  },
+  {
+    "at": 29,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 29.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 30,
+    "property": "mcu-contacts",
+    "value": "23.14=0"
+  },
+  {
+    "at": 30.35,
+    "property": "mcu-contacts",
+    "value": "23.14=1"
+  },
+  {
+    "at": 31,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 31.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 32,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 32.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 33,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 33.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 34,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 34.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 35,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 35.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 36,
+    "property": "mcu-contacts",
+    "value": "23.11=0"
+  },
+  {
+    "at": 36.35,
+    "property": "mcu-contacts",
+    "value": "23.11=1"
+  },
+  {
+    "at": 37,
+    "property": "mcu-contacts",
+    "value": "23.15=0"
+  },
+  {
+    "at": 37.35,
+    "property": "mcu-contacts",
+    "value": "23.15=1"
+  },
+  {
+    "at": 38,
+    "property": "mcu-contacts",
+    "value": "23.15=0"
+  },
+  {
+    "at": 38.35,
+    "property": "mcu-contacts",
+    "value": "23.15=1"
+  },
+  {
+    "at": 39,
+    "property": "mcu-contacts",
+    "value": "23.15=0"
+  },
+  {
+    "at": 39.35,
+    "property": "mcu-contacts",
+    "value": "23.15=1"
+  },
+  {
+    "at": 40,
+    "property": "mcu-contacts",
+    "value": "23.15=0"
+  },
+  {
+    "at": 40.35,
+    "property": "mcu-contacts",
+    "value": "23.15=1"
+  },
+  {
+    "at": 41,
+    "property": "mcu-contacts",
+    "value": "23.11=0"
+  },
+  {
+    "at": 41.35,
+    "property": "mcu-contacts",
+    "value": "23.11=1"
+  },
+  {
+    "at": 42,
+    "property": "mcu-contacts",
+    "value": "23.11=0"
+  },
+  {
+    "at": 42.35,
+    "property": "mcu-contacts",
+    "value": "23.11=1"
+  },
+  {
+    "at": 43,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 43.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 44,
+    "property": "mcu-contacts",
+    "value": "23.11=0"
+  },
+  {
+    "at": 44.35,
+    "property": "mcu-contacts",
+    "value": "23.11=1"
+  },
+  {
+    "at": 45,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 45.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 46,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 46.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 47,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 47.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 48,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 48.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 49,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 49.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 50,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 50.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 51,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 51.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 52,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 52.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 53,
+    "property": "mcu-contacts",
+    "value": "23.13=0"
+  },
+  {
+    "at": 53.35,
+    "property": "mcu-contacts",
+    "value": "23.13=1"
+  },
+  {
+    "at": 54,
+    "property": "mcu-contacts",
+    "value": "23.11=0"
+  },
+  {
+    "at": 54.35,
+    "property": "mcu-contacts",
+    "value": "23.11=1"
+  },
+  {
+    "at": 55,
+    "property": "mcu-pins",
+    "value": "G1=0"
+  },
+  {
+    "at": 55.35,
+    "property": "mcu-pins",
+    "value": "G1=1"
+  },
+  {
+    "at": 56,
+    "property": "mcu-contacts",
+    "value": "23.10=0"
+  },
+  {
+    "at": 61.027,
+    "property": "mcu-contacts",
+    "value": "22.12=0"
+  },
+  {
+    "at": 61.427,
+    "property": "mcu-contacts",
+    "value": "22.12=1"
+  }
+]

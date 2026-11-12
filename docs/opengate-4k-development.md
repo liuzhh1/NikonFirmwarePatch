@@ -118,7 +118,7 @@ B 随后在 `PC 0x40C26810` 向 `0x15432004` 写入 `0x101` 时被模型停止�
 
 在独立、默认关闭的 `og4k-header-model` 中区分控制锁存与数据就绪。START 仅锁存完整的已观测 N-RAW 四行端口配置；保留所有权、待事件、描述符和内部端口检查，完整 video-ready 条件继续约束数据输出，不生成 DMA 或 IRQ。第一版拒绝日志为32（supplier 不再是初始配置）；第二版将其作为数据就绪阶段的信息，保留全部 supplier 配置而不在控制锁存阶段拒绝。
 
-START 时的 supplier 实际为1920×1080、pitch5888，不是未配置。原厂30p和 LAB30p 都接受一次 START，继续配置 source2/ISP1。原厂81.7虚拟秒、LAB较长72.5虚拟秒观察看到原生 STOP；新增格式读值的 LAB 运行在23.7虚拟秒仍等待，观察时长不能混为一谈。三次等待释放、视频帧、视频 source/ISP 确认均为0。最终 source2 控制、ISP1 启动字段和主输入 active 为0。已有 `engine1543_video_ready` 只检查 source0，因此现阶段仅证明控制继续，不能认定视频取景或录像通过。先前照片模式的合成 RAW 帧单独统计。
+START 时的 supplier 实际为1920×1080、pitch5888，不是未配置。原厂30p和 LAB30p 都接受一次 START，继续配置 source2/ISP1。原厂81.7虚拟秒、LAB较长72.5虚拟秒观察看到原生 STOP；新增格式读值的 LAB 运行在23.7虚拟秒仍等待，观察时长不能混为一谈。三次等待释放、视频帧、视频 source/ISP 确认均为0。最终 source2 控制、ISP1 配置项0x218和主输入 active 为0。已有 `engine1543_video_ready` 只检查 source0，因此现阶段仅证明控制继续，不能认定视频取景或录像通过。先前照片模式的合成 RAW 帧单独统计。
 
 本轮原厂对照在视频快照中额外读取原生 `file_type=6`，确认是 N-RAW，排除菜单滚动圈数造成的格式误判；较早没有此读值的对照仅按其实际记录解释，不承担这一额外格式证明。完整记录见 [header 证据](data/opengate4k-header-runtime.json)，模型准备及5项独立合约见 [实验目录](../experiments/qemu/README.md)。项目51项测试继续通过。MAIN 身份保持不变；生产入口、既有8.3K代码和组合配方未修改。
 
@@ -128,8 +128,18 @@ START 时的 supplier 实际为1920×1080、pitch5888，不是未配置。原厂
 
 代码审查发现，第一版 `og4k_header_poll` 的等待返回位于 `raw_pipeline_tick` 原有定时器重排之前，可能丢失下一次重试。已移动到原有33.3ms/2ms调度之后，保留无待交付帧时的边界等待；默认关闭及数据就绪条件未放宽。C合约直接执行实际调度前缀，验证等待后保留重试、稍后就绪只释放一次、输出确认与边界等待。旧证据加入调度限制说明。
 
-重新编译后的QEMU为 `47a6b1b655367620127f243589691fa9c6fd15b7f21124d0cff05e912fcc9a55`。原厂与LAB分别观察切入Movie后81.4与94.3虚拟秒，均明确读取N-RAW格式6；无原生异常或未建模访问、正常清理，视频帧及视频source/ISP确认仍为0，source2/ISP1未启动。修复调度并不等于补全N-RAW数据模型。
+重新编译后的QEMU为 `47a6b1b655367620127f243589691fa9c6fd15b7f21124d0cff05e912fcc9a55`。原厂与LAB分别观察切入Movie后81.4与94.3虚拟秒，均明确读取N-RAW格式6；无原生异常或未建模访问、正常清理，视频帧及视频source/ISP确认仍为0，source2控制为0、ISP1配置项0x218为0。修复调度并不等于补全N-RAW数据模型。
 
 新增原厂MAIN/EX专用观察入口 `tools/trace_opengate4k_native.py`，保持两组件原身份校验，触点文件只能追加，使用同名`.done`正常结束。观察时暂停读取配置和原生EX报告，不生成主机MCU消息。首个独立控制已通过真实EX半按/Menu触点显示原厂照片菜单，原生交换572/561帧、坏帧0，干净结束；该控制在旧模型上停止于菜单，没有测试N-RAW或Record。修正模型上的后续N-RAW/Record另行核对。
 
 51项项目测试与9项独立检查通过（header C合约1、上游4、触点回放4）。数值和输入哈希见 [调度修复及EX菜单证据](data/opengate4k-header-retry-runtime.json)，复跑入口和触点限制见 [实验说明](../experiments/qemu/README.md)。MAIN及原有8.3K生产配方保持不变。
+
+## 原始 EX 的 N-RAW/Record 与零视频帧的直接原因
+
+原厂MAIN/EX在修正调度的模型中已原生选择N-RAW4.1K30p并切入Movie，再发出一次Record按下/释放。EX报告字节9在13个样本中为1，MAIN缓存SW1掩码0x2000同时置位；原生交换1431/1412帧、坏帧0。337项串行/运行检查通过，正常退出，无UART原始异常或未建模访问。
+
+前一快照58.027虚拟秒的source2控制为0、主输入active为6；最终75.911虚拟秒分别为1和65375，ISP1有三次真实START日志。这里的0x218为配置项，实际START寄存器是实例偏移0x8，不能仅凭0x218为0断言ISP1未启动。两份快照尚不能单独证明变化由Record触发；观察器新增有界控制状态变化历史供后续确定时序。
+
+当前零帧有明确的模型阻塞：`og4k_header_poll`要求`engine1543_video_ready`，后者只检查source0，而此处source0为空，等待始终没有释放。实际N-RAW走source2/ISP1；shared profile也未启用既有secondary ISP/sensor模型，后者要求的0x218=1与最终原生布局0不同。这些数据路径条件尚未适配。`raw_pipeline_video_frames`在实际RAW/ISP图像缓冲写出后增加，并不是TICO/H264编码帧数。因此零帧描述模拟器的传输状态，不能据此判断实体机4K Open Gate的可行性。
+
+该运行受1200秒墙钟上限结束。实际消费63个输入；后追加的Stop/Photo/半按共5项未执行，不能宣称录像关闭或恢复验证通过。只读虚拟卡目录无NEV/MOV/MP4。精简证据、完整实际输入及哈希见 [原生Record记录](data/opengate4k-native-record-runtime.json)。下一步补齐source2/ISP1就绪、帧边界和数据所有权，再做像素及文件验证。

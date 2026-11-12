@@ -56,7 +56,8 @@ def main():
 
     def sample(g):
         names = ('engine1543-control-state', 'capture-nv16-pipeline-state',
-                 'raw-pipeline-state', 'engine150c-state', 'primary-d980-state')
+                 'raw-pipeline-state', 'engine150c-state', 'primary-d980-state',
+                 'video-secondary-isp-state', 'video-secondary-sensor-state')
         state = {}
         for name in names:
             try:
@@ -78,6 +79,8 @@ def main():
                 try:
                     if active.get('replay'):
                         active['replay'].cancel(self.qmp)
+                        self.data['native_contact_progress'] = dict(
+                            delivered=active['replay'].next, total=len(active['replay'].actions))
                     self.qmp.command('stop')
                     self.data['og_native_diagnostics'] = sample(self)
                 except Exception as diagnostic_error:
@@ -102,6 +105,24 @@ def main():
             diagnostic = sample(g)
             diagnostic['virtual_seconds'] = row['virtual_seconds']
             diagnostic['contacts_delivered'] = active['replay'].next
+            header = diagnostic['engine1543-control-state']
+            video_input = header.get('video_input', {})
+            state = dict(file_type=diagnostic['file_type'],
+                source2_control=video_input['source2'].get('0x30', 0) if 'source2' in video_input else None,
+                isp1_config_0x218=video_input['isp1'].get('0x218', 0) if 'isp1' in video_input else None,
+                primary_active=diagnostic['engine150c-state'].get('active'),
+                early_header=header.get('early_video'),
+                d980_submits=diagnostic['primary-d980-state'].get('submits'))
+            # Save control transitions, not every frame. This establishes the
+            # ordering around a contact without inferring cause from two snapshots.
+            if state != active.get('last_state'):
+                active['last_state'] = state
+                history = g.data.setdefault('og_native_transitions', [])
+                if len(history) < 2048:
+                    history.append(dict(virtual_seconds=row['virtual_seconds'],
+                                        contacts_delivered=active['replay'].next, **state))
+                else:
+                    g.data['og_native_transitions_dropped'] = g.data.get('og_native_transitions_dropped', 0)+1
             (g.out/'native-observation.json').write_text(json.dumps(diagnostic, indent=2)+'\n')
             super().publish(frame, row, ready)
 

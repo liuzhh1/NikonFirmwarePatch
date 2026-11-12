@@ -61,6 +61,8 @@ python tools/trace_opengate4k_native.py \
 
 运行中 `native-observation.json` 保存暂停时的只读配置与帧计数，`native-live.json` 保存上游 EX 报告；最终 `result.json` 保存首个UART异常及模型状态。端口自动选择loopback临时端口，未开放交互控制。额外4项回放检查验证追加Record触点、拒绝修改既有动作、停止时释放/保留选择器及拒绝非法批次：
 
+后续观察器另外读取secondary模型状态，保存最多2048次控制变化及触点消费数量，避免从相隔较远的快照推断因果。若QOM属性不可用，记录缺失而不是当作硬件零值。
+
 ```sh
 python experiments/qemu/test_native_replay.py --qemu-repo /path/to/z8-qemu
 ```

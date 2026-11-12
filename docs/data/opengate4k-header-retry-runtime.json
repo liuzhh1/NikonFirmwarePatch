@@ -78,10 +78,10 @@
       },
       "prior_photo_synthetic_raw_frames": 238,
       "source2_control": 0,
-      "isp1_start_field": 0,
       "engine150c_active": 0,
       "recording_started": false,
-      "video_qualified": false
+      "video_qualified": false,
+      "isp1_config_0x218": 0
     },
     "lab": {
       "main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
@@ -132,10 +132,10 @@
       },
       "prior_photo_synthetic_raw_frames": 238,
       "source2_control": 0,
-      "isp1_start_field": 0,
       "engine150c_active": 0,
       "recording_started": false,
-      "video_qualified": false
+      "video_qualified": false,
+      "isp1_config_0x218": 0
     }
   },
   "native_ex_menu_control": {
@@ -196,5 +196,6 @@
     "The raw pipeline still uses source0-specific video-ready admission; N-RAW secondary routing remains unqualified.",
     "Original EX Menu control is independently confirmed; it does not qualify N-RAW or Record.",
     "Original EX N-RAW and Record follow-up must be recorded separately on the corrected binary."
-  ]
+  ],
+  "isp1_field_interpretation": "0x218 is a configuration field, not the START register. Actual ISP START is write1 to instance offset0x8; do not infer active state solely from0x218."
 }
