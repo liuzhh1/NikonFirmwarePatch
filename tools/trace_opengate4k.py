@@ -16,6 +16,7 @@ parser=argparse.ArgumentParser(description='Read-only 4.1K mode/frontier observa
 parser.add_argument('--qemu-repo',type=Path,required=True)
 parser.add_argument('--transport-helper',type=Path)
 parser.add_argument('--experimental-movie-selector15',action='store_true',help='Declared synthetic external-ROM selector15=1; not recovered camera data')
+parser.add_argument('--experimental-deferred-video-header',action='store_true',help='Requires the separate experimental QEMU model; header control latch only, no completion')
 options,remaining=parser.parse_known_args()
 lab=options.qemu_repo.resolve()
 if not (lab/'tools/run.py').is_file():parser.error('Existing z8-qemu checkout required')
@@ -37,6 +38,16 @@ if options.experimental_movie_selector15:
   g.data['experimental_movie_selector15']=dict(address='0x47f5af4f',value=1,sha256=hashlib.sha256(data).hexdigest(),
     factory_calibration=False,basis='Explicit A/B input for native selector index15; parameter record remains synthetic')
  movie_inputs.attach=attach_selector15
+if options.experimental_deferred_video_header:
+ previous_attach=movie_inputs.attach
+ def attach_header(g,args):
+  if not (movie_inputs.native_modes_enabled(args) and args.experimental_movie_selector10):
+   raise ValueError('Header experiment requires the complete Movie profile including selector10')
+  previous_attach(g,args)
+  index=g.command.index('-M')+1;g.command[index]+=',og4k-header-model=on'
+  g.data['experimental_header_latch']=dict(enabled=True,hardware_model_modified=True,
+   physical_verified=False,scope='Exact early N-RAW receiver control; readiness and ownership gates retained')
+ movie_inputs.attach=attach_header
 active={};BasePeer=stream.Peer;BaseReplay=replay.Replay
 ROM_POINTS={0x41170d5c:'rom-selector',0x41170d70:'rom-byte',0x41170d84:'rom-record'}
 VIDEO_POINTS={0x41062018:'plan',0x410622c8:'frontend',0x410665f8:'geometry',0x41066a9c:'coded',**ROM_POINTS}
@@ -96,6 +107,10 @@ class Peer(BasePeer):
   finally:g.qmp.hmp=orig
   return r or bool(observed)
  def close(self):
+  self.g.data['og_model_diagnostics']={}
+  for name in ('capture-nv16-state','engine1543-control-state'):
+   try:self.g.data['og_model_diagnostics'][name]=json.loads(self.g.qmp.command('qom-get',path='/machine',property=name))
+   except (RuntimeError,ValueError):pass
   for a in self.obs:self.g.rsp(f'z1,{a:x},4')
   self.obs.clear();super().close()
 class Replay(BaseReplay):
