@@ -7,6 +7,8 @@ The lab environment variables select a diagnostic payload only and never waive
 production package validation. A hardware-model frontier is a failed run.
 The opt-in selector15 fixture changes one explicitly declared external-ROM byte;
 it is synthetic input, not recovered factory calibration or a camera patch.
+The separate opt-in header latch modifies the hardware control model. A clean
+bounded control run with zero video frames is not video or recording acceptance.
 """
 from pathlib import Path
 import argparse,sys,json,re,struct,importlib.util,os,hashlib
@@ -76,7 +78,10 @@ class Peer(BasePeer):
     raw=vr(g,cpu,a,n);row['pointer']=hex(a)
     if raw is not None:
      row['data_hex']=raw.hex()
-     if name=='snapshot':row['fields']={k:struct.unpack_from('<I',raw,v)[0] for k,v in dict(kind=0,actual=8,nominal=0x388,size=0x38c,rate=0x390,request=0x3a0).items()}
+     if name=='snapshot':
+      row['fields']={k:struct.unpack_from('<I',raw,v)[0] for k,v in dict(kind=0,actual=8,nominal=0x388,size=0x38c,rate=0x390,request=0x3a0).items()}
+      file_type=vr(g,cpu,0xa03d5c014,4)
+      if file_type is not None:row['fields']['file_type']=struct.unpack('<I',file_type)[0]
      if name in ('driver','plan'):row['words']=list(struct.unpack('<16I',raw))
      if name=='frontend':row['dimensions']=[struct.unpack_from('<H',raw,x)[0] for x in (6,2,0x1a2,0x19e)]
      if name=='geometry':row['u16']={hex(x):struct.unpack_from('<H',raw,x)[0] for x in (0xc,0xe,0x10,0x12,0x48,0x4a,0x5c,0x5e,0x64,0x66)}
@@ -108,9 +113,9 @@ class Peer(BasePeer):
   return r or bool(observed)
  def close(self):
   self.g.data['og_model_diagnostics']={}
-  for name in ('capture-nv16-state','engine1543-control-state'):
+  for name in ('capture-nv16-pipeline-state','engine1543-control-state'):
    try:self.g.data['og_model_diagnostics'][name]=json.loads(self.g.qmp.command('qom-get',path='/machine',property=name))
-   except (RuntimeError,ValueError):pass
+   except (RuntimeError,ValueError) as error:self.g.data['og_model_diagnostics'][name]={'unavailable':str(error)}
   for a in self.obs:self.g.rsp(f'z1,{a:x},4')
   self.obs.clear();super().close()
 class Replay(BaseReplay):

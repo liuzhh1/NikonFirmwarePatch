@@ -34,14 +34,20 @@ static uint32_t og4k_header_rejections(NikonZ8State *s, unsigned j, uint64_t val
 static bool og4k_header_start(NikonZ8State *s, unsigned j, uint64_t value)
 {
     uint32_t rejected = og4k_header_rejections(s, j, value);
+    /* Supplier programming belongs to subsequent data readiness. Retain
+     * every submitted word and let the ordinary full video-ready gate
+     * admit data later; START itself creates no transfer or completion. */
+    uint32_t blocking = rejected & ~32u;
     if (s->og4k_header_model && j == 1 && value == 0x101) {
-        s->og4k_header_rejected = rejected;
-        fprintf(stderr, "Z8_OG4K_HEADER reject=%u capture=%d pending_header=%u pending_supplier=%u packet=%d frame=%d receiver=%u decoder=%d decoder_pending=%u\n",
-            rejected, s->capture_nv16_requested, s->engine1542_pending[11], s->engine1542_pending[1],
+        s->og4k_header_rejected = blocking;
+        fprintf(stderr, "Z8_OG4K_HEADER checks=%u reject=%u capture=%d pending_header=%u pending_supplier=%u packet=%d frame=%d receiver=%u decoder=%d decoder_pending=%u supplier_control=%x supplier_format=%x supplier_pitch=%u supplier_width=%u supplier_height=%u\n",
+            rejected, blocking, s->capture_nv16_requested, s->engine1542_pending[11], s->engine1542_pending[1],
             video_raw_packet_blocks_producer(s), s->video_raw_frame_ready, s->engine152c_stream_pending,
-            s->engine1530_active, s->engine1530_config[0x1c/4]);
+            s->engine1530_active, s->engine1530_config[0x1c/4],
+            s->engine1542_config[1][1],s->engine1542_config[1][2],s->engine1542_config[1][0x38/4],
+            s->engine1542_config[1][0x4c/4],s->engine1542_config[1][0x50/4]);
     }
-    return rejected == 0;
+    return blocking == 0;
 }
 
 static bool og4k_header_poll(NikonZ8State *s)

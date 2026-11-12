@@ -49,40 +49,31 @@ python tools/build_opengate4k_lab.py \
 - 回放、缩略图、代理以及反挤压对新文件身份的处理。
 - TICO 码流完整解码、真实传感器读出、Bayer 排列、视角和稳定性验证。
 
-## 本轮运行结果
+## 本轮运行结果（2026-11-12）
 
-实际执行本原型 MAIN，使用原生按键选择 LAB 30p 并切换视频模式后，捕获到：
+实验 MAIN 的 SHA-256 仍为 `e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959`。本轮新增的是单独、默认关闭的 QEMU header 控制模型，以及更准确的只读诊断；没有继续修改 MAIN 来绕过设备模型。
 
-| 检查 | 观测结果 |
-|---|---|
-| 模式快照 | kind=1、nominal=4、actual=8、size=4、rate=4、request=4 |
-| 实验驱动 | variant=2 路径返回 14；物理读出是否正确仍未确认 |
-| 有效区域 | 4128×2752 |
-| 物理输入几何 | 4140×2756 |
-| 逻辑范围 | 4140×2760 |
-| 代理字段 | 1920×1080，保持原值 |
-| 视频前端 | 最终视频快照后捕获 plan11，前端 4140×2756 |
-| 编码候选 | 隔离执行通过，尚无运行时到达或码流验证 |
-
-完整运行**未通过**。补查原生 UART 后确认，原始异常是 CAPTG 在 `PC 0x41170D84` 发生读取地址翻译异常，ESR=`0x96000005`、FAR=`0x2A156B2806`。此前记录的 `PC 0x40C07C24` 读取 `0x15080014`，属于其后的诊断寄存器转储，不能作为原始故障点。
-
-后续已用三个只读断点完成相同固件、相同按键回放的 A/B 对照，仅 B 组额外提供一个合成外部 ROM 输入：
-
-| 观测 | A：原有输入 | B：增加 selector15=1 |
+| 检查 | 原厂 N-RAW 4.1K 30p | 4K LAB 30p |
 |---|---|---|
-| 原生 selector 索引 / 读值 | 15 / 0 | 15 / 1 |
-| 减一后算出的记录基址 | `0x2A155D78A0`，越界 | `0xA155D78C0`，在映射内 |
-| 首个参数读取地址 | `0x2A156B2806`，触发异常 | `0xA156B2826`，读到0 |
-| UART 原始异常 | CAPTG `0x41170D84` | 未输出原生异常 |
-| 后续停止 | 诊断转储 `0x15080014` | header START `0x15432004` |
+| 视频快照 | actual8、nominal4、size4、rate4、request4 | 相同 |
+| 驱动返回值 | 15 | 14，物理读出未确认 |
+| 视频前端 | plan11、4140×2344 | plan11、4140×2756 |
+| 有效区域 | 4128×2322 | 4128×2752 |
+| header 控制 | START 1次、原生 STOP 1次 | START 1次；短时仍等待，较长观察原生 STOP 1次 |
+| 等待释放 / 视频帧 | 0 / 0 | 0 / 0 |
+| 视频 source / ISP 确认 | 0 / 0 | 0 / 0 |
+| UART 原始异常 / 未建模访问 | 均未出现 | 均未出现 |
+| 录像验收 | 未通过，未提交 Record | 未通过，未提交 Record |
 
-由此确认本次 CAPTG 异常是缺少 selector15 合成输入导致的下溢。新选项 `--experimental-movie-selector15` 在外部 ROM 地址 `0x47F5AF4F` 提供1，并在收据中明确记录；这是参数记录1的实验选择，不是恢复了相机校准数据。后续记录参数仍是合成值，driver14 的物理读出也未完成验证。
+两次新增格式读值的有界执行都正常清理了 QEMU，但这只证明设置与控制链路继续向前。原厂观察到切入 Movie 后81.7虚拟秒，LAB 的格式核对观察到23.7虚拟秒；后者仍在等待数据。此前同一 LAB MAIN 与模型的较长运行观察了72.5虚拟秒，已看到原生 STOP，未记录额外的格式读值。三次运行的视频帧及数据就绪释放均为0，不能将观察时长不同造成的控制状态差异当作固件差异。
 
-B 组停在与原厂 N-RAW 对照相同的 START 写入；其 header（`0x15432000`）及 supplier（`0x15422000`）配置逐字段与原厂相等，两者 source1518 配置均为零。现有模型要求完整的 supplier/source 视频配置后才接受此 START。下一步应单独核对 N-RAW 的消费者先启动、供应者后配置顺序，不能通过忽略写入或伪造完成事件宣告录像通过。两组运行均记失败且正常清理子进程，未启动录像。
+原生 MAIN 后续配置 source2 和 ISP1；最终 source2 控制、ISP1 启动字段及主输入 active 均为0。原模型的完整 video-ready 检查使用 source0，本实验保留该数据检查。照片模式此前产生的238个合成 RAW 帧不属于视频帧，视频 HUD 或残留画面也不能证明取景正在更新。
 
-精简证据见 [A/B 运行记录](../docs/data/opengate4k-selector-ab.json)、[此前原型运行记录](../docs/data/opengate4k-lab-runtime.json) 与 [原厂对照](../docs/data/opengate4k-stock-runtime.json)。
+START 当时的日志捕获到 supplier 已配置1920×1080、pitch5888，且没有照片/编解码所有者或待确认事件。因此先前从结束快照推测的“供应者尚未配置”不成立。新模型只接受已观测的完整四行内部端口控制，锁存后等待原有完整数据条件；不会产生像素、DMA、IRQ 或虚构的完成事件。实现、拒绝位和复跑说明见 [独立 QEMU 实验](../experiments/qemu/README.md)，精简输入及对照结果见 [header 证据](../docs/data/opengate4k-header-runtime.json)。
 
-本轮共 51 项测试通过，已启用 AArch64 执行、真实输入集成检查及原始异常提取回归。25p、24p 的条件分支在隔离执行中覆盖，QEMU 原生设置链路本轮只观察了 LAB 30p。
+此前 CAPTG 原始异常已通过相同 MAIN、相同按键的 selector15 A/B 确认：`0x47F5AF4F` 为0会在减一后产生越界记录基址 `0x2A155D78A0`，在 `PC 0x41170D84` 读取 `0x2A156B2806` 时异常；显式合成输入1使记录基址回到 `0xA155D78C0`。后续的 `0x15080014` 访问属于异常诊断转储。这个输入不是恢复的相机校准数据。A/B 的历史证据保留在 [selector 对照](../docs/data/opengate4k-selector-ab.json) 中。
+
+本轮51项项目测试和5项独立模型测试通过。13种拒绝/延后检查状态属于一个 C 合约测试内的条件覆盖，不重复计为13项测试。25p、24p 的固件条件分支已有隔离执行覆盖；完整 QEMU 设置链路当前仅核对30p。下一步是确认 N-RAW 的原生数据源启动与 source2/ISP1 协作，再验证 TICO 及文件链路。
 
 ## 复跑设置追踪
 
@@ -114,3 +105,9 @@ python tools/trace_opengate4k.py \
 ![QEMU 中的三档 4K LAB 行及下方保留的原厂行](../docs/images/opengate4k-lab-menu.png)
 
 这是本轮原型 MAIN 真实执行后渲染的菜单，不代表录像或实体机身验收。原有三个 8.3K Open Gate 行在同一列表中保留，图中可见其中的 24p；其余两行位于滚动区域上方。
+
+## 复跑 header 控制对照
+
+先按 [独立模型说明](../experiments/qemu/README.md) 准备专用 QEMU。上面的设置追踪再增加 `--experimental-movie-selector15 --experimental-deferred-video-header`，使用本轮保存的 [LAB 按键](../docs/data/opengate4k-header-lab-replay.json)；原厂对照不设置 `OG4K_LAB_MAIN`，使用 [原厂按键](../docs/data/opengate4k-header-stock-replay.json)。两组必须各自使用新输出目录和独立虚拟卡。追踪会记录 `experimental_header_latch.hardware_model_modified=true`，不能与未改模型的历史 A/B 混淆。
+
+按键回放是只追加的控制文件；创建同名 `.done` 文件可以正常结束有界观察。先检查视频快照的 `file_type=6`（N-RAW）、size/rate，再解释后续事件，避免把其他 RAW 格式或菜单光标位置当作已选择 N-RAW。

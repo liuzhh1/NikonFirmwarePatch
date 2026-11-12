@@ -89,9 +89,13 @@ int main(void){
    case 11:s.engine1542_config[1][0x38/4]++;bit=32;break;
    case 12:s.engine152c_stream_pending=4;bit=16;break;
   }
-  assert(og4k_header_rejections(&s,1,0x101)==bit&&!og4k_header_start(&s,1,0x101));
+  assert(og4k_header_rejections(&s,1,0x101)==bit);
+  assert(og4k_header_start(&s,1,0x101)==(bit==32));
  }
  packet_owner=false;s=fresh();assert(!og4k_header_start(&s,0,0x101)&&!og4k_header_start(&s,1,0x201));
+ s.engine1542_config[1][0x38/4]=641;engine1543_control_write(&s,11,0x15432004,0x101);
+ assert(s.og4k_header_wait&&!og4k_header_poll(&s)&&!irqs&&!photo_tries);
+ engine1543_control_write(&s,11,0x15432004,0x100);s=fresh();
  engine1543_control_write(&s,11,0x15432004,0x101);
  assert(s.engine1543_active[1]&&s.og4k_header_wait&&s.og4k_header_starts==1);
  assert(!invalid&&!photo_requests&&!photo_tries&&!irqs&&!s.engine1542_pending[11]);
@@ -106,7 +110,7 @@ int main(void){
  engine1543_control_write(&s,11,0x15432004,0x100);
  assert(!s.engine1543_active[1]&&!s.og4k_header_wait&&og4k_header_poll(&s));
  assert(!irqs&&!photo_requests&&!photo_tries&&!invalid);
- puts("Default-off, 13 rejection classes, latch, readiness, idempotence, changed program and cancel passed");
+ puts("Default-off, 13 check states, latch, readiness, idempotence, changed program and cancel passed");
  return 0;
 }
 '''

@@ -1,0 +1,281 @@
+{
+  "schema": "z8-opengate4k-header-control-1",
+  "date": "2026-11-12",
+  "scope": "Bounded N-RAW 4.1K 30p setup with opt-in control-model modification; no Record submitted",
+  "emulator_commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+  "qemu_version": "11.1.1",
+  "qemu_sha256": "85efd800a95a22909b9b4a804c7cfb39aa7278ade9b1492c17a65a1636577aee",
+  "raw_sha256": "50f30107b952e0f0f2469f3546d8e485a311e0069de4eabdd7ccd127b773370d",
+  "hardware_model_modified": true,
+  "guest_runtime_ram_patches": [],
+  "cpu_register_redirection": false,
+  "physical_verified": false,
+  "factory_calibration": false,
+  "recording_started": false,
+  "video_qualified": false,
+  "model_files": {
+    "qemu/nikon-z8-lab.c": "1a005cd7dd0af402637f3731deeb8a0470798345ea3b9f457351bba5dc4c79bc",
+    "qemu/nikon-z8-pixels.h": "b20193b9835d9b4ff53410487be5c7a10ede38b04df4a0d27583f999bde7021a",
+    "qemu/nikon-z8-og4k-header.h": "86c307b9c16c90550ec0cdb270b35d820a5130ec7be0681a807b6f2393c3937d"
+  },
+  "tests": {
+    "project": 51,
+    "independent_c_contract": 1,
+    "upstream_video_header": 1,
+    "upstream_capture_drain": 2,
+    "upstream_movie_receiver": 1,
+    "c_contract_check_states": 13,
+    "lsan_disabled_for_ptrace_host": true,
+    "asan_ubsan_retained": true
+  },
+  "runs": {
+    "stock": {
+      "main_sha256": "2b43a31c9de838f84b12416de4348a7004e65be07f853ec56ec2b10f3a8e3853",
+      "result_sha256": "f0a653c4ce71d911cb118ba4ae3c276518324cee73774c5f3b448e3fa47a141d",
+      "stderr_sha256": "f629d30c9442e18844e0a5b97da29d64883e826a56dc1e9e24a97209ea1a27ee",
+      "uart_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "replay_file": "opengate4k-header-stock-replay.json",
+      "replay_sha256": "0799d7cc072ce8edae7fabbcfeddcc380c33665a6b7b6a2a8473bff3118a3fd5",
+      "control_actions": 29,
+      "file_type_verified": 6,
+      "mode_snapshot": {
+        "kind": 1,
+        "actual": 8,
+        "nominal": 4,
+        "size": 4,
+        "rate": 4,
+        "request": 4,
+        "file_type": 6
+      },
+      "driver": 15,
+      "plan": 11,
+      "frontend": [
+        4140,
+        2344,
+        4140,
+        2344
+      ],
+      "active_geometry": [
+        4128,
+        2322
+      ],
+      "physical_geometry": [
+        4140,
+        2344
+      ],
+      "proxy_geometry": [
+        1920,
+        1080
+      ],
+      "movie_virtual_seconds": 57.777789611,
+      "end_virtual_seconds": 139.434658853,
+      "post_movie_virtual_seconds": 81.656869242,
+      "runtime_checks": {
+        "total": 2123,
+        "passed": 2123,
+        "scope": "Existing boot and peripheral checks; excludes video/recording acceptance"
+      },
+      "transport_clean": true,
+      "owned_qemu_stopped": true,
+      "primary_exception": null,
+      "unmodeled_accesses": 0,
+      "early_header": {
+        "enabled": true,
+        "waiting": false,
+        "rejected": 0,
+        "starts": 1,
+        "releases": 0,
+        "physical_verified": false
+      },
+      "header": {
+        "active": false,
+        "held": false,
+        "starts": 1,
+        "stops": 1,
+        "holds": 0,
+        "config_valid": 15,
+        "buffer_valid": "000f000f000f000f"
+      },
+      "header_start_diagnostic": "Z8_OG4K_HEADER checks=32 reject=0 capture=0 pending_header=0 pending_supplier=0 packet=0 frame=0 receiver=0 decoder=0 decoder_pending=0 supplier_control=202 supplier_format=f010000 supplier_pitch=5888 supplier_width=1920 supplier_height=1080",
+      "supplier": {
+        "0x4": 514,
+        "0x8": 251723776,
+        "0x38": 5888,
+        "0x3c": 5888,
+        "0x4c": 1920,
+        "0x50": 1080
+      },
+      "source0_nonzero": false,
+      "source2_control": 0,
+      "source2_pitch": [
+        5888,
+        5888
+      ],
+      "isp1_start_field": 0,
+      "engine150c": {
+        "active": 0,
+        "processed_jobs": 0,
+        "completion_events": 0
+      },
+      "primary_d980": {
+        "submits": 1,
+        "frames": 0,
+        "pixel_dma_bytes": 0,
+        "acks": 0
+      },
+      "video": {
+        "video_frames": 0,
+        "video_source_acks": 0,
+        "video_isp_acks": 0
+      },
+      "prior_photo_synthetic_raw_frames": 238,
+      "recording_started": false,
+      "video_qualified": false
+    },
+    "lab": {
+      "main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+      "result_sha256": "37666af039e218895f33c98d7c66287b5f6bdd6da22abb7e486433b311d4a9f0",
+      "stderr_sha256": "0d6b80f553fc3abc069f47ee8cbfe5c00e71a813e88e00db0325be07c5831aa3",
+      "uart_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "replay_file": "opengate4k-header-lab-replay.json",
+      "replay_sha256": "f614580124e2c4be70e30fcf6d28c0fb2987f7e821039292bd7a0f89163a1a6e",
+      "control_actions": 24,
+      "file_type_verified": 6,
+      "mode_snapshot": {
+        "kind": 1,
+        "actual": 8,
+        "nominal": 4,
+        "size": 4,
+        "rate": 4,
+        "request": 4,
+        "file_type": 6
+      },
+      "driver": 14,
+      "plan": 11,
+      "frontend": [
+        4140,
+        2756,
+        4140,
+        2756
+      ],
+      "active_geometry": [
+        4128,
+        2752
+      ],
+      "physical_geometry": [
+        4140,
+        2756
+      ],
+      "proxy_geometry": [
+        1920,
+        1080
+      ],
+      "movie_virtual_seconds": 51.165277727,
+      "end_virtual_seconds": 74.880680292,
+      "post_movie_virtual_seconds": 23.715402565,
+      "runtime_checks": {
+        "total": 1494,
+        "passed": 1494,
+        "scope": "Existing boot and peripheral checks; excludes video/recording acceptance"
+      },
+      "transport_clean": true,
+      "owned_qemu_stopped": true,
+      "primary_exception": null,
+      "unmodeled_accesses": 0,
+      "early_header": {
+        "enabled": true,
+        "waiting": true,
+        "rejected": 0,
+        "starts": 1,
+        "releases": 0,
+        "physical_verified": false
+      },
+      "header": {
+        "active": true,
+        "held": false,
+        "starts": 1,
+        "stops": 0,
+        "holds": 0,
+        "config_valid": 15,
+        "buffer_valid": "000f000f000f000f"
+      },
+      "header_start_diagnostic": "Z8_OG4K_HEADER checks=32 reject=0 capture=0 pending_header=0 pending_supplier=0 packet=0 frame=0 receiver=0 decoder=0 decoder_pending=0 supplier_control=202 supplier_format=f010000 supplier_pitch=5888 supplier_width=1920 supplier_height=1080",
+      "supplier": {
+        "0x4": 514,
+        "0x8": 251723776,
+        "0x38": 5888,
+        "0x3c": 5888,
+        "0x4c": 1920,
+        "0x50": 1080
+      },
+      "source0_nonzero": false,
+      "source2_control": 1,
+      "source2_pitch": [
+        5888,
+        5888
+      ],
+      "isp1_start_field": 0,
+      "engine150c": {
+        "active": 65375,
+        "processed_jobs": 0,
+        "completion_events": 0
+      },
+      "primary_d980": {
+        "submits": 1,
+        "frames": 0,
+        "pixel_dma_bytes": 0,
+        "acks": 0
+      },
+      "video": {
+        "video_frames": 0,
+        "video_source_acks": 0,
+        "video_isp_acks": 0
+      },
+      "prior_photo_synthetic_raw_frames": 239,
+      "recording_started": false,
+      "video_qualified": false
+    }
+  },
+  "earlier_strict_supplier_control": {
+    "main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+    "qemu_sha256": "e94f5928c365e6fb6e7098af4008ebb2a886fdb977c44def971d25c1952b0103",
+    "result_sha256": "4502753593cde533e00a2ad27039270fc474dd37569b9bc0ac22f1cf38ce5178",
+    "error": "RuntimeError('Unmodeled hardware; inspect stderr.log')",
+    "primary_exception": null,
+    "rejection_mask": 32,
+    "basis": "START diagnostic; supplier is already configured, not still at idle defaults"
+  },
+  "longer_lab_observation": {
+    "result_sha256": "799c35acecf7846c5ece39152f72a7bfcf72a680361b22338f1ace56d333c53a",
+    "main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+    "early_header": {
+      "enabled": true,
+      "waiting": false,
+      "rejected": 0,
+      "starts": 1,
+      "releases": 0,
+      "physical_verified": false
+    },
+    "header": {
+      "active": false,
+      "starts": 1,
+      "stops": 1
+    },
+    "file_type_recorded": false,
+    "post_movie_virtual_seconds": 72.474129192,
+    "video": {
+      "video_frames": 0,
+      "video_source_acks": 0,
+      "video_isp_acks": 0
+    },
+    "note": "Same MAIN and model; earlier tracer did not record file_type; later lab run above verifies N-RAW explicitly"
+  },
+  "interpretation": [
+    "START supplier already has 1920x1080 RGB and aligned pitch5888; end snapshots cannot establish initialization order.",
+    "Both setup paths program source2/ISP1. The 23.715-second LAB format check still waits; the longer 72.474-second LAB run and 81.657-second stock run observe native STOP. No data-readiness release is observed.",
+    "Existing engine1543_video_ready checks source0; it is unchanged. Source2/ISP1 pixel routing is not qualified.",
+    "238 prior synthetic photo RAW frames and the Movie HUD do not demonstrate fresh video frames.",
+    "A separate original-EX contact probe was interrupted before mode verification and is excluded from this evidence.",
+    "No encoded TICO bitstream, recorded file, playback, real sensor readout, Bayer, calibration or physical timing acceptance."
+  ]
+}
