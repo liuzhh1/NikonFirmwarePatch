@@ -2,7 +2,7 @@
 
 该目录包含实际 AArch64 前端原型和独立模拟器构建入口。**它还不是可录制的 4K 固件，也不生成可刷入相机的更新包。** 生产入口 `patch.py`、原有审阅配方和原有 8.3K 功能保持不变。
 
-默认关闭的[录制描述实验层](RECORDER.md)通过`--experimental-recorder`启用，同步4K候选录制描述、NRMT/NCTG及四档预算。新增[文件身份回放实验层](PLAYBACK.md)，额外指定`--experimental-playback`：按文件自身尺寸处理3:2布局、缩略图裁切和播放媒体标记。83项项目测试通过；TICO、真实影片解码、实机录制、文件关闭生命周期和i菜单/取消仍未验收。原前端和单独录制层MAIN哈希保持不变。
+默认关闭的[录制描述实验层](RECORDER.md)通过`--experimental-recorder`启用，同步4K候选录制描述、NRMT/NCTG及四档预算。[文件身份回放实验层](PLAYBACK.md)额外指定`--experimental-playback`，按文件自身尺寸处理3:2布局、缩略图裁切和播放媒体标记。新增[NCTG副本身份实验层](NCTG-LIFETIME.md)，额外指定`--experimental-nctg-lifetime`，锁存原厂文件副本的4K身份，后续NCTG回调不再读取当前菜单状态。101项项目测试通过；NRMT与完整关闭生命周期、TICO、真实影片解码、实机录制和i菜单/取消仍未验收。未启用新增层时，各旧阶段MAIN哈希保持不变。
 
 ## 已实现的实验部分
 

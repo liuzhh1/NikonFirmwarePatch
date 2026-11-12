@@ -16,13 +16,20 @@ def main():
                    help='Opt-in record tables and NRMT/NCTG;2756 coded rows are not TICO-qualified')
     p.add_argument('--experimental-playback',action='store_true',
                    help='Add file-owned playback geometry (requires --experimental-recorder; no clip decode qualification)')
+    p.add_argument('--experimental-nctg-lifetime',action='store_true',
+                   help='Latch native NCTG working-copy identity (requires --experimental-recorder; NRMT/close unqualified)')
     a=p.parse_args()
     if a.experimental_playback and not a.experimental_recorder:
         p.error('--experimental-playback requires --experimental-recorder')
+    if a.experimental_nctg_lifetime and not a.experimental_recorder:
+        p.error('--experimental-nctg-lifetime requires --experimental-recorder')
     if a.output.exists():p.error('Output directory must be new')
     for path in (a.original,a.baseline):
         if not path.is_file() or path.stat().st_size!=99051117:p.error('Complete C3.11 packages required')
-    if a.experimental_playback:
+    if a.experimental_nctg_lifetime:
+        from z8opengate4k.nctg_lifetime import make_lifetime_main
+        builder=lambda original,baseline,compiler:make_lifetime_main(original,baseline,compiler,playback=a.experimental_playback)
+    elif a.experimental_playback:
         from z8opengate4k.playback import make_playback_main
         builder=make_playback_main
     elif a.experimental_recorder:
