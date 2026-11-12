@@ -53,6 +53,8 @@ python tools/build_opengate4k_lab.py \
 
 实验 MAIN 的 SHA-256 仍为 `e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959`。本轮新增的是单独、默认关闭的 QEMU header 控制模型，以及更准确的只读诊断；没有继续修改 MAIN 来绕过设备模型。
 
+后续审查修复了实验模型的轮询调度问题：等待 header 时应先保留原有定时器重排。实际 C 调度前缀的“先等待、稍后就绪”回归已通过。修正模型后重新观察原厂81.4、LAB94.3虚拟秒，两者仍无视频帧或source/ISP确认，原生控制均START/STOP各一次。旧版零帧记录存在调度混杂因素，保留为历史观测；新结果和原始EX菜单核对见 [调度修复证据](../docs/data/opengate4k-header-retry-runtime.json)。当前51项项目测试及9项独立模型/触点测试通过。
+
 | 检查 | 原厂 N-RAW 4.1K 30p | 4K LAB 30p |
 |---|---|---|
 | 视频快照 | actual8、nominal4、size4、rate4、request4 | 相同 |

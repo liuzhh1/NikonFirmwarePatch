@@ -35,7 +35,10 @@ def main():
     anchor='    object_class_property_add_bool(oc,"engine1543-retained-start-model",get_engine1543_retained_start_model,set_engine1543_retained_start_model);'
     s=replace_once(s,anchor,anchor+'\n    object_class_property_add_bool(oc,"og4k-header-model",get_og4k_header_model,set_og4k_header_model);')
     text[c]=s
-    text[names[1]]=replace_once(text[names[1]],'    if (!s->raw_pipeline_model) { return; }','    if (!s->raw_pipeline_model) { return; }\n    /* Receiver control latch is not pixel readiness; no IRQ on release. */\n    if (!og4k_header_poll(s)) { return; }')
+    # Keep the upstream timer rearm before a waiting control latch returns.
+    # Otherwise one deferred tick permanently removes its own retry source.
+    text[names[1]]=replace_once(text[names[1]],'    bool internal = video && s->video_raw_transport_model;',
+        '    /* Receiver control latch is not pixel readiness; preserve timer rearm. */\n    if (!og4k_header_poll(s)) { return; }\n    bool internal = video && s->video_raw_transport_model;')
     t=names[2];s=text[t]
     s=replace_once(s,' uint64_t capture_stream_rearms,engine1543_retained_starts;', ' uint64_t capture_stream_rearms,engine1543_retained_starts;\n bool og4k_header_wait; uint64_t og4k_header_starts;')
     anchor='static bool capture_stream_can_rearm('

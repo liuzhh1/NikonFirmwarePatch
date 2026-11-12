@@ -39,6 +39,9 @@ typedef struct {
  uint64_t engine1543_buffer_valid[3],engine1543_starts[3],engine1543_stops[3],engine1543_holds[3];
  struct {uint32_t config[0x2000/4];} engine1518[3];
  unsigned raw_pipeline_row,raw_pipeline_bank;bool raw_pipeline_wait_bank,raw_pipeline_refill_notified;
+ bool engine151_video_stream_model,engine151_active[2];
+ uint32_t engine151_latched[2][0x1000/4];
+ bool raw_pipeline_output_done,z8_raw_owed;void *raw_pipeline_timer;
 } NikonZ8State;
 typedef struct {int cpu_index;struct {uint64_t pc;} env;} CPU;
 static CPU *current_cpu;
@@ -53,6 +56,12 @@ static void capture_nv16_try(NikonZ8State*s){(void)s;photo_tries++;}
 static void capture_nv16_cancel(NikonZ8State*s){s->capture_nv16_requested=false;}
 static void raw_pipeline_irq_update(NikonZ8State*s){(void)s;irqs++;}
 static void unknown_access(NikonZ8State*s,hwaddr a,uint64_t v,unsigned n,bool w){(void)s;(void)a;(void)v;(void)n;(void)w;invalid++;}
+static unsigned timer_arms,data_entries;
+static int64_t last_timer;
+#define QEMU_CLOCK_VIRTUAL 0
+static int64_t qemu_clock_get_ns(int clock){(void)clock;return 100;}
+static void timer_mod(void*timer,int64_t at){(void)timer;timer_arms++;last_timer=at;}
+static bool video_secondary_isp_ready(NikonZ8State*s){(void)s;return false;}
 '''
 
 CHECKS=r'''
@@ -110,6 +119,17 @@ int main(void){
  engine1543_control_write(&s,11,0x15432004,0x100);
  assert(!s.engine1543_active[1]&&!s.og4k_header_wait&&og4k_header_poll(&s));
  assert(!irqs&&!photo_requests&&!photo_tries&&!invalid);
+ /* Execute the actual scheduling prefix. A waiting latch must retain its
+  * retry; a later ready tick must progress without inventing a completion. */
+ s=fresh();s.raw_pipeline_model=true;engine1543_control_write(&s,11,0x15432004,0x101);
+ timer_arms=data_entries=0;raw_pipeline_tick(&s);
+ assert(timer_arms==1&&last_timer==33333433&&!data_entries&&s.og4k_header_wait);
+ supplier(&s);raw_pipeline_tick(&s);
+ assert(timer_arms==2&&data_entries==1&&!s.og4k_header_wait&&s.og4k_header_releases==1);
+ s.raw_pipeline_output_done=s.z8_raw_owed=true;raw_pipeline_tick(&s);
+ assert(timer_arms==3&&last_timer==2000100&&data_entries==2);
+ s.z8_raw_owed=false;raw_pipeline_tick(&s);assert(timer_arms==3&&data_entries==2);
+ assert(!irqs&&!photo_requests&&!photo_tries&&!invalid);
  puts("Default-off, 13 check states, latch, readiness, idempotence, changed program and cancel passed");
  return 0;
 }
@@ -122,10 +142,13 @@ class HeaderModelContract(unittest.TestCase):
         body=DECLARATIONS
         for name in ('engine1543_capture_ready','engine1543_video_ready','engine1543_ready'):body+=helpers.function(source,name)
         for name in ('og4k_header_rejections','og4k_header_start','og4k_header_poll'):body+=helpers.function(header,name)
-        body+=helpers.function(source,'engine1543_control_write')+CHECKS
+        body+=helpers.function(source,'engine1543_control_write')
+        pixels=(args.qemu_repo/'qemu/nikon-z8-pixels.h').read_text()
+        prefix=helpers.function(pixels,'raw_pipeline_tick').split('    bool internal = video && s->video_raw_transport_model;',1)[0]
+        body+=prefix+'    data_entries++;\n}\n'+CHECKS
         with tempfile.TemporaryDirectory(prefix='z8-header-contract-') as folder:
             path=Path(folder);(path/'test.c').write_text(body)
-            subprocess.run(['cc','-std=c11','-Wall','-Wextra','-Werror',str(path/'test.c'),'-o',str(path/'test')],check=True)
+            subprocess.run(['cc','-std=c11','-Wall','-Wextra','-Werror','-Wno-unused-variable',str(path/'test.c'),'-o',str(path/'test')],check=True)
             result=subprocess.run([str(path/'test')],check=True,capture_output=True,text=True);print(result.stdout.strip())
 
 if __name__=='__main__':unittest.main()
