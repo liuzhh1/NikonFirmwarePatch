@@ -108,3 +108,5 @@ python tools/build_opengate4k_lab.py \
 另行核对存储未确认时RAW输出和writer阶段1任务仍保留；提供存储确认后原厂回调才释放任务。9项全部交付后，提供最终任务通知、执行原厂清理，可从状态2→3→0并清除残留补齐描述符，交付内容不变。这个最终通知及存储确认属于受控输入，文件系统、真实TICO/传感器停止、RTOS并发及close没有验收。
 
 新增10项AArch64执行和1项原厂窗口核对，完整项目162项通过、无跳过，103项机器码执行、19项完整输入构建；8段新核验窗口保持原厂/自制基线字节。普通4K与原8K在相同保留末项/停止路径下回归通过，生成后换菜单也保持候选几何。MAIN及全部固件字节未改。详见[会话停止记录](../docs/data/opengate4k-nrmt-session-stop.json)，复核入口为`python -B -m unittest discover -s tests -p test_opengate4k_nrmt_stop.py -v`。
+
+后续新增独立RAW/编码描述执行核对，完整项目扩展至171项；本层及MAIN未改。原厂描述安装前后和关闭恢复已核对，候选RAW最低跨度为20,019,584字节，但实际池容量/分配时序尚未观察。真实Record请求的消息传递仅完成静态定位，仍不能把受控请求种类视为机身实际值。详见[首个实机候选包前置项](../docs/opengate-4k-camera-candidate.md)及[缓冲记录](../docs/data/opengate4k-native-buffer-audit.json)。

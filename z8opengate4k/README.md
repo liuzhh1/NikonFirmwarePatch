@@ -2,7 +2,7 @@
 
 该目录包含实际 AArch64 前端原型和独立模拟器构建入口。**它还不是可录制的 4K 固件，也不生成可刷入相机的更新包。** 生产入口 `patch.py`、原有审阅配方和原有 8.3K 功能保持不变。
 
-默认关闭的[录制描述实验层](RECORDER.md)通过`--experimental-recorder`启用，同步4K候选录制描述、NRMT/NCTG及四档预算。[文件身份回放层](PLAYBACK.md)使用`--experimental-playback`，[NCTG副本身份层](NCTG-LIFETIME.md)使用`--experimental-nctg-lifetime`。新增[NRMT调用内身份层](NRMT-LIFETIME.md)，通过`--experimental-nrmt-lifetime`在原厂参数生成函数入口捕获身份，后续高度与裁切回调不再读取当前菜单。126项项目测试通过，包含原厂生成器20个主回调和13个嵌套回调的机器码执行。参数缓冲复用后的所有权、完整关闭、TICO、真实影片解码、实机录制和i菜单/取消仍未验收。未启用新增层时，各旧阶段MAIN哈希保持不变。
+默认关闭的[录制描述实验层](RECORDER.md)通过`--experimental-recorder`启用，同步4K候选录制描述、NRMT/NCTG及四档预算。[文件身份回放层](PLAYBACK.md)使用`--experimental-playback`，[NCTG副本身份层](NCTG-LIFETIME.md)使用`--experimental-nctg-lifetime`。[NRMT调用内身份层](NRMT-LIFETIME.md)通过`--experimental-nrmt-lifetime`在原厂参数生成函数入口捕获身份，后续高度与裁切回调不再读取当前菜单。最新171项项目测试通过，包含原厂生成器20+13个回调、消费/受控停止及RAW描述执行。真实采集缓冲容量/所有权、完整关闭、TICO、实际影片和i菜单/取消仍未验收。新增[缓冲核对工具与首包前置项](../docs/opengate-4k-camera-candidate.md)，仍没有新增相机更新包。未启用新增层时，各旧阶段MAIN哈希保持不变。
 
 ## 已实现的实验部分
 
