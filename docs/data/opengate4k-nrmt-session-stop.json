@@ -1,0 +1,774 @@
+{
+  "schema": "z8-opengate4k-nrmt-session-stop-1",
+  "date": "2026-11-13",
+  "source_parent_commit": "635379f0384b387c248a84e34d1b22e8e943bd67",
+  "main_sha256": "f80ee74d066a38ef8f61e3b29a1349090f9607ba614ce24744724891da4f94a3",
+  "native_windows": [
+    {
+      "name": "native config builder",
+      "address": "0x40727a18",
+      "bytes": 612,
+      "sha256": "49a062a2282707e2e760558007a72bcf8c68bc7b3569e879007b7bfc0356a174"
+    },
+    {
+      "name": "config submit veneer",
+      "address": "0x40d1d4f0",
+      "bytes": 4,
+      "sha256": "8fbe657d1f1544b79e0f3e00662665b229bb8ca4256c14168523dddab73be3e4"
+    },
+    {
+      "name": "global config transfer",
+      "address": "0x40d1cff4",
+      "bytes": 120,
+      "sha256": "69c5763da107f5d4e218d5144ef520166f715c6c74cfb2236232084c87dcf6bb"
+    },
+    {
+      "name": "record config transfer",
+      "address": "0x40d1ff60",
+      "bytes": 64,
+      "sha256": "0e10cb5c3b49757eee0571e4d03867f84cd777fd09746fa70c52c407038ce7e1"
+    },
+    {
+      "name": "writer config transfer",
+      "address": "0x40d228a8",
+      "bytes": 64,
+      "sha256": "2cc00a6f74d5feec903de9204379fe977bb14a1ca665f59c4153512191aa583d"
+    },
+    {
+      "name": "native last item repetition",
+      "address": "0x40d20770",
+      "bytes": 1340,
+      "sha256": "522a121639a1c1ed201174ba0ff37fb22a900ee9ce85c2f10d01bb06ddc05e69"
+    },
+    {
+      "name": "native stop progression",
+      "address": "0x40d20cac",
+      "bytes": 376,
+      "sha256": "aafc1a5db126066ed5eb5df5bc512882d61851740d53b324d38c7481aee5397b"
+    },
+    {
+      "name": "record task cleanup events",
+      "address": "0x40d1ea48",
+      "bytes": 4012,
+      "sha256": "b7f24996ca64f7523f2a01173063c5b08875b1910e4943b16abb23adcccf5b8a"
+    }
+  ],
+  "source_tests": "tests/test_opengate4k_nrmt_stop.py",
+  "source_tests_sha256": "555c46a373ba7588ad3a13a9f6c1ce6e73e6461912b029c3599891534ce2d962",
+  "configuration_mapping": [
+    {
+      "attribute_file_type": 6,
+      "internal_mode": 2,
+      "raw_flag": 1,
+      "record_and_writer_equal": true
+    },
+    {
+      "attribute_file_type": 5,
+      "internal_mode": 1,
+      "raw_flag": 0,
+      "record_and_writer_equal": true
+    },
+    {
+      "attribute_file_type": 4,
+      "internal_mode": 0,
+      "raw_flag": 0,
+      "record_and_writer_equal": true
+    },
+    {
+      "attribute_file_type": 2,
+      "internal_mode": 0,
+      "raw_flag": 0,
+      "record_and_writer_equal": true
+    }
+  ],
+  "request_kind_retention": [
+    {
+      "request_kind": 0,
+      "retain_last": 0
+    },
+    {
+      "request_kind": 1,
+      "retain_last": 1
+    },
+    {
+      "request_kind": 2,
+      "retain_last": 1
+    },
+    {
+      "request_kind": 3,
+      "retain_last": 0
+    }
+  ],
+  "stop_cases": [
+    {
+      "supplied_inputs": 1,
+      "before_stop": {
+        "input": [
+          1,
+          0
+        ],
+        "metadata": 0,
+        "storage_groups": 0
+      },
+      "stop_ticks": 9,
+      "trace": [
+        {
+          "tick": 1,
+          "state": 1,
+          "input": [
+            1,
+            0
+          ],
+          "metadata": 0,
+          "stored_groups": 0
+        },
+        {
+          "tick": 2,
+          "state": 1,
+          "input": [
+            1,
+            1
+          ],
+          "metadata": 1,
+          "stored_groups": 0
+        },
+        {
+          "tick": 3,
+          "state": 1,
+          "input": [
+            1,
+            2
+          ],
+          "metadata": 2,
+          "stored_groups": 0
+        },
+        {
+          "tick": 4,
+          "state": 1,
+          "input": [
+            1,
+            3
+          ],
+          "metadata": 3,
+          "stored_groups": 0
+        },
+        {
+          "tick": 5,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 0
+        },
+        {
+          "tick": 6,
+          "state": 1,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 0
+        },
+        {
+          "tick": 7,
+          "state": 1,
+          "input": [
+            1,
+            6
+          ],
+          "metadata": 6,
+          "stored_groups": 0
+        },
+        {
+          "tick": 8,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 1
+        },
+        {
+          "tick": 9,
+          "state": 2,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 1
+        }
+      ],
+      "latched_target": 1,
+      "native_limit": 3,
+      "stored_chunks": 3,
+      "all_supplied_inputs_in_captured_chunks": true,
+      "parameter_and_payload_prefix_checked": true,
+      "stored_chunks_concatenated_sha256": "a029c8966eb1eb1694a89d534c9bf78b4b06cfa1290e5113905fa8f2d236fb98",
+      "nrmt_regenerated_during_stop": false,
+      "native_record_state": 2,
+      "progress_counters": [
+        2,
+        3,
+        1,
+        3
+      ],
+      "errors": []
+    },
+    {
+      "supplied_inputs": 2,
+      "before_stop": {
+        "input": [
+          2,
+          0
+        ],
+        "metadata": 0,
+        "storage_groups": 0
+      },
+      "stop_ticks": 8,
+      "trace": [
+        {
+          "tick": 1,
+          "state": 1,
+          "input": [
+            1,
+            1
+          ],
+          "metadata": 1,
+          "stored_groups": 0
+        },
+        {
+          "tick": 2,
+          "state": 1,
+          "input": [
+            1,
+            2
+          ],
+          "metadata": 2,
+          "stored_groups": 0
+        },
+        {
+          "tick": 3,
+          "state": 1,
+          "input": [
+            1,
+            3
+          ],
+          "metadata": 3,
+          "stored_groups": 0
+        },
+        {
+          "tick": 4,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 0
+        },
+        {
+          "tick": 5,
+          "state": 1,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 0
+        },
+        {
+          "tick": 6,
+          "state": 1,
+          "input": [
+            1,
+            6
+          ],
+          "metadata": 6,
+          "stored_groups": 0
+        },
+        {
+          "tick": 7,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 1
+        },
+        {
+          "tick": 8,
+          "state": 2,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 1
+        }
+      ],
+      "latched_target": 1,
+      "native_limit": 3,
+      "stored_chunks": 3,
+      "all_supplied_inputs_in_captured_chunks": true,
+      "parameter_and_payload_prefix_checked": true,
+      "stored_chunks_concatenated_sha256": "ec50a65a066452c95a752caaf8ba6947fa305f39e3c64741641ee95167388768",
+      "nrmt_regenerated_during_stop": false,
+      "native_record_state": 2,
+      "progress_counters": [
+        2,
+        3,
+        1,
+        3
+      ],
+      "errors": []
+    },
+    {
+      "supplied_inputs": 4,
+      "before_stop": {
+        "input": [
+          4,
+          0
+        ],
+        "metadata": 0,
+        "storage_groups": 0
+      },
+      "stop_ticks": 6,
+      "trace": [
+        {
+          "tick": 1,
+          "state": 1,
+          "input": [
+            1,
+            3
+          ],
+          "metadata": 3,
+          "stored_groups": 0
+        },
+        {
+          "tick": 2,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 0
+        },
+        {
+          "tick": 3,
+          "state": 1,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 0
+        },
+        {
+          "tick": 4,
+          "state": 1,
+          "input": [
+            1,
+            6
+          ],
+          "metadata": 6,
+          "stored_groups": 0
+        },
+        {
+          "tick": 5,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 1
+        },
+        {
+          "tick": 6,
+          "state": 2,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 1
+        }
+      ],
+      "latched_target": 3,
+      "native_limit": 3,
+      "stored_chunks": 3,
+      "all_supplied_inputs_in_captured_chunks": false,
+      "parameter_and_payload_prefix_checked": true,
+      "stored_chunks_concatenated_sha256": "4981cb7d015e05730722664ee537ac29cc12ba5d6e7410ef5541d96b8cdf04d7",
+      "nrmt_regenerated_during_stop": false,
+      "native_record_state": 2,
+      "progress_counters": [
+        2,
+        3,
+        1,
+        3
+      ],
+      "errors": []
+    },
+    {
+      "supplied_inputs": 8,
+      "before_stop": {
+        "input": [
+          1,
+          4
+        ],
+        "metadata": 4,
+        "storage_groups": 1
+      },
+      "stop_ticks": 8,
+      "trace": [
+        {
+          "tick": 1,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 1
+        },
+        {
+          "tick": 2,
+          "state": 1,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 1
+        },
+        {
+          "tick": 3,
+          "state": 1,
+          "input": [
+            1,
+            6
+          ],
+          "metadata": 6,
+          "stored_groups": 1
+        },
+        {
+          "tick": 4,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 2
+        },
+        {
+          "tick": 5,
+          "state": 1,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 2
+        },
+        {
+          "tick": 6,
+          "state": 1,
+          "input": [
+            1,
+            6
+          ],
+          "metadata": 6,
+          "stored_groups": 2
+        },
+        {
+          "tick": 7,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 3
+        },
+        {
+          "tick": 8,
+          "state": 2,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 3
+        }
+      ],
+      "latched_target": 7,
+      "native_limit": 9,
+      "stored_chunks": 9,
+      "all_supplied_inputs_in_captured_chunks": true,
+      "parameter_and_payload_prefix_checked": true,
+      "stored_chunks_concatenated_sha256": "cc1ba58ced6012b154992836975b981e0a50a272852adfd1c825ec1670f1b0f2",
+      "nrmt_regenerated_during_stop": false,
+      "native_record_state": 2,
+      "progress_counters": [
+        2,
+        9,
+        1,
+        9
+      ],
+      "errors": []
+    },
+    {
+      "supplied_inputs": 9,
+      "before_stop": {
+        "input": [
+          1,
+          5
+        ],
+        "metadata": 5,
+        "storage_groups": 1
+      },
+      "stop_ticks": 7,
+      "trace": [
+        {
+          "tick": 1,
+          "state": 1,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 1
+        },
+        {
+          "tick": 2,
+          "state": 1,
+          "input": [
+            1,
+            6
+          ],
+          "metadata": 6,
+          "stored_groups": 1
+        },
+        {
+          "tick": 3,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 2
+        },
+        {
+          "tick": 4,
+          "state": 1,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 2
+        },
+        {
+          "tick": 5,
+          "state": 1,
+          "input": [
+            1,
+            6
+          ],
+          "metadata": 6,
+          "stored_groups": 2
+        },
+        {
+          "tick": 6,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 3
+        },
+        {
+          "tick": 7,
+          "state": 2,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 3
+        }
+      ],
+      "latched_target": 8,
+      "native_limit": 9,
+      "stored_chunks": 9,
+      "all_supplied_inputs_in_captured_chunks": true,
+      "parameter_and_payload_prefix_checked": true,
+      "stored_chunks_concatenated_sha256": "a3fb358c851f5894c2ded660551f067f76d35102a295df3489e336f6b561a3b7",
+      "nrmt_regenerated_during_stop": false,
+      "native_record_state": 2,
+      "progress_counters": [
+        2,
+        9,
+        1,
+        9
+      ],
+      "errors": [],
+      "after_supplied_completion_and_native_cleanup": {
+        "notification_state": 3,
+        "record_state": 0,
+        "input": [
+          0,
+          0
+        ],
+        "metadata": 0,
+        "raw_output": [
+          0,
+          0
+        ],
+        "storage_groups_preserved": 3
+      }
+    },
+    {
+      "supplied_inputs": 10,
+      "before_stop": {
+        "input": [
+          1,
+          6
+        ],
+        "metadata": 6,
+        "storage_groups": 1
+      },
+      "stop_ticks": 6,
+      "trace": [
+        {
+          "tick": 1,
+          "state": 1,
+          "input": [
+            1,
+            3
+          ],
+          "metadata": 3,
+          "stored_groups": 2
+        },
+        {
+          "tick": 2,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 2
+        },
+        {
+          "tick": 3,
+          "state": 1,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 2
+        },
+        {
+          "tick": 4,
+          "state": 1,
+          "input": [
+            1,
+            6
+          ],
+          "metadata": 6,
+          "stored_groups": 2
+        },
+        {
+          "tick": 5,
+          "state": 1,
+          "input": [
+            1,
+            4
+          ],
+          "metadata": 4,
+          "stored_groups": 3
+        },
+        {
+          "tick": 6,
+          "state": 2,
+          "input": [
+            1,
+            5
+          ],
+          "metadata": 5,
+          "stored_groups": 3
+        }
+      ],
+      "latched_target": 9,
+      "native_limit": 9,
+      "stored_chunks": 9,
+      "all_supplied_inputs_in_captured_chunks": false,
+      "parameter_and_payload_prefix_checked": true,
+      "stored_chunks_concatenated_sha256": "a3fb358c851f5894c2ded660551f067f76d35102a295df3489e336f6b561a3b7",
+      "nrmt_regenerated_during_stop": false,
+      "native_record_state": 2,
+      "progress_counters": [
+        2,
+        9,
+        1,
+        9
+      ],
+      "errors": []
+    }
+  ],
+  "previous_six_item_control_explanation": "Retain-last was enabled only after all inputs had been dispatched. Native retained-session processing needs the last input available from the start to repeat it for triple-group padding. The older control remains a valid negative case, not evidence of a stock-camera deadlock.",
+  "target_count_limit": "The latched target excludes the retained item in the 2/4/8/9/10 input controls. Four/ten supplied inputs yield three/nine captured chunks; correlation to actual capture sequence, frame count and file duration is unqualified.",
+  "fixture": "Synthetic request/attributes and file/session template; config-start acknowledgement, ticks, storage completion and final task notification are bounded inputs. Native config builder/transfers, capture producer, NRMT, retained-last repetition, batching, quota counters, writer staging and cleanup execute.",
+  "native_mode_mapping_executed": true,
+  "native_retained_tail_completion_executed": true,
+  "raw_frame_payload_generated_by_tico": false,
+  "request_kind_selected_by_real_camera": false,
+  "actual_capture_sequence_and_file_duration_qualified": false,
+  "attribute_identity_with_nctg_qualified": false,
+  "rtos_or_storage_api_executed": false,
+  "physical_stop_close_qualified": false,
+  "firmware_bytes_changed": false,
+  "flash_package_generated": false,
+  "input_packages": {
+    "original": {
+      "bytes": 99051117,
+      "sha256": "d67413c2ede6b9ce8887175f20700bd9fbad2a973a4820968c45503d15d80d96"
+    },
+    "reviewed_custom": {
+      "bytes": 99051117,
+      "sha256": "f9d5719cec76a814044f8f705dcb60cb6331da485cb4df680be5ff549c464d53"
+    }
+  },
+  "validation": {
+    "project_tests": 162,
+    "skips": 0,
+    "aarch64_execution_cases": 103,
+    "complete_input_build_checks": 19,
+    "new_cases": 11,
+    "new_aarch64_cases": 10,
+    "native_window_check_cases": 1,
+    "native_windows_checked": 8,
+    "seconds": 169.948,
+    "result": "passed",
+    "log_sha256": "a870c2ed6b10265bc8ad692f517d3394e44b5ef9e3bddb6b8d870e5dbee2056f",
+    "command": "python -B -m unittest discover -s tests",
+    "environment": [
+      "OG4K_COMPILER",
+      "OG4K_ORIGINAL",
+      "OG4K_BASELINE"
+    ]
+  }
+}
