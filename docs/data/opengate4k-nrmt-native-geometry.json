@@ -1,0 +1,70 @@
+{
+  "schema": "z8-opengate4k-nrmt-native-geometry-1",
+  "main_sha256": "f80ee74d066a38ef8f61e3b29a1349090f9607ba614ce24744724891da4f94a3",
+  "native_main": "0x410a4fc4",
+  "native_callbacks": {
+    "main": 20,
+    "nested": 13
+  },
+  "execution": "Unicorn AArch64; native formatter and callbacks execute; audited external helpers use bounded fixtures",
+  "code_sha256": "7bfb1353cf6ae7a518c1bab3421b02c66ec5c6152f95023692fa0802d989a782",
+  "candidate": {
+    "packet_bytes": 1024,
+    "packet_sha256": "da196a498e22139c7442d29e0e4e88be71dd586ad8e0048c668bed6301b58c10",
+    "coded_height_hex": "0000000ac4",
+    "active_record_hex": "4500030004000000060004002010c00a"
+  },
+  "ordinary": {
+    "packet_bytes": 1024,
+    "packet_sha256": "937cc7ddeef5fd0f9f2341fc370fc8a52293c8dd991e53e74b0685d8aaaeb62d",
+    "coded_height_hex": "000000091a",
+    "active_record_hex": "45000300040000000600040020101209"
+  },
+  "geometry_changed_offsets": [
+    72,
+    73,
+    598,
+    599
+  ],
+  "mid_call_menu_change": {
+    "before_height_packet_unchanged": true,
+    "between_height_and_crop_packet_unchanged": true,
+    "ordinary_not_promoted": true
+  },
+  "native_ring": {
+    "slots": 60,
+    "first_packet_retained_through_invocation": 60,
+    "reused_on_invocation": 61,
+    "same_pointer": true,
+    "contents_replaced": true
+  },
+  "external_helper_entries": [
+    "0x40c784d4",
+    "0x40c784ec",
+    "0x40c78570",
+    "0x40c7858c",
+    "0x40c79038",
+    "0x41059db4",
+    "0x4105abcc",
+    "0x41061928",
+    "0x41068c04",
+    "0x41187368",
+    "0x4127a900",
+    "0x4127ab40",
+    "0x4127af38"
+  ],
+  "non_geometry_values_fixture_derived": true,
+  "calibration_exposure_date_fps_qualified": false,
+  "file_io_executed": false,
+  "tico_executed": false,
+  "physical_recording_qualified": false,
+  "next_consumer_static_only": {
+    "caller": "0x40e99e88",
+    "dispatch": "0x40d1d504",
+    "target": "0x40d200fc",
+    "descriptor_copy": "0x40d20274",
+    "descriptor_bytes": "0x38",
+    "following_entry": "0x40ca1ab4",
+    "consumption_lifetime_qualified": false
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "z8-opengate4k-nrmt-submit-boundary-1",
+  "date": "2026-11-13",
+  "main_sha256": "f80ee74d066a38ef8f61e3b29a1349090f9607ba614ce24744724891da4f94a3",
+  "native_entry": "0x40d200fc",
+  "native_body_sha256": "70dd91a312887172daad379b59db70cfb21cb98c58ab5920ed07008adcee29b7",
+  "fixture": "synthetic descriptors, native producer AArch64; mutex/queue/event APIs replaced at their boundaries",
+  "prepared_task_bytes": 168,
+  "metadata_descriptor_offset": "0x68",
+  "metadata_descriptor_bytes": "0x38",
+  "packet_pointer_offset": "0x80",
+  "packet_length_offset": "0x88",
+  "descriptor_copied_exactly": true,
+  "packet_pointer_retained": true,
+  "parameter_packet_bytes": 1024,
+  "prepared_task_sha256": "8665d5d9d87667d424fd13bd298a368c284c77c3da88c6541e1e9d360d15ea67",
+  "rejected_inputs": [
+    {
+      "input": {
+        "state": 0
+      },
+      "queue_calls": 0
+    },
+    {
+      "input": {
+        "state": 3
+      },
+      "queue_calls": 0
+    },
+    {
+      "input": {
+        "count": 0
+      },
+      "queue_calls": 0
+    },
+    {
+      "input": {
+        "count": 61
+      },
+      "queue_calls": 0
+    },
+    {
+      "input": {
+        "count": 21,
+        "duplicates": 2
+      },
+      "queue_calls": 0
+    }
+  ],
+  "sixty_task_batch": {
+    "count": 30,
+    "duplicates": 1,
+    "queue_calls": 60
+  },
+  "duplicate_flags": [
+    0,
+    1,
+    0,
+    1
+  ],
+  "refusal": {
+    "error_arguments": [
+      [
+        59,
+        7,
+        0,
+        0
+      ]
+    ],
+    "event_masks": [
+      1024
+    ]
+  },
+  "packet_unchanged": true,
+  "external_submission_api_entries": [
+    "0x40c002a0",
+    "0x40ca1990",
+    "0x40ca1ab4",
+    "0x40ca1ac4",
+    "0x40d2c660",
+    "0x40d2c674"
+  ],
+  "raw_image_data_provided": false,
+  "operating_system_queue_executed": false,
+  "encoder_consumer_executed": false,
+  "writer_executed": false,
+  "close_qualified": false
+}

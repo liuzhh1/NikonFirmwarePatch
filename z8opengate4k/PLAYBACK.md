@@ -37,4 +37,4 @@ python tools/build_opengate4k_lab.py \
 
 停止/切换模式后的录制元数据回调身份仍未验收。NRMT、NCTG和writer-close使用不同布局的上下文，尚未证实对象关联，不能借用原8K的代理writer登记表推定生命周期正确。i菜单/取消、TICO编码高度、真实传感器读出、代理码流和完整QEMU/实机回放也仍待验证。精简证据见[验证记录](../docs/data/opengate4k-playback-validation.json)。
 
-后续已单独定位原厂NCTG属性及信息块复制路径，增加[NCTG副本身份实验层](NCTG-LIFETIME.md)。它与本回放层可以同时启用；本层原组合MAIN哈希保持不变。最新101项项目测试通过，NRMT、通用writer关闭与真实录像仍未验收。
+后续已单独定位原厂NCTG属性及信息块复制路径，增加[NCTG副本身份实验层](NCTG-LIFETIME.md)。它与本回放层可以同时启用；本层原组合MAIN哈希保持不变。该阶段101项项目测试通过；后续NRMT调用内身份及提交边界已有独立执行检查，当前完整状态见[进展清单](../docs/opengate-4k-status.md)。通用writer关闭与真实录像仍未验收。

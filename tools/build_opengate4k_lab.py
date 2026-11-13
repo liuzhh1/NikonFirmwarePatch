@@ -18,15 +18,23 @@ def main():
                    help='Add file-owned playback geometry (requires --experimental-recorder; no clip decode qualification)')
     p.add_argument('--experimental-nctg-lifetime',action='store_true',
                    help='Latch native NCTG working-copy identity (requires --experimental-recorder; NRMT/close unqualified)')
+    p.add_argument('--experimental-nrmt-lifetime',action='store_true',
+                   help='Use call-scoped NRMT identity (requires --experimental-recorder; ring/close unqualified)')
     a=p.parse_args()
     if a.experimental_playback and not a.experimental_recorder:
         p.error('--experimental-playback requires --experimental-recorder')
     if a.experimental_nctg_lifetime and not a.experimental_recorder:
         p.error('--experimental-nctg-lifetime requires --experimental-recorder')
+    if a.experimental_nrmt_lifetime and not a.experimental_recorder:
+        p.error('--experimental-nrmt-lifetime requires --experimental-recorder')
     if a.output.exists():p.error('Output directory must be new')
     for path in (a.original,a.baseline):
         if not path.is_file() or path.stat().st_size!=99051117:p.error('Complete C3.11 packages required')
-    if a.experimental_nctg_lifetime:
+    if a.experimental_nrmt_lifetime:
+        from z8opengate4k.nrmt_lifetime import make_nrmt_main
+        builder=lambda original,baseline,compiler:make_nrmt_main(original,baseline,compiler,
+            playback=a.experimental_playback,nctg_lifetime=a.experimental_nctg_lifetime)
+    elif a.experimental_nctg_lifetime:
         from z8opengate4k.nctg_lifetime import make_lifetime_main
         builder=lambda original,baseline,compiler:make_lifetime_main(original,baseline,compiler,playback=a.experimental_playback)
     elif a.experimental_playback:
