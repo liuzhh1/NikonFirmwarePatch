@@ -19,6 +19,7 @@ SCREENSHOTS = {
     'docs/images/pixelshift-groups.png',
     'docs/images/nraw-quality-tiers.png',
     'docs/images/opengate-frame-rates.png',
+    'docs/images/opengate4k-lab-menu.png',
 }
 # Reviewed small UI source assets, not firmware inputs.
 SCREENSHOTS.update({'z8log/icons/slog3_fill.png', 'z8quality/icons/fill_0a5e.png', 'z8quality/icons/menu_1289.png', 'z8log/icons/slog3_outline.png', 'z8quality/icons/outline_0769.png', 'z8quality/icons/fill_0a5b.png', 'z8quality/icons/fill_0a5c.png', 'z8quality/icons/fill_0a5d.png', 'z8log/icons/log3g10_fill.png', 'z8quality/icons/menu_1288.png', 'z8quality/icons/outline_0aa1.png', 'z8quality/icons/outline_0a9e.png', 'z8quality/icons/menu_1285.png', 'z8quality/icons/menu_1286.png', 'z8quality/icons/menu_10f4.png', 'z8quality/icons/outline_0765.png', 'z8quality/icons/menu_1287.png', 'z8quality/icons/outline_0a9f.png', 'z8quality/icons/fill_0a5f.png', 'z8log/icons/log3g10_outline.png', 'z8quality/icons/menu_10f0.png', 'z8quality/icons/menu_10f2.png', 'z8quality/icons/outline_0a9d.png', 'z8quality/icons/outline_0aa0.png', 'z8quality/icons/outline_0761.png'})

@@ -48,6 +48,8 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: python -B tests/test_compiled_paths.py
+      - name: Test read-only 4K open-gate research tools
+        run: python -B -m unittest discover -s tests -p test_opengate4k_probe.py
 
   windows-toolkit:
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.firmware_smoke

@@ -1,0 +1,201 @@
+{
+  "schema": "z8-opengate4k-header-retry-1",
+  "date": "2026-11-12",
+  "scope": "Corrected retry scheduling; bounded host-peer setup, no Record input",
+  "qemu_sha256": "47a6b1b655367620127f243589691fa9c6fd15b7f21124d0cff05e912fcc9a55",
+  "emulator_commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+  "hardware_model_modified": true,
+  "guest_runtime_ram_patches": [],
+  "cpu_register_redirection": false,
+  "recording_started": false,
+  "video_qualified": false,
+  "fix": "Header wait follows upstream raw_pipeline_tick timer rearm; former placement could lose the tick retry.",
+  "scheduling_contract": [
+    "Waiting tick retains 33333333ns rearm",
+    "A later ready tick releases once",
+    "Completed output with owed frame retains 2000000ns rearm",
+    "No owed frame preserves boundary wait",
+    "No IRQ or completion invented"
+  ],
+  "tests": {
+    "project": 51,
+    "header_contract": 1,
+    "upstream_contracts": 4,
+    "native_replay": 4
+  },
+  "model_files": {
+    "qemu/nikon-z8-lab.c": "1a005cd7dd0af402637f3731deeb8a0470798345ea3b9f457351bba5dc4c79bc",
+    "qemu/nikon-z8-pixels.h": "1f31c7f4af0f95a04ae42022c21eb578c9375b5a35c35a5501be31c8ba02c1bb",
+    "qemu/nikon-z8-og4k-header.h": "86c307b9c16c90550ec0cdb270b35d820a5130ec7be0681a807b6f2393c3937d"
+  },
+  "runs": {
+    "stock": {
+      "main_sha256": "2b43a31c9de838f84b12416de4348a7004e65be07f853ec56ec2b10f3a8e3853",
+      "result_sha256": "472faea335b4b330f7209781e41651aac0c74be514d1f5e8b8e8034186d3eac9",
+      "stderr_sha256": "784abe01cc58c4c6a70cd8ad5eadbaa0bcfb4598fad8c84f2de63ae2b34b2847",
+      "uart_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "replay_file": "opengate4k-header-stock-replay.json",
+      "replay_sha256": "0799d7cc072ce8edae7fabbcfeddcc380c33665a6b7b6a2a8473bff3118a3fd5",
+      "snapshot": {
+        "kind": 1,
+        "actual": 8,
+        "nominal": 4,
+        "size": 4,
+        "rate": 4,
+        "request": 4,
+        "file_type": 6
+      },
+      "frontend": [
+        4140,
+        2344,
+        4140,
+        2344
+      ],
+      "driver": 15,
+      "virtual_seconds_after_movie": 81.405768783,
+      "existing_runtime_checks": 2118,
+      "all_checks_passed": true,
+      "transport_clean": true,
+      "owned_qemu_stopped": true,
+      "primary_exception": null,
+      "header": {
+        "starts": 1,
+        "stops": 1,
+        "active": false
+      },
+      "early_header": {
+        "enabled": true,
+        "waiting": false,
+        "rejected": 0,
+        "starts": 1,
+        "releases": 0,
+        "physical_verified": false
+      },
+      "video": {
+        "video_frames": 0,
+        "video_source_acks": 0,
+        "video_isp_acks": 0
+      },
+      "prior_photo_synthetic_raw_frames": 238,
+      "source2_control": 0,
+      "engine150c_active": 0,
+      "recording_started": false,
+      "video_qualified": false,
+      "isp1_config_0x218": 0
+    },
+    "lab": {
+      "main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+      "result_sha256": "c93c94da4db9b8cb0b757a2f5fde9ef6b52d0079de405bda85fe1cc269489353",
+      "stderr_sha256": "ad604ee56e14f394052ca72fef3edefd1679197c67f083cf55291702d85dec2c",
+      "uart_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "replay_file": "opengate4k-header-lab-replay.json",
+      "replay_sha256": "f614580124e2c4be70e30fcf6d28c0fb2987f7e821039292bd7a0f89163a1a6e",
+      "snapshot": {
+        "kind": 1,
+        "actual": 8,
+        "nominal": 4,
+        "size": 4,
+        "rate": 4,
+        "request": 4,
+        "file_type": 6
+      },
+      "frontend": [
+        4140,
+        2756,
+        4140,
+        2756
+      ],
+      "driver": 14,
+      "virtual_seconds_after_movie": 94.27568101,
+      "existing_runtime_checks": 2038,
+      "all_checks_passed": true,
+      "transport_clean": true,
+      "owned_qemu_stopped": true,
+      "primary_exception": null,
+      "header": {
+        "starts": 1,
+        "stops": 1,
+        "active": false
+      },
+      "early_header": {
+        "enabled": true,
+        "waiting": false,
+        "rejected": 0,
+        "starts": 1,
+        "releases": 0,
+        "physical_verified": false
+      },
+      "video": {
+        "video_frames": 0,
+        "video_source_acks": 0,
+        "video_isp_acks": 0
+      },
+      "prior_photo_synthetic_raw_frames": 238,
+      "source2_control": 0,
+      "engine150c_active": 0,
+      "recording_started": false,
+      "video_qualified": false,
+      "isp1_config_0x218": 0
+    }
+  },
+  "native_ex_menu_control": {
+    "scope": "Original EX half-shutter/Menu only; stopped before N-RAW or Record on superseded scheduling binary",
+    "main_sha256": "2b43a31c9de838f84b12416de4348a7004e65be07f853ec56ec2b10f3a8e3853",
+    "mcu_sha256": "8ce129fa3689d1d619f25ba1c44a3a9f1964c76fe77b95adeb4ea912463c8c63",
+    "qemu_sha256": "85efd800a95a22909b9b4a804c7cfb39aa7278ade9b1492c17a65a1636577aee",
+    "result_sha256": "d244b0aeb0144bea2fc51ba49ad3d93d2dce0f3a2ea304a8198fefdf93bd9dbd",
+    "final_image_sha256": "50a90bbf42b8a8e76fdd9524f4e57c093fbf8be5ce83cc5e95afd85356d59ab4",
+    "contacts": [
+      {
+        "at": 16,
+        "property": "mcu-pins",
+        "value": "G1=0",
+        "delivered_at": 16.00010198
+      },
+      {
+        "at": 16.4,
+        "property": "mcu-pins",
+        "value": "G1=1",
+        "delivered_at": 16.400632744
+      },
+      {
+        "at": 24,
+        "property": "mcu-contacts",
+        "value": "23.6=0",
+        "delivered_at": 24.000133713
+      },
+      {
+        "at": 24.4,
+        "property": "mcu-contacts",
+        "value": "23.6=1",
+        "delivered_at": 24.400453092
+      }
+    ],
+    "stop": {
+      "reason": "explicit_done_file",
+      "virtual_seconds": 25.339879193,
+      "delivered": 4,
+      "total": 4
+    },
+    "host_mcu_messages": false,
+    "mcu": {
+      "main_frames": 572,
+      "mcu_frames": 561,
+      "bad_frames": 0,
+      "system_resets": 1
+    },
+    "final_ui_control": 1,
+    "observed_rendered_menu": "PHOTO SHOOTING MENU",
+    "owned_qemu_stopped": true,
+    "error": null,
+    "recording_started": false
+  },
+  "interpretation": [
+    "Timer defect is corrected in actual C and covered by a waiting-then-ready contract.",
+    "Corrected host-peer controls still have zero video frames; both retain native STOP, no source2/ISP1 activation.",
+    "The raw pipeline still uses source0-specific video-ready admission; N-RAW secondary routing remains unqualified.",
+    "Original EX Menu control is independently confirmed; it does not qualify N-RAW or Record.",
+    "Original EX N-RAW and Record follow-up must be recorded separately on the corrected binary."
+  ],
+  "isp1_field_interpretation": "0x218 is a configuration field, not the START register. Actual ISP START is write1 to instance offset0x8; do not infer active state solely from0x218."
+}

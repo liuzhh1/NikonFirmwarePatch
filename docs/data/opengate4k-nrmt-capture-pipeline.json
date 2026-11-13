@@ -1,0 +1,292 @@
+{
+  "schema": "z8-opengate4k-nrmt-capture-pipeline-1",
+  "date": "2026-11-13",
+  "source_parent_commit": "ad2a8a9d79bf4334f4e23423d235a9c77aa0303b",
+  "main_sha256": "f80ee74d066a38ef8f61e3b29a1349090f9607ba614ce24744724891da4f94a3",
+  "native_windows": [
+    {
+      "name": "capture producer",
+      "address": "0x40e99cdc",
+      "bytes": 436,
+      "sha256": "2ba862ba800ac452e5ef2a29e060a5fd13f0639e3e9f13246f52ce08bf54588e"
+    },
+    {
+      "name": "capture callback table entry",
+      "address": "0x44f25d30",
+      "bytes": 8,
+      "sha256": "05e050e050357a1bc084a6e9892e7ec453d534e6d114ed25b7e120bd438744ef"
+    },
+    {
+      "name": "submit veneer",
+      "address": "0x40d1d504",
+      "bytes": 4,
+      "sha256": "92532638aeb4cfaba8a49d163bf4b4b4104d2c8f67ef60c195bd36ad6e711a6c"
+    },
+    {
+      "name": "raw batch worker",
+      "address": "0x40d2042c",
+      "bytes": 792,
+      "sha256": "bc83a8b95d005a11b0dd168ace15af27008fa40e8e8635fc941845e24409673a"
+    },
+    {
+      "name": "stop progression",
+      "address": "0x40d20cac",
+      "bytes": 376,
+      "sha256": "aafc1a5db126066ed5eb5df5bc512882d61851740d53b324d38c7481aee5397b"
+    },
+    {
+      "name": "record event task",
+      "address": "0x40d1ea48",
+      "bytes": 4012,
+      "sha256": "b7f24996ca64f7523f2a01173063c5b08875b1910e4943b16abb23adcccf5b8a"
+    },
+    {
+      "name": "native callback registration",
+      "address": "0x40d1f9f4",
+      "bytes": 100,
+      "sha256": "99dd2af819d43da28b48e2e35828de5fcb9640b1377326d762d43d3a327e7cfc"
+    },
+    {
+      "name": "raw completion callback",
+      "address": "0x40d1fe28",
+      "bytes": 240,
+      "sha256": "390d484b9a14c045b34313b203d457ebe2744b52c1f486af4c287eb3ff1d30c2"
+    },
+    {
+      "name": "writer completion setter",
+      "address": "0x40d22878",
+      "bytes": 24,
+      "sha256": "a6fcae374b3d44783dce07c26ea8827ddff13fa6b0f2ee9953ca1b60d99ac743"
+    },
+    {
+      "name": "progress counter veneers",
+      "address": "0x40ca1ac8",
+      "bytes": 112,
+      "sha256": "05fa7513163ffde0fda1f879f874981b3b74f9f670f934117aec5905a39fe91c"
+    },
+    {
+      "name": "progress counter bodies",
+      "address": "0x40ca3464",
+      "bytes": 1036,
+      "sha256": "a9e82eb69da583f5b077b3347d3269f1daa6762b4f8f8eaf4983bf89275681ff"
+    }
+  ],
+  "source_tests": "tests/test_opengate4k_nrmt_pipeline.py",
+  "source_tests_sha256": "8a042e10b79fdbd5af49038b7baab47e589d959d7a93c97701ca9c2a9cffee9e",
+  "sustained_control": {
+    "productions": 70,
+    "storage_groups": 22,
+    "submitted_chunks": 66,
+    "maximum_pending_input_tasks": 7,
+    "samples": [
+      {
+        "productions": 1,
+        "input": [
+          1,
+          0
+        ],
+        "metadata": 0,
+        "raw_output": [
+          0,
+          0
+        ],
+        "writer": [
+          0,
+          0
+        ],
+        "storage_groups": 0
+      },
+      {
+        "productions": 6,
+        "input": [
+          6,
+          0
+        ],
+        "metadata": 0,
+        "raw_output": [
+          0,
+          0
+        ],
+        "writer": [
+          0,
+          0
+        ],
+        "storage_groups": 0
+      },
+      {
+        "productions": 7,
+        "input": [
+          0,
+          4
+        ],
+        "metadata": 4,
+        "raw_output": [
+          0,
+          0
+        ],
+        "writer": [
+          0,
+          0
+        ],
+        "storage_groups": 1
+      },
+      {
+        "productions": 10,
+        "input": [
+          0,
+          4
+        ],
+        "metadata": 4,
+        "raw_output": [
+          0,
+          0
+        ],
+        "writer": [
+          0,
+          0
+        ],
+        "storage_groups": 2
+      },
+      {
+        "productions": 60,
+        "input": [
+          2,
+          4
+        ],
+        "metadata": 4,
+        "raw_output": [
+          0,
+          0
+        ],
+        "writer": [
+          0,
+          0
+        ],
+        "storage_groups": 18
+      },
+      {
+        "productions": 61,
+        "input": [
+          0,
+          4
+        ],
+        "metadata": 4,
+        "raw_output": [
+          0,
+          0
+        ],
+        "writer": [
+          0,
+          0
+        ],
+        "storage_groups": 19
+      },
+      {
+        "productions": 70,
+        "input": [
+          0,
+          4
+        ],
+        "metadata": 4,
+        "raw_output": [
+          0,
+          0
+        ],
+        "writer": [
+          0,
+          0
+        ],
+        "storage_groups": 22
+      }
+    ],
+    "nrmt_slot_zero_pointer": "0xa06200000",
+    "production_61_pointer": "0xa06200000",
+    "slot_zero_reused": true,
+    "packet_body_and_payload_checks": 66,
+    "captured_chunks_concatenated_sha256": "71f7e0135b5200f35c5d9d5372d940e6b98a4f99ddcefa7117192dd8516f4329",
+    "codec_image_submit_calls": 0,
+    "errors": [],
+    "software_counters": [
+      1,
+      66,
+      1,
+      66
+    ]
+  },
+  "stop_control": {
+    "request_polls": 2,
+    "record_state": 1,
+    "input": [
+      0,
+      6
+    ],
+    "metadata": 6,
+    "raw_output": [
+      0,
+      0
+    ],
+    "writer": [
+      0,
+      0
+    ],
+    "storage_groups": 1,
+    "completed": false,
+    "note": "Six tail tasks remain in this controlled configuration; no flush completion is fabricated and this is not an observed stock-firmware failure."
+  },
+  "native_pipeline_entries": [
+    "0x40e99cdc",
+    "0x410a4fc4",
+    "0x40d200fc",
+    "0x40d2042c",
+    "0x40d20770",
+    "0x40d1ea48",
+    "0x40d22ad4",
+    "0x40d20fd8",
+    "0x40d1fe28"
+  ],
+  "native_progress_state": "0xa02f204a8",
+  "native_progress_limit": "0xa02f204b8",
+  "fixture": "Single-threaded native AArch64. Synthetic capture context, internal mode 2, source payload buffers and timing. Native producer creates NRMT and submits the job; native worker builds the raw completion descriptor. Native software progress/cap counters execute. Bounded storage completion advances its native counter and injects a writer event. No sensor/TICO/RTOS/file I/O.",
+  "codec_completion_descriptor_injected": false,
+  "native_producer_executed": true,
+  "native_batch_executed": true,
+  "native_progress_counter_executed": true,
+  "native_writer_staging_executed": true,
+  "sensor_or_tico_payload_generated": false,
+  "internal_mode_selected_by_real_session": false,
+  "real_task_scheduling_verified": false,
+  "capture_buffer_ownership_qualified": false,
+  "storage_api_executed": false,
+  "stop_close_qualified": false,
+  "flash_package_generated": false,
+  "firmware_bytes_changed": false,
+  "input_packages": {
+    "original": {
+      "bytes": 99051117,
+      "sha256": "d67413c2ede6b9ce8887175f20700bd9fbad2a973a4820968c45503d15d80d96"
+    },
+    "reviewed_custom": {
+      "bytes": 99051117,
+      "sha256": "f9d5719cec76a814044f8f705dcb60cb6331da485cb4df680be5ff549c464d53"
+    }
+  },
+  "validation": {
+    "project_tests": 151,
+    "skips": 0,
+    "aarch64_execution_cases": 93,
+    "complete_input_build_checks": 19,
+    "new_cases": 11,
+    "new_aarch64_cases": 10,
+    "native_window_check_cases": 1,
+    "native_windows_checked": 11,
+    "seconds": 168.343,
+    "result": "passed",
+    "log_sha256": "934988146b027d0e6517e7e8db17abbbd1918e351972882d3aba1a6ffe7e48f6",
+    "command": "python -B -m unittest discover -s tests",
+    "environment": [
+      "OG4K_COMPILER",
+      "OG4K_ORIGINAL",
+      "OG4K_BASELINE"
+    ]
+  }
+}

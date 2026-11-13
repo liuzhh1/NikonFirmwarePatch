@@ -1,0 +1,190 @@
+{
+  "schema": "z8-opengate4k-nctg-lifetime-validation-1",
+  "date": "2026-11-12",
+  "main_with_playback_sha256": "6f5564176d15b682df517ba4c5a7a6557f53cfb695691a19b1736bbde8a62e85",
+  "main_without_playback_sha256": "abb80581845226a7dccbc7ec5725b42c81476896f94947dbdac2c693ab562f21",
+  "parent_with_playback_sha256": "65e0a9eb894a8bcaec630952da4cc0e7dddc930b2be1e9453c1b03b92f583c24",
+  "parent_without_playback_sha256": "9bfa80f4270dc789924a3f717134f35b3adaefb66a881a71808dd361aa71b5b1",
+  "frontend_main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+  "original_package_sha256": "d67413c2ede6b9ce8887175f20700bd9fbad2a973a4820968c45503d15d80d96",
+  "baseline_package_sha256": "f9d5719cec76a814044f8f705dcb60cb6331da485cb4df680be5ff549c464d53",
+  "code": {
+    "base": 1083625472,
+    "bytes": 1060,
+    "sha256": "a854aec8ac6ac0ade4723b08892a5bac5698fae7e79bcb9bf3f157d2742ae19f",
+    "source_sha256": "d338e61afae0cbf34f100d41d97b388089cabe4670ff79bac47dba135e35179d",
+    "entries": {
+      "clone_done": 1083625740,
+      "clone_publish": 1083625704,
+      "og4k_nctg_clone_hook": 1083625472,
+      "og4k_owned_height_hook": 1083625760,
+      "og4k_owned_proxy_main_hook": 1083625968,
+      "og4k_owned_crop_hook": 1083626160,
+      "og4k_nctg_reset_hook": 1083626416
+    },
+    "relocations": [
+      {
+        "pc": "0x4096d024",
+        "target": "0x4127a900",
+        "kind": 283,
+        "symbol": "original_4127A900"
+      },
+      {
+        "pc": "0x4096d1e0",
+        "target": "0x406d2c90",
+        "kind": 282,
+        "symbol": "original_406D2C90"
+      },
+      {
+        "pc": "0x4096d2a8",
+        "target": "0x406d313c",
+        "kind": 282,
+        "symbol": "original_406D313C"
+      },
+      {
+        "pc": "0x4096d3a4",
+        "target": "0x409603e0",
+        "kind": 282,
+        "symbol": "original_409603E0"
+      },
+      {
+        "pc": "0x4096d3d8",
+        "target": "0x40962aa0",
+        "kind": 282,
+        "symbol": "original_40962AA0"
+      }
+    ],
+    "legacy_entries": {
+      "nctg_crop_hook": 1083573216,
+      "boot_reset_d8_hook": 1083583136
+    }
+  },
+  "geometry": {
+    "active_width": 4128,
+    "active_height": 2752,
+    "coded_width": 4140,
+    "coded_height_candidate": 2756,
+    "encoding_qualified": false
+  },
+  "source_sha256": {
+    "z8opengate4k/src/nctg_lifetime.S": "d338e61afae0cbf34f100d41d97b388089cabe4670ff79bac47dba135e35179d",
+    "z8opengate4k/nctg_lifetime.py": "c1d8e3dd88487daa2b9748e3e49b5fc9a28f3f1a913bbf1035240b8f865e6a0e",
+    "z8opengate4k/nctg-lifetime-profile.json": "221dbb3463b8eef03dcd2ca26184a8bd44e2e73eb00a75ade7f85af3a0964dd6",
+    "tests/test_opengate4k_nctg_lifetime.py": "3724726acf989032d4e618a5918e1c9f58abf02fe823236c3417cd26559d067a",
+    "tools/build_opengate4k_lab.py": "0d79b07e473985b4a34135cbf2c8cb94c433015e7192bbc3f06620c425156ade",
+    "tools/trace_opengate4k.py": "ab13329d3dfa6b5b182fa1b15ad266f18e28e7028cdc7831b37743af3e7d0328"
+  },
+  "private_state": {
+    "rom": "0x4096f200",
+    "ram_alias": "0xa0ff6f200",
+    "bytes": 64
+  },
+  "native_windows": [
+    {
+      "address": "0x4071e1f4",
+      "bytes": 56,
+      "sha256": "aaca1b7f4b8193217b3a0b1d2450ada899cc5e8c409a1afd9ce52a1486173d7e",
+      "purpose": "native attributes100h + opaque ImgInfo4490h copy, then private-pointer publication"
+    },
+    {
+      "address": "0x4071f388",
+      "bytes": 144,
+      "sha256": "892a0820515891ed075f412a8063eb3a63b5e8b48ec5a9ada258ef17891c58a2",
+      "purpose": "recording-task descriptor stores native attribute source at+18h"
+    },
+    {
+      "address": "0x406c12cc",
+      "bytes": 68,
+      "sha256": "269076cb98fa417dd4c3e0be9f1687258c701a7b94a2b1450197dbc17445e625",
+      "purpose": "serializer forwards descriptor source into NCTG request+10h"
+    },
+    {
+      "address": "0x406d243c",
+      "bytes": 68,
+      "sha256": "0f1273edec5938998fb7ddcf3cefeaffdac08d05837d25312731a858e4f150d7",
+      "purpose": "generator passes request source to each enabled create callback"
+    },
+    {
+      "address": "0x44dea9d8",
+      "bytes": 64,
+      "sha256": "0a31816d03b57ebb3dd9f0ecac77a53c1589700ca4bd6a269b613111c12737eb",
+      "purpose": "initialized-data NCTG23h row: create callback406D2C24"
+    },
+    {
+      "address": "0x44deb298",
+      "bytes": 64,
+      "sha256": "ca37e206139706dbbf86269787530a7ffccabec7ca158df44bd2ee4ed63b75e8",
+      "purpose": "initialized-data NCTG0200h/1Bh row: create callback406D3824"
+    },
+    {
+      "address": "0x406d2cc0",
+      "bytes": 40,
+      "sha256": "701204af8df35791e7faf8d5067d1d2ee0e01d7734f8770d68a22a10dbccd2f6",
+      "purpose": "NCTG codec selector reads attribute+20h;case6 is N-RAW"
+    },
+    {
+      "address": "0x406d30ac",
+      "bytes": 20,
+      "sha256": "34765403f7158072683773e732f2e7b79d53dfbd86c94cebb9ca45fcc1869195",
+      "purpose": "associated main codec/quality selector reads attribute+20h and compares6"
+    }
+  ],
+  "native_contract": {
+    "attribute_copy_call": "0x4071e208",
+    "attribute_bytes": 256,
+    "opaque_info_copy_call": "0x4071e220",
+    "opaque_info_bytes": 17552,
+    "private_info_publication": "0x4071e228",
+    "attribute_owner": "0xa0460be88",
+    "private_info": "0xa0460ec20",
+    "file_type_offset": "0x20",
+    "size_offset": "0xc",
+    "rate_offset": "0x10",
+    "source_forwarding": [
+      "parent descriptor+0x18",
+      "NCTG request+0x10",
+      "generator callback x0"
+    ],
+    "callback_table_runtime": "0xa0297f658",
+    "callback_table_main_load_view": "0x44dea658",
+    "callbacks": 97,
+    "opaque_info_layout_assumed": false
+  },
+  "tests": {
+    "project": 101,
+    "skipped": 0,
+    "real_aarch64": 49,
+    "complete_input_integration": 15,
+    "new_aarch64": 14,
+    "new_complete_input_integration": 4,
+    "native_copy_api": "bounded memcpy stub; caller private-pointer publication represented explicitly; original full task not executed",
+    "original_type_field_and_nraw_table_case_checked": true,
+    "log_sha256": "c3dfa27f1bf18f00ebf810338fa9807a2d76ed01de056f7839f93c17fd237f4b",
+    "cli_requires_recorder_checked": true
+  },
+  "original_d10_and_writer_close_preserved": true,
+  "old_stage_main_hashes_preserved": true,
+  "production_builder_changed": false,
+  "firmware_update_package_generated": false,
+  "post_copy_nctg_identity_aarch64_verified": true,
+  "nctg_callbacks_read_current_selection": false,
+  "nrmt_lifetime_qualified": false,
+  "general_file_callback_lifetime_qualified": false,
+  "writer_close_qualified": false,
+  "tico_qualified": false,
+  "physical_recording_qualified": false,
+  "actual_file_io_tested": false,
+  "qemu": {
+    "repository": "WonderLantern/z8-qemu",
+    "commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+    "full_runtime_rerun": false,
+    "previous_nine_model_contact_checks_rerun": false,
+    "no_model_changes_this_stage": true
+  },
+  "limits": [
+    "Selection must be consistent when the native copy is captured; earlier changes cannot be reconstructed",
+    "One native working record; no independent-writer or cross-file concurrent lifetime proof",
+    "NRMT and opaque4490h source are not assumed to share a layout",
+    "Complete Stop/I/O/close sequence, TICO and physical recording remain unqualified"
+  ]
+}

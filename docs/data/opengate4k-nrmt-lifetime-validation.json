@@ -1,0 +1,189 @@
+{
+  "schema": "z8-opengate4k-nrmt-scope-validation-1",
+  "date": "2026-11-13",
+  "main_all_layers_sha256": "f80ee74d066a38ef8f61e3b29a1349090f9607ba614ce24744724891da4f94a3",
+  "main_recorder_nrmt_only_sha256": "b6667e8beb5ecffbc5774c1a62b0a79f21b1a19caa841bca7697cbb4af173ba5",
+  "parent_all_layers_sha256": "6f5564176d15b682df517ba4c5a7a6557f53cfb695691a19b1736bbde8a62e85",
+  "parent_recorder_only_sha256": "9bfa80f4270dc789924a3f717134f35b3adaefb66a881a71808dd361aa71b5b1",
+  "frontend_main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+  "original_package_sha256": "d67413c2ede6b9ce8887175f20700bd9fbad2a973a4820968c45503d15d80d96",
+  "baseline_package_sha256": "f9d5719cec76a814044f8f705dcb60cb6331da485cb4df680be5ff549c464d53",
+  "code": {
+    "base": 1083629568,
+    "bytes": 800,
+    "sha256": "7bfb1353cf6ae7a518c1bab3421b02c66ec5c6152f95023692fa0802d989a782",
+    "source_sha256": "d5e14c5f8a7ff7c846b1e03352f95f401d957a936d79bb77eb7203bfc757f604",
+    "entries": {
+      "scope_call": 1083629792,
+      "scope_original": 1083629812,
+      "scope_return": 1083629796,
+      "og4k_nrmt_scope_hook": 1083629568,
+      "og4k_nrmt_scope_return": 1083629796,
+      "og4k_scoped_nrmt_height_hook": 1083629824,
+      "og4k_scoped_nrmt_crop_hook": 1083630048
+    },
+    "relocations": [
+      {
+        "pc": "0x4096e0f8",
+        "target": "0x410a4fc8",
+        "kind": 282,
+        "symbol": "original_410A4FC8"
+      },
+      {
+        "pc": "0x4096e1c4",
+        "target": "0x410a5910",
+        "kind": 282,
+        "symbol": "original_410A5910"
+      },
+      {
+        "pc": "0x4096e1d4",
+        "target": "0x40960320",
+        "kind": 282,
+        "symbol": "original_40960320"
+      },
+      {
+        "pc": "0x4096e2c4",
+        "target": "0x410a6d10",
+        "kind": 282,
+        "symbol": "original_410A6D10"
+      },
+      {
+        "pc": "0x4096e2d4",
+        "target": "0x40960360",
+        "kind": 282,
+        "symbol": "original_40960360"
+      }
+    ],
+    "legacy_entries": {
+      "nrmt_hook": 1083573024,
+      "crop_hook": 1083573088
+    }
+  },
+  "stack_frame": {
+    "wrapper_bytes": 48,
+    "native_formatter_bytes": 208,
+    "nested_prefix_bytes": 16,
+    "nested_formatter_bytes": 64,
+    "native_saved_lr_offset": 200,
+    "nested_prefix_saved_lr_offset": 0,
+    "nested_formatter_saved_lr_offset": 56,
+    "snapshot_pointer_offset": 16,
+    "cookie_offset": 24,
+    "rate_offset": 32,
+    "target_offset": 36,
+    "request_kind_offset": 40
+  },
+  "native_ring": {
+    "pointer_table": 43023120216,
+    "index": 43023120696,
+    "slots": 60
+  },
+  "native_windows": [
+    {
+      "address": "0x410a4fc4",
+      "bytes": 180,
+      "sha256": "121001c329731558caece83d5d1ea56c3b98478c8a7490b72722bc62d1a0eecd",
+      "purpose": "nativeD0 frame, argument checks,60-slot ring selection"
+    },
+    {
+      "address": "0x410a53b4",
+      "bytes": 160,
+      "sha256": "2c4b7ada50860151a1de996bd019443a09032f0af7c1d6a94d5747064ca2121e",
+      "purpose": "kind4 NRMT dispatch and541C continuation"
+    },
+    {
+      "address": "0x410a562c",
+      "bytes": 36,
+      "sha256": "d2a6cb6ef7561135c58d7403f13e120dfbe625326f5e9d6c8c6fcd348a782c5f",
+      "purpose": "native frame restoration and return"
+    },
+    {
+      "address": "0x410a6334",
+      "bytes": 36,
+      "sha256": "0fb6148383641dd998cc4c776e2c18a5e92931de718ae21bcf6165b0dc943d72",
+      "purpose": "nested prefix frame10 and call6344"
+    },
+    {
+      "address": "0x410a6470",
+      "bytes": 124,
+      "sha256": "03f845008fa235ecc88aa4e286159ef39a9ac6bd9d0adc2fb294587ad5df8262",
+      "purpose": "nested formatter frame40 and64C0 continuation"
+    },
+    {
+      "address": "0x440d0790",
+      "bytes": 320,
+      "sha256": "2c82df709e2a0a97b6495fb8d535a3ee82c443c42262b901ab54c2aea979adff",
+      "purpose": "20 NRMT callbacks; height1 and nested19"
+    },
+    {
+      "address": "0x440d0990",
+      "bytes": 104,
+      "sha256": "af40a97b4a443f092cb624d58650fc04866ad6dc6b3dbbb99deb7b49c2c0817b",
+      "purpose": "13 nested callbacks; crop6"
+    },
+    {
+      "address": "0x410a55f4",
+      "bytes": 56,
+      "sha256": "7542903f156ddf924350550213675456a72fc2ea3fd296742bb1de0de3a3f440",
+      "purpose": "native output descriptor stores kind4 ring pointer at+18"
+    }
+  ],
+  "source_sha256": {
+    "z8opengate4k/src/nrmt_lifetime.S": "d5e14c5f8a7ff7c846b1e03352f95f401d957a936d79bb77eb7203bfc757f604",
+    "z8opengate4k/nrmt_lifetime.py": "a299b8ed103a6ccd7f37ea5bb5c407bf593b99b259d75cba6004034d57f3f26c",
+    "z8opengate4k/nrmt-lifetime-profile.json": "6b1bcd144ca1fd08edd08d57ee5de58ef69482c7b07c7d90e7f672aa33e9684d",
+    "tests/test_opengate4k_nrmt_lifetime.py": "d574b6832b2ff053cede1a5cbba9982ab206566fdee0e3d9531af5c781e56fce",
+    "tests/test_opengate4k_nrmt_submit.py": "a512c4bafa6bacf730a8844309d5e1ee818f7c14ef7a8b7e999c9607c4d61d05",
+    "tools/build_opengate4k_lab.py": "35ff56af26ba02ccc5061fa3e89b2b77043fe5da053ccd20191963be1c59f512",
+    "tools/trace_opengate4k.py": "32ef2932e22b191148c63e32372e95bac2d66655b6370c38a206cd1e24ae51a7"
+  },
+  "evidence_sha256": {
+    "docs/data/opengate4k-nrmt-native-geometry.json": "ed421e33efc9cb43e81a38c7a211d4b406d15d6529d08c87ef1abcad2ce576c0",
+    "docs/data/opengate4k-nrmt-submit-boundary.json": "44be8ea7e9c5866bf513ba6aba18f714f80d270c50caa74adfe60748a023fc2d"
+  },
+  "tests": {
+    "project": 126,
+    "skipped": 0,
+    "real_aarch64": 70,
+    "complete_input_build_integration": 19,
+    "new_stack_guard_execution": 8,
+    "new_native_formatter_execution": 8,
+    "new_native_submit_execution": 5,
+    "new_complete_input_build_integration": 4,
+    "full_native_formatter_callbacks": {
+      "main": 20,
+      "nested": 13
+    },
+    "external_apis": "bounded math/calibration/string and mutex/queue/event fixtures; real OS queue, encoder and writer do not execute",
+    "project_log_sha256": "17fffb6402c8f3d3a3e7b01cff3d1fb9f52c1511ae87d4609bc04b63d310f301",
+    "cli_requires_recorder_checked": true
+  },
+  "original_d10_nctg_native_body_writer_close_preserved": true,
+  "old_stage_main_hashes_preserved": true,
+  "production_builder_changed": false,
+  "firmware_update_package_generated": false,
+  "nrmt_call_scoped_identity_execution_verified": true,
+  "nrmt_callbacks_read_current_selection": false,
+  "new_shared_state_allocated": false,
+  "native_submit_boundary_execution_verified": true,
+  "ring_consumer_ownership_qualified": false,
+  "nrmt_nctg_same_file_identity_qualified": false,
+  "real_non_geometry_metadata_qualified": false,
+  "writer_close_qualified": false,
+  "tico_qualified": false,
+  "physical_recording_qualified": false,
+  "qemu": {
+    "repository": "WonderLantern/z8-qemu",
+    "commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+    "full_runtime_rerun": false,
+    "previous_nine_model_contact_checks_rerun": false,
+    "no_model_changes_this_stage": true
+  },
+  "remaining": [
+    "Trace queue40CA1AB4 and native consumer before60-slot reuse",
+    "Bind NRMT and NCTG to one stable file identity before menu changes",
+    "TICO4140x2756 and actual sensor/Bayer verification",
+    "4K i-menu/cancel/settings-bank/proxy integration",
+    "Full Record/Stop/I-O/close/QEMU and physical acceptance"
+  ]
+}

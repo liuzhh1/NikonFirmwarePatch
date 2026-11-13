@@ -1,0 +1,122 @@
+[
+  {
+    "after": 2.0,
+    "kind": "button",
+    "value": "left"
+  },
+  {
+    "after": 3.3,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 4.6,
+    "kind": "button",
+    "value": "right"
+  },
+  {
+    "after": 5.9,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 7.2,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 8.5,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 9.8,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 11.1,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 12.4,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 13.7,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 15.0,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 16.3,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 17.6,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 18.9,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 20.2,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 21.5,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 22.8,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 24.1,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 25.4,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 26.7,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 28.0,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 29.3,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 30.6,
+    "kind": "button",
+    "value": "half"
+  },
+  {
+    "after": 31.9,
+    "kind": "mode",
+    "value": "movie"
+  }
+]

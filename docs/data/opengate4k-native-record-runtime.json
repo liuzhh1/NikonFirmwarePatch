@@ -1,0 +1,141 @@
+{
+  "schema": "z8-opengate4k-native-record-control-1",
+  "date": "2026-11-12",
+  "scope": "Original MAIN/EX N-RAW4.1K30p and one Record pulse; no completed recording",
+  "main_sha256": "2b43a31c9de838f84b12416de4348a7004e65be07f853ec56ec2b10f3a8e3853",
+  "mcu_sha256": "8ce129fa3689d1d619f25ba1c44a3a9f1964c76fe77b95adeb4ea912463c8c63",
+  "qemu_sha256": "47a6b1b655367620127f243589691fa9c6fd15b7f21124d0cff05e912fcc9a55",
+  "emulator_commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+  "hardware_model_modified": true,
+  "factory_calibration": false,
+  "physical_verified": false,
+  "result_sha256": "c44b159d90e84ccb94a898f00471371f208400d60e86feee94c77bbd163cd405",
+  "stderr_sha256": "93176871a93b13015b7e4f28ed2fb6999f1a1571619696e5777f633cc985b66e",
+  "uart_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "replay_file": "opengate4k-native-record-replay.json",
+  "replay_sha256": "9476955d24378fc5fdb3d693aae96a36eedc84fb5e25706b08b40c73a4af5695",
+  "mode_verified": {
+    "file_type": 6,
+    "size_rate": "Native menu4128x2322/30p; native Movie HUD4.1K30",
+    "menu_image_sha256": "8c76d22c4a31254d34a2e02c455ecb6442c3a9cf79620f4480fbf9eabf26a848",
+    "movie_image_sha256": "db12e75e004606f3d788b558901c6ec2f77bd8eb5384f7691a72e9738f2cf692",
+    "report_0x57": 1
+  },
+  "record_input": {
+    "external_contact": "expander0x22 bit12",
+    "delivered": [
+      {
+        "at": 61.027,
+        "property": "mcu-contacts",
+        "value": "22.12=0",
+        "delivered_at": 61.027355321
+      },
+      {
+        "at": 61.427,
+        "property": "mcu-contacts",
+        "value": "22.12=1",
+        "delivered_at": 61.42706812
+      }
+    ],
+    "ex_report_byte": 9,
+    "pressed_samples": 13,
+    "first_pressed_virtual_seconds": 61.044883334,
+    "main_sw1_word_offset": 4,
+    "main_sw1_mask": "0x2000",
+    "main_sw1_observed": true,
+    "host_mcu_messages": false
+  },
+  "checks": {
+    "total": 337,
+    "passed": 337,
+    "scope": "Serial/native-run checks, not recording acceptance"
+  },
+  "mcu": {
+    "main_frames": 1431,
+    "mcu_frames": 1412,
+    "bad_frames": 0,
+    "system_resets": 1
+  },
+  "before_record": {
+    "virtual_seconds": 58.027045556,
+    "state": {
+      "source0": {},
+      "source2_control": 0,
+      "isp1_config_0x218": 1,
+      "engine150c_active": 6,
+      "header": {
+        "enabled": true,
+        "waiting": false,
+        "rejected": 0,
+        "starts": 0,
+        "releases": 0,
+        "physical_verified": false
+      },
+      "d980_submits": 1,
+      "d980_frames": 0,
+      "video": {
+        "video_frames": 0,
+        "video_source_acks": 0,
+        "video_isp_acks": 0
+      },
+      "prior_or_other_raw_frames": 503
+    }
+  },
+  "end": {
+    "virtual_seconds": 75.910503216,
+    "state": {
+      "source0": {},
+      "source2_control": 1,
+      "isp1_config_0x218": 0,
+      "engine150c_active": 65375,
+      "header": {
+        "enabled": true,
+        "waiting": true,
+        "rejected": 0,
+        "starts": 1,
+        "releases": 0,
+        "physical_verified": false
+      },
+      "d980_submits": 1,
+      "d980_frames": 0,
+      "video": {
+        "video_frames": 0,
+        "video_source_acks": 0,
+        "video_isp_acks": 0
+      },
+      "prior_or_other_raw_frames": 503
+    }
+  },
+  "isp1_start_logs": [
+    "Z8_ENGINE151_START cpu=1 pc=0x40c0db14 base=0x15140000; snapshot only",
+    "Z8_ENGINE151_START cpu=1 pc=0x40c0db14 base=0x15140000; snapshot only",
+    "Z8_ENGINE151_START cpu=1 pc=0x40c0db14 base=0x15140000; snapshot only"
+  ],
+  "isp1_start_count": 3,
+  "source2_activation_caused_by_record_not_established": true,
+  "end_reason": "1200-second wall bound; not the later appended recovery contacts",
+  "delivered_contacts": 63,
+  "effective_actions": 63,
+  "later_recovery_actions_not_delivered": 5,
+  "stop_and_photo_recovery_verified": false,
+  "owned_qemu_stopped": true,
+  "primary_exception": null,
+  "error": null,
+  "card": {
+    "catalog_sha256": "59a7f39945b77453678c0a4a6e8d15d56dac7026aabf092a0a90fb263768ecaa",
+    "entries": 4,
+    "movie_entries": [],
+    "completed_movie_verified": false
+  },
+  "video_qualified": false,
+  "recording_verified": false,
+  "diagnosis": [
+    "raw_pipeline_video_frames counts checked RAW/ISP video-output transfers, not encoded TICO/H264 frames.",
+    "og4k_header_poll requires engine1543_video_ready; that helper reads source0, which is empty in this run, so the wait never releases.",
+    "Original EX/MAIN Record delivery is proven; source2control1 and actual ISP1 START are observed, but full streamed video remains absent.",
+    "The secondary ISP/sensor functional models are not enabled by the shared profile; their existing ready layout also assumes ISP1 config0x218=1, unlike this final observed0.",
+    "ISP1 config0x218 is not START; actual START is instance offset0x8. Its zero value alone never proves the ISP is inactive.",
+    "The two snapshots do not establish whether Record caused the source2/primary activation; transition history is added to the observer for subsequent runs.",
+    "No .NEV/.MOV/.MP4 entries, encoded stream or physical camera evidence. Stop/Photo recovery was not executed before the wall bound."
+  ]
+}

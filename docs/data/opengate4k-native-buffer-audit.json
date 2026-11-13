@@ -1,0 +1,218 @@
+{
+  "schema": "z8-opengate4k-native-buffer-audit-1",
+  "main_sha256": "f80ee74d066a38ef8f61e3b29a1349090f9607ba614ce24744724891da4f94a3",
+  "before_configuration": {
+    "raw": {
+      "format": 5,
+      "stride_bytes": 7264,
+      "outer": [
+        4140,
+        2344
+      ],
+      "coded": [
+        4140,
+        2330
+      ],
+      "crop": [
+        0,
+        6
+      ],
+      "minimum_raster_bytes": 17026816,
+      "descriptor_hex": "0500000000000000601c2c1028092c101a09000006000000"
+    },
+    "coded_descriptor_hex": "03000000050000002c101a090000000000000000000000000000000000000000",
+    "coded": [
+      4140,
+      2330
+    ]
+  },
+  "after_configuration": {
+    "raw": {
+      "format": 5,
+      "stride_bytes": 7264,
+      "outer": [
+        4140,
+        2756
+      ],
+      "coded": [
+        4140,
+        2756
+      ],
+      "crop": [
+        0,
+        0
+      ],
+      "minimum_raster_bytes": 20019584,
+      "descriptor_hex": "0500000000000000601c2c10c40a2c10c40a000000000000"
+    },
+    "coded_descriptor_hex": "03000000050000002c10c40a0000000000000000000000000000000000000000",
+    "coded": [
+      4140,
+      2756
+    ]
+  },
+  "after_disable": {
+    "raw": {
+      "format": 5,
+      "stride_bytes": 7264,
+      "outer": [
+        4140,
+        2344
+      ],
+      "coded": [
+        4140,
+        2330
+      ],
+      "crop": [
+        0,
+        6
+      ],
+      "minimum_raster_bytes": 17026816,
+      "descriptor_hex": "0500000000000000601c2c1028092c101a09000006000000"
+    },
+    "coded_descriptor_hex": "03000000050000002c101a090000000000000000000000000000000000000000",
+    "coded": [
+      4140,
+      2330
+    ]
+  },
+  "extra_raw_raster_bytes": 2992768,
+  "ordinary_descriptor_restored": true,
+  "snapshot_actual_readout": 8,
+  "rates_exercised": [
+    4
+  ],
+  "actual_pool_capacity_verified": false,
+  "native_allocation_order_verified": false,
+  "physical_dma_or_tico_executed": false,
+  "real_record_entry_executed": false,
+  "camera_package_generated": false,
+  "record_entry_static_path": [
+    "0x40f856b4 -> 0x40723778",
+    "0x40723778 -> 0x407218e4",
+    "0x407218e4 copies 0x48 bytes to 0xa046130b8",
+    "0x4071e6bc reads request-kind pointer at message +0x38"
+  ],
+  "scope": "Native descriptor demand and configuration/disable effects only; pool capacity, allocation order, real session and hardware are unqualified",
+  "native_windows": [
+    {
+      "name": "format classification",
+      "address": "0x4105b098",
+      "bytes": 424,
+      "sha256": "3aba468ca3c2a91727c4e368b53379de4b9350a85f9fef5c9aa4ac1fbfa981f3"
+    },
+    {
+      "name": "raw stream descriptor",
+      "address": "0x4105c814",
+      "bytes": 500,
+      "sha256": "488caa2fc2cea07745f3e48c45f0a5469be7ecb29b17e9b313ed5543331398e5"
+    },
+    {
+      "name": "coded stream descriptor",
+      "address": "0x4105ca08",
+      "bytes": 532,
+      "sha256": "ae0f1beebe781c67a1d2040093a6fe2ac93b14cd4157be8c33d7fa54d013b04d"
+    },
+    {
+      "name": "outer raster query",
+      "address": "0x41066978",
+      "bytes": 152,
+      "sha256": "4fe98c097b15549efa361983b2aacfe74b214f8fc4c4f31b08516d9b1cb13aaa"
+    },
+    {
+      "name": "inner raster query before overlay",
+      "address": "0x41066a10",
+      "bytes": 96,
+      "sha256": "023de5e6d1e4b6b5b971b3d4e5e4b38138328f4dc81dc4a22e70a6b3a904633b"
+    },
+    {
+      "name": "inner raster query after overlay",
+      "address": "0x41066a74",
+      "bytes": 52,
+      "sha256": "482801d9b542cd539d5b7b60efd457611acdc3bb2fb08bc1f470d8b1418cdf3e"
+    },
+    {
+      "name": "record-to-file request veneer",
+      "address": "0x40723778",
+      "bytes": 4,
+      "sha256": "0098c799a093f9e189a9777bcd56801378e8295c7e6e6480f6be2feacca7360d"
+    },
+    {
+      "name": "record-to-file request copy",
+      "address": "0x407218e4",
+      "bytes": 68,
+      "sha256": "846769daf7866606ce5510c8b142a18cbfa992f99726bf3a3d41334ce4a0e087"
+    },
+    {
+      "name": "record payload assembly",
+      "address": "0x40f85618",
+      "bytes": 160,
+      "sha256": "699ab18fc67656b37f24ac48b33f2708ad7534dceedc9901eca415b9abbefb35"
+    },
+    {
+      "name": "record task request read",
+      "address": "0x4071e678",
+      "bytes": 84,
+      "sha256": "e1d918fbc9243465633695f4ab1de89963fb74074456313d531416085c564052"
+    }
+  ],
+  "date_utc": "2026-11-13",
+  "source_parent_commit": "87a07439330cf92f70200e37bbac8b51902b75a2",
+  "source_sha256": {
+    "z8opengate4k/native_buffers.py": "08f77e80f09d3c80cb359646287d4962a0af8bfbf9b78c018a8beb88b4e7fbcf",
+    "tools/inspect_opengate4k_buffers.py": "01246abf5de34c3f06af4ed609ec874c306595e7bbbe8e8ef935d8fa4b72b0c6",
+    "tests/test_opengate4k_native_buffers.py": "b47fe9250e7bac4964557f89d57e795d867c576e91ea8a0b5a3626b03a6c16b2"
+  },
+  "input_packages": {
+    "original": {
+      "bytes": 99051117,
+      "sha256": "d67413c2ede6b9ce8887175f20700bd9fbad2a973a4820968c45503d15d80d96"
+    },
+    "reviewed_custom": {
+      "bytes": 99051117,
+      "sha256": "f9d5719cec76a814044f8f705dcb60cb6331da485cb4df680be5ff549c464d53"
+    }
+  },
+  "controlled_inputs": {
+    "snapshot_kind": 1,
+    "nominal_readout": 4,
+    "actual_readout": 8,
+    "size": 4,
+    "rate": 4,
+    "request": 4,
+    "file_type": 6,
+    "geometry_configuration_entry": "0x40f7938c",
+    "geometry_configuration_stop": "0x40f79390",
+    "configuration_frame": "CPU context restored at bounded continuation; RAM effects retained",
+    "descriptor_external_api_stubs": 0
+  },
+  "qualification_limits": [
+    "Minimum raster span is stride times outer height, not total pool size or compressed NEV frame size",
+    "Logical 2760-line view is separate from the 2756-line physical descriptor",
+    "Snapshot, menu selection and configuration frame are controlled; real Record request contents remain unobserved",
+    "Invalid configuration retains existing geometry by the original contract; this is not cancel/rollback qualification",
+    "No allocator, sensor, DMA, TICO, RTOS or file I/O execution",
+    "No evidence yet that actual buffer capacity is insufficient or sufficient"
+  ],
+  "firmware_bytes_changed": false,
+  "validation": {
+    "project_tests": 171,
+    "skips": 0,
+    "aarch64_execution_cases": 109,
+    "complete_input_build_checks": 19,
+    "new_cases": 9,
+    "new_aarch64_cases": 6,
+    "input_check_cases": 2,
+    "native_window_check_cases": 1,
+    "native_windows_checked": 10,
+    "seconds": 167.127,
+    "result": "passed",
+    "log_sha256": "13798621ddbf31811c129acca0f8b1e1f15ad739c457c16d9c8e11e2d23bf026",
+    "command": "python -B -m unittest discover -s tests -v",
+    "environment": [
+      "OG4K_COMPILER",
+      "OG4K_ORIGINAL",
+      "OG4K_BASELINE"
+    ]
+  }
+}

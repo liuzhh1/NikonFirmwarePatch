@@ -1,0 +1,157 @@
+{
+  "schema": "z8-opengate4k-playback-validation-1",
+  "date": "2026-11-12",
+  "main_sha256": "65e0a9eb894a8bcaec630952da4cc0e7dddc930b2be1e9453c1b03b92f583c24",
+  "recorder_main_sha256": "9bfa80f4270dc789924a3f717134f35b3adaefb66a881a71808dd361aa71b5b1",
+  "frontend_main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+  "code": {
+    "base": 1083621376,
+    "bytes": 968,
+    "sha256": "bbd952e36e30ca5fe38ba56159ca5e4b671e2dd52b62a82942983716960fe5b8",
+    "source_sha256": "fbe0a943dfb4edd417848c2d0cdbbcefa1df34113e4a4dcb71b5c9b9f8386310",
+    "entries": {
+      "aspect_common": 1083621424,
+      "aspect_done": 1083621452,
+      "file_release": 1083621600,
+      "file_eight_k": 1083621584,
+      "file_done": 1083621612,
+      "preview_done": 1083622032,
+      "preview_thumb": 1083621824,
+      "preview_overview": 1083621764,
+      "preview_large_source": 1083621808,
+      "preview_source": 1083621904,
+      "preview_uncrop": 1083622028,
+      "preview_full": 1083622008,
+      "capture_fallback": 1083622308,
+      "capture_proxy": 1083622144,
+      "capture_coded": 1083622120,
+      "capture_target": 1083622268,
+      "og4k_aspect_class_hook": 1083621376,
+      "og4k_aspect_class_thumb_hook": 1083621408,
+      "og4k_playback_file": 1083621472,
+      "og4k_preview_hook": 1083621664,
+      "og4k_playback_capture_hook": 1083622064
+    },
+    "relocations": [
+      {
+        "pc": "0x4096c00c",
+        "target": "0x4078e154",
+        "kind": 283,
+        "symbol": "original_4078E154"
+      },
+      {
+        "pc": "0x4096c02c",
+        "target": "0x4078e1e0",
+        "kind": 283,
+        "symbol": "original_4078E1E0"
+      },
+      {
+        "pc": "0x4096c040",
+        "target": "0x4096c060",
+        "kind": 283,
+        "symbol": "og4k_playback_file"
+      },
+      {
+        "pc": "0x4096c094",
+        "target": "0x407cd844",
+        "kind": 283,
+        "symbol": "original_407CD844"
+      },
+      {
+        "pc": "0x4096c0e8",
+        "target": "0x4085aa7c",
+        "kind": 283,
+        "symbol": "original_4085AA7C"
+      },
+      {
+        "pc": "0x4096c23c",
+        "target": "0x4096c060",
+        "kind": 283,
+        "symbol": "og4k_playback_file"
+      },
+      {
+        "pc": "0x4096c2a0",
+        "target": "0x40961960",
+        "kind": 282,
+        "symbol": "original_40961960"
+      },
+      {
+        "pc": "0x4096c3a0",
+        "target": "0x40711534",
+        "kind": 282,
+        "symbol": "original_40711534"
+      },
+      {
+        "pc": "0x4096c3ac",
+        "target": "0x409608f0",
+        "kind": 282,
+        "symbol": "original_409608F0"
+      }
+    ],
+    "legacy_entries": {
+      "og_aspect_class_hook": 1083583536,
+      "og_aspect_class_thumb_hook": 1083583568,
+      "playback_capture_hook": 1083574512,
+      "preview_full_page_hook": 1083578720
+    }
+  },
+  "source_sha256": {
+    "z8opengate4k/src/playback.S": "fbe0a943dfb4edd417848c2d0cdbbcefa1df34113e4a4dcb71b5c9b9f8386310",
+    "z8opengate4k/playback.py": "0771f7a0cb1ba4a955fab543b6d4fcd3b316119efab634efa0052f3fd6c84e50",
+    "z8opengate4k/playback-profile.json": "ad51f61fd4a9796e8ad13cdd09eda38521fe45b3a6c92b52709ca9658a228cd1",
+    "tests/test_opengate4k_playback.py": "bcc28ec3c521f7d08b2413e6681cf69503cfcfbd68adb24d9fb3aa51a94cba09",
+    "tools/build_opengate4k_lab.py": "ecc6f5f3c012191e6f07dad586c267cb990b0f25b2017066df33905c8696bf26",
+    "tools/trace_opengate4k.py": "2e36c82d6daa2ee95287aebdb4b1aff33bc425a4fdcd5e9254b9f1c4d1b489c4"
+  },
+  "sites": {
+    "0x4078e150": "og4k_aspect_class_hook",
+    "0x4078e1dc": "og4k_aspect_class_thumb_hook",
+    "0x407d2ea8": "og4k_preview_hook",
+    "0x40711530": "og4k_playback_capture_hook"
+  },
+  "identity": "native file record and native playback request/media-ID",
+  "file_active_dimensions": [
+    [
+      4128,
+      2752
+    ],
+    [
+      8256,
+      5504
+    ]
+  ],
+  "tests": {
+    "project": 83,
+    "skipped": 0,
+    "real_aarch64": 35,
+    "complete_input_integration": 11,
+    "new_aarch64": 12,
+    "new_complete_input_integration": 3,
+    "native_file_api_and_aspect_leaf": "bounded stubs; new and original D10 AArch64 actually executed",
+    "tests_log_sha256": "89a8df2121fc3ea7871f5097b20c378df5445b90b626d4a1f755e503b661ddba",
+    "previous_nine_model_contact_checks_rerun": false
+  },
+  "original_d10_bytes_preserved": true,
+  "default_frontend_and_recorder_main_preserved": true,
+  "production_builder_changed": false,
+  "firmware_update_package_generated": false,
+  "file_identity_uses_shooting_globals": false,
+  "file_callback_lifetime_qualified": false,
+  "tico_qualified": false,
+  "recording_qualified": false,
+  "physical_verified": false,
+  "actual_clip_decode_qualified": false,
+  "proxy_stream_qualified": false,
+  "qemu": {
+    "repository": "WonderLantern/z8-qemu",
+    "commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+    "full_runtime_rerun": false
+  },
+  "remaining": [
+    "NCTG/NRMT/writer object association and callback lifetime",
+    "i-menu and cancellation",
+    "TICO coded2756 and actual clip decode",
+    "physical sensor readout and proxy scene behavior",
+    "full QEMU playback and physical recording acceptance"
+  ]
+}

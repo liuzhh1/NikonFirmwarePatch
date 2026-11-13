@@ -1,0 +1,122 @@
+[
+  {
+    "after": 2,
+    "kind": "button",
+    "value": "left"
+  },
+  {
+    "after": 5,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 8,
+    "kind": "button",
+    "value": "right"
+  },
+  {
+    "after": 11,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 14,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 17,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 21.441743,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 22.941743,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 24.441743,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 25.941743,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 27.441743,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 28.941743,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 30.441743,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 31.941743,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 33.441743,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 34.941743,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 36.441743,
+    "kind": "button",
+    "value": "down"
+  },
+  {
+    "after": 37.941743,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 39.441743,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 40.941743,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 42.441743,
+    "kind": "button",
+    "value": "up"
+  },
+  {
+    "after": 43.941743,
+    "kind": "button",
+    "value": "ok"
+  },
+  {
+    "after": 45.441743,
+    "kind": "button",
+    "value": "half"
+  },
+  {
+    "after": 46.941743,
+    "kind": "mode",
+    "value": "movie"
+  }
+]

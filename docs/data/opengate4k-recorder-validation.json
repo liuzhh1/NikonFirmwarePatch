@@ -1,0 +1,221 @@
+{
+  "schema": "z8-opengate4k-recorder-validation-1",
+  "date": "2026-11-12",
+  "stage": "opt-in recorder descriptors and metadata, independent AArch64 execution and strict full-input build",
+  "main_sha256": "9bfa80f4270dc789924a3f717134f35b3adaefb66a881a71808dd361aa71b5b1",
+  "frontend_main_sha256": "e293e2d97e55be35b6399014afb13eebbf6666d3d532cbef83960d98b586a959",
+  "original_package_sha256": "d67413c2ede6b9ce8887175f20700bd9fbad2a973a4820968c45503d15d80d96",
+  "baseline_package_sha256": "f9d5719cec76a814044f8f705dcb60cb6331da485cb4df680be5ff549c464d53",
+  "code": {
+    "base": "0x40966000",
+    "bytes": 1368,
+    "sha256": "dfe57a39a4fa169684046e5eed516888c3d790111d03a4db344987bf7a810321",
+    "source_sha256": "eb9eb094ff53790655f3bf9a7164f467546472f560c10e7b671c56c3b932d322",
+    "entries": {
+      "og4k_record_table_hook": "0x40966000",
+      "og4k_nrmt_hook": "0x409660e0",
+      "og4k_crop_hook": "0x409661c0",
+      "og4k_nctg_height_hook": "0x409662a0",
+      "og4k_proxy_main_height_hook": "0x40966350",
+      "og4k_nctg_crop_hook": "0x40966400"
+    }
+  },
+  "source_files": {
+    "z8opengate4k/recorder.py": "6b24e3176edd6ca243b7597046bc52018c76676cdc5cb8cb387937fd73028f6a",
+    "z8opengate4k/src/recorder.S": "eb9eb094ff53790655f3bf9a7164f467546472f560c10e7b671c56c3b932d322",
+    "z8opengate4k/recorder-profile.json": "b41f8c218b76ec9289ea64cac9eaa51301fd3328aca765ff64407d0c40b8124b"
+  },
+  "geometry": {
+    "coded_width": 4140,
+    "coded_height_candidate": 2756,
+    "active_width": 4128,
+    "active_height": 2752,
+    "physical_height": 2756,
+    "logical_height": 2760,
+    "encoding_qualified": false
+  },
+  "budget_records": [
+    {
+      "table": "common",
+      "index": 9,
+      "tier": "high",
+      "numerator": 30000,
+      "denominator": 1001,
+      "old_bps": 898000000,
+      "candidate_bps": 1061000000
+    },
+    {
+      "table": "common",
+      "index": 30,
+      "tier": "normal",
+      "numerator": 30000,
+      "denominator": 1001,
+      "old_bps": 468000000,
+      "candidate_bps": 548000000
+    },
+    {
+      "table": "fine",
+      "index": 9,
+      "tier": "fine",
+      "numerator": 30000,
+      "denominator": 1001,
+      "old_bps": 613000000,
+      "candidate_bps": 719000000
+    },
+    {
+      "table": "basic",
+      "index": 30,
+      "tier": "basic",
+      "numerator": 30000,
+      "denominator": 1001,
+      "old_bps": 324000000,
+      "candidate_bps": 377000000
+    },
+    {
+      "table": "common",
+      "index": 10,
+      "tier": "high",
+      "numerator": 25000,
+      "denominator": 1000,
+      "old_bps": 758000000,
+      "candidate_bps": 893000000
+    },
+    {
+      "table": "common",
+      "index": 31,
+      "tier": "normal",
+      "numerator": 25000,
+      "denominator": 1000,
+      "old_bps": 398000000,
+      "candidate_bps": 465000000
+    },
+    {
+      "table": "fine",
+      "index": 10,
+      "tier": "fine",
+      "numerator": 25000,
+      "denominator": 1000,
+      "old_bps": 519000000,
+      "candidate_bps": 607000000
+    },
+    {
+      "table": "basic",
+      "index": 31,
+      "tier": "basic",
+      "numerator": 25000,
+      "denominator": 1000,
+      "old_bps": 278000000,
+      "candidate_bps": 322000000
+    },
+    {
+      "table": "common",
+      "index": 11,
+      "tier": "high",
+      "numerator": 24000,
+      "denominator": 1001,
+      "old_bps": 728000000,
+      "candidate_bps": 855000000
+    },
+    {
+      "table": "common",
+      "index": 32,
+      "tier": "normal",
+      "numerator": 24000,
+      "denominator": 1001,
+      "old_bps": 378000000,
+      "candidate_bps": 445000000
+    },
+    {
+      "table": "fine",
+      "index": 11,
+      "tier": "fine",
+      "numerator": 24000,
+      "denominator": 1001,
+      "old_bps": 497000000,
+      "candidate_bps": 582000000
+    },
+    {
+      "table": "basic",
+      "index": 32,
+      "tier": "basic",
+      "numerator": 24000,
+      "denominator": 1001,
+      "old_bps": 266000000,
+      "candidate_bps": 308000000
+    }
+  ],
+  "table_sha256": {
+    "common": "f434ff8c0cdf2e47386f2c0994197da6c69486d315a288f68e9d024b8b51b097",
+    "fine": "03311f45dc9aab7244574020b6b90cb42d73c5b259a7781e6d6e5a6dbf192821",
+    "basic": "7f653bbedaed1518862f5aceb85955a32f84420f9d91470fedf02d966f90858a"
+  },
+  "hooks": {
+    "0x40d1e650": "og4k_record_table_hook",
+    "0x410a590c": "og4k_nrmt_hook",
+    "0x410a6d0c": "og4k_crop_hook",
+    "0x406d2c8c": "og4k_nctg_height_hook",
+    "0x406d3138": "og4k_proxy_main_height_hook",
+    "0x406d3824": "og4k_nctg_crop_hook"
+  },
+  "tests": {
+    "project": 68,
+    "real_aarch64": 23,
+    "complete_input_integration": 8,
+    "standalone_header_contract": 1,
+    "native_contact_replay": 4,
+    "upstream_contracts": 4,
+    "address_and_undefined_sanitizers_retained": true,
+    "leak_sanitizer_disabled_for_host_ptrace": true
+  },
+  "original_d10_and_tables_preserved": true,
+  "default_frontend_output_preserved": true,
+  "production_builder_changed": false,
+  "firmware_update_package_generated": false,
+  "recording_qualified": false,
+  "tico_qualified": false,
+  "physical_verified": false,
+  "file_callback_lifetime_qualified": false,
+  "qemu": {
+    "repository": "WonderLantern/z8-qemu",
+    "commit": "d50b07dbaeebae45b2cff936e5bfcd85251ac1fd",
+    "source_contracts_rerun": true,
+    "full_runtime_comparison_rerun": false,
+    "historical_8k_setup": {
+      "main_sha256": "ded602c7cee9df06a696a9785ca302991c49f3ff2e8c8f94a5c5edc666ad3de9",
+      "snapshot": {
+        "kind": 1,
+        "actual": 8,
+        "nominal": 4,
+        "size": 6,
+        "rate": 4,
+        "request": 4,
+        "file_type": 6
+      },
+      "driver": 14,
+      "frontend": [
+        4140,
+        2756
+      ],
+      "primary_exception": {
+        "task": "CAPTG",
+        "pc": "0x41170d84",
+        "esr": "0x96000005",
+        "far": "0x2a156b2806",
+        "rom_selector_index": 15
+      },
+      "selector15": 0,
+      "record_submitted": false,
+      "raw_trace_retained": false,
+      "provenance": "Observed tool output before workspace maintenance; preview/setup only, not8K main recording or a retained raw run receipt."
+    },
+    "note": "Subsequent8K selector15 and candidate runs started before maintenance have no retained completion evidence and are not counted as passed."
+  },
+  "remaining": [
+    "TICO and coded2756 qualification",
+    "physical half-readout driver/Bayer behavior",
+    "file identity across stop and mode changes",
+    "i-menu and cancellation",
+    "proxy stream and playback",
+    "fresh full QEMU comparison"
+  ]
+}
