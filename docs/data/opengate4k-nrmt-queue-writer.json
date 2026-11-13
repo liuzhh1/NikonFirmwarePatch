@@ -1,0 +1,264 @@
+{
+  "schema": "z8-opengate4k-nrmt-queue-writer-1",
+  "date": "2026-11-13",
+  "main_sha256": "f80ee74d066a38ef8f61e3b29a1349090f9607ba614ce24744724891da4f94a3",
+  "native_windows": [
+    {
+      "name": "queue veneers",
+      "address": "0x40ca1aac",
+      "bytes": 36,
+      "sha256": "dfdc565ad63b34eeb0ba9c4e558db7d4407f6da563112190fe9bc2397682192a"
+    },
+    {
+      "name": "queue initialization and pool",
+      "address": "0x40ca2ed0",
+      "bytes": 436,
+      "sha256": "e3d57236cfdd9a0809e8099045e1e3c7b12e0d4fd1710231ade51a8ffb0c36f2"
+    },
+    {
+      "name": "queue reset",
+      "address": "0x40ca3084",
+      "bytes": 208,
+      "sha256": "1b2748ef07df6023b1ba4e344d97203a3a2cc06a28610f7e8e214782a43ea97f"
+    },
+    {
+      "name": "queue copy in",
+      "address": "0x40ca3154",
+      "bytes": 208,
+      "sha256": "652b42461e7f2b243d70310d69d602d66db4c4dcd828b88f2fca7156412862d5"
+    },
+    {
+      "name": "queue copy out and release",
+      "address": "0x40ca3224",
+      "bytes": 212,
+      "sha256": "ea5212acbd6dfd1016807d996149eaee669b3d2e89eed5b8af28898b24870272"
+    },
+    {
+      "name": "queue lane transfer",
+      "address": "0x40ca32f8",
+      "bytes": 148,
+      "sha256": "ecd9db3755d0521e3f22f207882f54b86f243a7ef1093240142e7115628ddfb8"
+    },
+    {
+      "name": "queue peek",
+      "address": "0x40ca338c",
+      "bytes": 144,
+      "sha256": "e8df755836d287021ce874bf014540e85f74a022f07ddaa5156f8d69716a9021"
+    },
+    {
+      "name": "queue count",
+      "address": "0x40ca341c",
+      "bytes": 72,
+      "sha256": "0eead6cb578e060f1c914c1b54e9fdcc9959398b9b45ab8efe60cffe62396fa5"
+    },
+    {
+      "name": "queue flag clear",
+      "address": "0x40ca34d4",
+      "bytes": 124,
+      "sha256": "8eb0d750fb5fe656feaff06fe64f9ceed1a603a233aa84373e9858a48b8ffca4"
+    },
+    {
+      "name": "native linked lists",
+      "address": "0x40c7a15c",
+      "bytes": 2092,
+      "sha256": "c34ec21ad957baac3668b535a35021561eda7005ed878a73a28795e475f840e0"
+    },
+    {
+      "name": "record queue configuration",
+      "address": "0x40d1e9a4",
+      "bytes": 132,
+      "sha256": "a3ec4f4f44f73ba6de68d7502eeb5dbcfbb2b8e36afde898d37a15f3977a7225"
+    },
+    {
+      "name": "input dispatcher",
+      "address": "0x40d20770",
+      "bytes": 1340,
+      "sha256": "522a121639a1c1ed201174ba0ff37fb22a900ee9ce85c2f10d01bb06ddc05e69"
+    },
+    {
+      "name": "output consumer task",
+      "address": "0x40d1ea48",
+      "bytes": 4012,
+      "sha256": "b7f24996ca64f7523f2a01173063c5b08875b1910e4943b16abb23adcccf5b8a"
+    },
+    {
+      "name": "record queue cleanup",
+      "address": "0x40d1fa58",
+      "bytes": 380,
+      "sha256": "52f6bdb44a22c38068a33fe7330a48a7f429ea9aaf58b9c4041a7aaf9c2d5120"
+    },
+    {
+      "name": "writer enqueue",
+      "address": "0x40d22ad4",
+      "bytes": 1108,
+      "sha256": "65322cb902a3ea1e229b6bba303dd5fa6eb5c216bcaadf02592fe729799f972c"
+    },
+    {
+      "name": "writer task",
+      "address": "0x40d20fd8",
+      "bytes": 5228,
+      "sha256": "be71a8529e84ccccfe8e4fbcac6f28ba63465d652d801cccd1e14bf36806de3c"
+    },
+    {
+      "name": "writer completion and rate helpers",
+      "address": "0x40d231e0",
+      "bytes": 404,
+      "sha256": "3cda0d28ac9f991575194810c488f4dfcbe748d375441d9e72db8b2115376eac"
+    }
+  ],
+  "queue_configuration": [
+    {
+      "address": "0xa031c1718",
+      "lanes": 2,
+      "capacity": 60,
+      "item_bytes": 168
+    },
+    {
+      "address": "0xa031c1758",
+      "lanes": 2,
+      "capacity": 130,
+      "item_bytes": 20
+    },
+    {
+      "address": "0xa031c1798",
+      "lanes": 2,
+      "capacity": 130,
+      "item_bytes": 136
+    },
+    {
+      "address": "0xa031c17d8",
+      "lanes": 1,
+      "capacity": 60,
+      "item_bytes": 56
+    },
+    {
+      "address": "0xa031c3098",
+      "lanes": 2,
+      "capacity": 130,
+      "item_bytes": 136
+    },
+    {
+      "address": "0xa031c30d8",
+      "lanes": 2,
+      "capacity": 32,
+      "item_bytes": 16
+    }
+  ],
+  "fixture": "Single-threaded AArch64; original queues, dispatch, output consumers and writer staging. Mutex/heap/time/rate-status, image-submit and storage APIs are bounded fixtures. Internal mode 2 and synthetic raw-completion buffers are supplied; no real encoder output.",
+  "before_writer_staging": {
+    "metadata_queue_count": 0,
+    "writer_queue_count": 1,
+    "writer_block_sha256": "621073cdb747a03d38836ffda3d88378ce3838c22c4611f7088e20119893cec7",
+    "packet_pointers": [
+      "0xa06200000",
+      "0xa06202000",
+      "0xa06204000"
+    ]
+  },
+  "writer_staging": {
+    "writer_queue_counts": [
+      0,
+      1
+    ],
+    "storage_chunks_bytes": [
+      1536,
+      1536,
+      1536
+    ],
+    "storage_chunks_sha256": [
+      "4f566d5633907a54aa2177630aee71b16de9b64b5cd55fad1df7099ced09e3e8",
+      "3df62594b374a9d68342d2054d4adfc951cca26b8eb9e4835fceb6d5d4bf1f24",
+      "0ad173955d85ca56bacb01ca530b208d2b8e692b41f52ef0b72e9d0ac037330a"
+    ],
+    "storage_descriptor_sha256": "bcf27a6c52e1c5e9da4b995254f6d47a93f2e350ba78c7cd9a7f402a2fbb59ba",
+    "destination_pointers": [
+      "0xa06a00000",
+      "0xa06a02000",
+      "0xa06a04000"
+    ],
+    "packet_body_preserved": [
+      true,
+      true,
+      true
+    ],
+    "top_level_size_be": [
+      1536,
+      1536,
+      1536
+    ],
+    "coded_height": [
+      2756,
+      2756,
+      2756
+    ],
+    "active_sizes": [
+      [
+        4128,
+        2752
+      ],
+      [
+        4128,
+        2752
+      ],
+      [
+        4128,
+        2752
+      ]
+    ],
+    "synthetic_payload_preserved": [
+      true,
+      true,
+      true
+    ]
+  },
+  "after_injected_storage_completion": {
+    "writer_queue_counts": [
+      0,
+      0
+    ],
+    "busy_flag": 0
+  },
+  "packet_copy_call": "0x40d21a5c -> 0x4127a900",
+  "storage_submit_call": "0x40d21b8c -> 0x40d1767c",
+  "descriptor_lifetime": "Task and metadata queues copy descriptors, retaining original NRMT ring pointers. Writer copies parameter bytes to provided output buffers before storage submission; full caller scheduling and same-file identity remain unqualified.",
+  "native_queue_storage_executed": true,
+  "native_consumer_tasks_executed": true,
+  "native_writer_staging_executed": true,
+  "mutex_implementation_executed": false,
+  "rtos_concurrency_executed": false,
+  "encoder_executed": false,
+  "storage_api_executed": false,
+  "file_created": false,
+  "stop_close_qualified": false,
+  "source_tests": "tests/test_opengate4k_nrmt_queue.py",
+  "source_tests_sha256": "f55f3156815a0622081edebaa2388bebc2e3bd8a6c49072b9f31ec50966cab6b",
+  "source_parent_commit": "30f9da31d2b02f3099b2de03ca1929da2d63f346",
+  "input_packages": {
+    "original": {
+      "bytes": 99051117,
+      "sha256": "d67413c2ede6b9ce8887175f20700bd9fbad2a973a4820968c45503d15d80d96"
+    },
+    "reviewed_custom": {
+      "bytes": 99051117,
+      "sha256": "f9d5719cec76a814044f8f705dcb60cb6331da485cb4df680be5ff549c464d53"
+    }
+  },
+  "validation": {
+    "project_tests": 140,
+    "skips": 0,
+    "aarch64_execution_cases": 83,
+    "complete_input_build_checks": 19,
+    "new_cases": 14,
+    "new_aarch64_cases": 13,
+    "native_window_check_cases": 1,
+    "seconds": 98.468,
+    "result": "passed",
+    "log_sha256": "b3663e63f7540a16ce3891b9391f56ee2e5dc065099db8800ed833a652f82155",
+    "command": "python -B -m unittest discover -s tests",
+    "environment": [
+      "OG4K_COMPILER",
+      "OG4K_ORIGINAL",
+      "OG4K_BASELINE"
+    ]
+  }
+}
